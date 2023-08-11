@@ -2,6 +2,19 @@ body {
     background-color: rgb(248, 249, 250);
 }
 
+body::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 50vh 50vw;
+    border-color: transparent transparent lightgray transparent;
+    z-index: -1;
+}
+
 #imgPerfil {
     max-width: 200px;
     max-height: 200px;
@@ -11,4 +24,24 @@ body {
     border: solid 10px black;
     border-radius: 20px;
     box-shadow: 10px 10px 10px gray;
+}
+
+#volverArriba{
+    border: solid black 3px;
+    box-shadow: 3px 3px 3px gray;
+    background-color: white;
+    text-decoration: none;
+    padding: 3px;
+    position: absolute;
+    right: 3vh;
+    bottom: 3vh;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+}
+
+#japabajo{
+    position: absolute;
+    bottom: 3vh;
+    left: 3vh;
 }

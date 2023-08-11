@@ -21,20 +21,20 @@
 
     <div class="container d-flex justify-content-center align-items-center">
       <div class="row">
-        <form action="index.html"  id="formularioLogin">
+        <form action="index.html" method="get" id="formularioLogin">
 
           <div class="mb-3 mt-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control form-floating w-100" id="email" required placeholder="123@gmail.com">
+            <input type="email" name="email" class="form-control form-floating w-100" id="email" required placeholder="123@gmail.com">
           </div>
 
           <div class="mb-3">
-            <label for="password1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control form-floating w-100" id="password1" required placeholder="Ingrese su contraseña">
+            <label for="password1" class="form-label" id="password1">Contraseña</label>
+            <input type="password" name="password" class="form-control form-floating w-100" id="password1" required placeholder="Ingrese su contraseña">
           </div>
 
           <div class="mb-5">
-            <label for="password2" class="form-label ">Repetir contraseña</label>
+            <label for="password2" class="form-label" id="password2">Repetir contraseña</label>
             <input type="password" class="form-control form-floating w-100" id="password2" required placeholder="Vuelva a introducir la contraseña">
           </div>
 
@@ -55,9 +55,11 @@
 
     <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
+        <a href="index.html" id="volverArriba">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p id="japabajo">
+        Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
 
   </footer>
