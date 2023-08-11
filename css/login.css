@@ -45,3 +45,16 @@ body::before{
     bottom: 3vh;
     left: 3vh;
 }
+
+#showPassword{
+    border: 2px black solid;
+    box-shadow: 3px 3px 3px gray;
+    border-radius: 100px;
+    padding: 5px;
+}
+
+#showPassword:active{
+    border: 1px gray solid;
+    background-color: lightgray;
+    color:white;
+}
