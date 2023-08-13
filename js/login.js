@@ -1,13 +1,10 @@
-// Lógica del botón para mostrar o ocultar la contraseña en la pestaña de login
-
 document.addEventListener("DOMContentLoaded", function(){
+
+    // Lógica del botón para mostrar o ocultar la contraseña en la pestaña de login
 
     const password1 = document.getElementById("password1");
     const password2 = document.getElementById("password2");
-    const formularioLogin = document.getElementById('formularioLogin');
-    const email = document.getElementById("email");
     let showPassword = document.getElementById("showPassword");
-    let estaLoggeado = false;
 
     function visionToggle(elemento){
         if (elemento.type === "password") {
@@ -24,14 +21,14 @@ document.addEventListener("DOMContentLoaded", function(){
         visionToggle(password2);
     });
 
-    function changeLoginStatus(newValue) {
-        estaLoggeado = newValue;
-        console.log("estaLoggeado set to: ${estaLoggeado}");
-    }
+    // Lógica para guardar los datos de inicio de sesión en localhost
+
+    let formularioLogin = document.getElementById("formularioLogin");
+    let username;
+    let email = document.getElementById("email");
 
     formularioLogin.addEventListener("submit", function(){
         username = email.value;
-        changeLoginStatus(true);
+        localStorage.setItem('loggeado', 'true');
     });
-
 });

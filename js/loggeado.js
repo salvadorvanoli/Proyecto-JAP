@@ -1,15 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    let estaLoggeado = false;
+    valorVariable = localStorage.getItem('loggeado');
 
-    function verificarLoggeo(){
-        if(!estaLoggeado){
-            setTimeout(function() {
-                window.location.href = "../login.html";
-            }, 3000);
-        }
+    if(valorVariable === "false" || valorVariable === ""){
+        setTimeout(function() {
+            window.location.href = "../login.html";
+        }, 3000);
     }
-
-    verificarLoggeo();
-
+    
 });
