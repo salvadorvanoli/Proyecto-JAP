@@ -15,15 +15,29 @@ body::before{
     z-index: -1;
 }
 
+#languages{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+}
+
+#languages img{
+    width: 2.5vw;
+    cursor: pointer;
+}
+
 #imgPerfil {
     max-width: 200px;
     max-height: 200px;
+    user-select: none;
 }
 
 #formularioLogin {
     border: solid 10px black;
     border-radius: 20px;
     box-shadow: 10px 10px 10px gray;
+    background-color: rgb(248, 249, 250);
 }
 
 #volverArriba{
@@ -38,6 +52,7 @@ body::before{
     border-radius: 5px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
+    user-select: none;
 }
 
 #japabajo{
@@ -57,4 +72,34 @@ body::before{
     border: 1px gray solid;
     background-color: lightgray;
     color:white;
+}
+
+#otrasOpcionesLogIn img{
+    width: 2vw;
+    cursor: pointer;
+}
+
+#otrasOpcionesLogIn {
+    user-select: none;
+}
+
+#darkmodeButton{
+    /* border: solid yellow 2px; */
+    border-radius: 15px;
+    padding: 5px;
+    width: 2.5vw;
+}
+
+#darkmodeToggleButton{
+    user-select: none;
+    position: absolute;
+    right: 0.5vw;
+    top: 0.5vh;
+    background-image: url(../img/cloudy-bckgrnd.png);
+    border: solid black 5px;
+    border-radius: 15px;
+    padding: 5px;
+    color: color;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px gray;
 }
