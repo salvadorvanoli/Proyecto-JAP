@@ -42,7 +42,6 @@
 }
 
 .nameElement::first-letter{
-    color: red;
     font-size: 150%;
 }
 
