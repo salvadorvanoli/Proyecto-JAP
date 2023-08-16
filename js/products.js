@@ -18,19 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
             productElement.className = "product";
   
             const imageElement = document.createElement("img");
+            imageElement.classList.add("imageElement");
             imageElement.src = product.image;
             imageElement.alt = product.name;
   
             const nameElement = document.createElement("h2");
+            nameElement.classList.add("nameElement");
             nameElement.textContent = product.name;
   
             const descriptionElement = document.createElement("p");
+            descriptionElement.classList.add("descriptionElement");
             descriptionElement.textContent = product.description;
   
             const priceElement = document.createElement("p");
-            priceElement.textContent = `Precio: $${product.cost} ${product.currency}`;
+            priceElement.classList.add("priceElement");
+            priceElement.textContent = `$${product.cost} ${product.currency}`;
   
             const soldElement = document.createElement("p");
+            soldElement.classList.add("soldElement");
             soldElement.textContent = `Vendidos: ${product.soldCount}`;
   
             productElement.appendChild(imageElement);
