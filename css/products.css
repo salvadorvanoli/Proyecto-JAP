@@ -1,0 +1,78 @@
+#products-title{
+    display: flex;
+    justify-content: center;
+    letter-spacing: 10px;
+    text-decoration: underline 2px black;
+    user-select: none;
+
+}
+
+.product{
+    position: relative;
+    border: 6px black solid;
+    border-radius: 10px;
+    margin: 10px;
+    padding-bottom: 75px;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+.product:hover{
+    transform: scale(1.1);
+}
+
+.imageElement{
+    width: 250px;
+    float: left;
+    border: lightblue solid 5px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px lightgray;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.imageElement:hover{
+    transform: scale(1.1);
+}
+
+.nameElement{
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-decoration: underline red 3px;
+}
+
+.nameElement::first-letter{
+    font-size: 150%;
+}
+
+.priceElement{
+    color: green;
+    font-size: 150%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px
+}
+
+.soldElement{
+    font-size: 50%;
+    color: gray;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+#volverArriba{
+    border: solid black 3px;
+    box-shadow: 3px 3px 3px gray;
+    background-color: white;
+    text-decoration: none;
+    padding: 3px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    user-select: none;
+}
