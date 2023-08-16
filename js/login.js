@@ -145,4 +145,8 @@ document.addEventListener("DOMContentLoaded", function(){
     spanishLanguage.addEventListener("click", function(){
         changeToSpanish();
     });
+
+    // Variable local storage para mantener la sesión iniciada y que no te rediriga al login
+
+    localStorage.setItem('loggeado', 'false');
 });

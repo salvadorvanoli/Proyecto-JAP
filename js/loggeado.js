@@ -7,5 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href = "../login.html";
         }, 3000);
     }
-    
+
+    // localStorage.setItem('loggeado', 'false');
+
 });
