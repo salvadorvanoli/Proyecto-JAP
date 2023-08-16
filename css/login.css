@@ -1,0 +1,112 @@
+body {
+    background-color: rgb(248, 249, 250);
+}
+
+body::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 50vh 50vw;
+    border-color: transparent transparent lightgray transparent;
+    z-index: -1;
+}
+
+#languages{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+}
+
+#languages img{
+    width: 2.5vw;
+    cursor: pointer;
+}
+
+#imgPerfil {
+    max-width: 200px;
+    max-height: 200px;
+    user-select: none;
+}
+
+#formularioLogin {
+    border: solid 10px black;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px gray;
+    background-color: rgb(248, 249, 250);
+}
+
+#volverArriba{
+    border: solid black 3px;
+    box-shadow: 3px 3px 3px gray;
+    background-color: white;
+    text-decoration: none;
+    padding: 3px;
+    position: absolute;
+    right: 3vh;
+    bottom: 3vh;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+    user-select: none;
+}
+
+#japabajo{
+    position: absolute;
+    bottom: 3vh;
+    left: 3vh;
+}
+
+#showPassword:active{
+    border: 1px gray solid;
+    background-color: lightgray;
+    color:white;
+}
+
+#otrasOpcionesLogIn img{
+    width: 2vw;
+    cursor: pointer;
+}
+
+#otrasOpcionesLogIn {
+    user-select: none;
+}
+
+#darkmodeButton{
+    border-radius: 15px;
+    padding: 5px;
+    width: 2.5vw;
+}
+
+#darkmodeToggleButton{
+    user-select: none;
+    position: absolute;
+    right: 0.5vw;
+    top: 0.5vh;
+    background-image: url(../img/cloudy-bckgrnd.png);
+    border: solid black 5px;
+    border-radius: 15px;
+    padding: 5px;
+    color: color;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px gray;
+}
+
+#showPasswordImg, #showPasswordImg2{
+    width: 15%;
+    margin-top: 20px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#divRow{
+    width: 400px;
+}
+
+#password1, #password2{
+    max-width: 300px;
+}
