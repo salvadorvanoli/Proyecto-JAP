@@ -110,8 +110,10 @@ document.addEventListener("DOMContentLoaded", function(){
         labelPassword.textContent = "Password";
         labelRepeatPassword.textContent = "Repeat Password";
         japabajo.innerHTML = 'This website is a property of <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
-        goUpText.textContent = 'Go up';
+        goUpText.textContent = 'Go back';
         signUpText.textContent = 'Sign up';
+        password1.placeholder="Enter your password";
+        password2.placeholder="Repeat your password";
         if(itsDark){
             darkmodeText.textContent = "Activate light mode";
         } else {
@@ -129,8 +131,10 @@ document.addEventListener("DOMContentLoaded", function(){
         labelPassword.textContent = "Contraseña";
         labelRepeatPassword.textContent = "Repetir contraseña";
         japabajo.innerHTML = 'Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
-        goUpText.textContent = 'Volver arriba';
+        goUpText.textContent = 'Volver al inicio';
         signUpText.textContent = 'Registrarme';
+        password1.placeholder="Ingrese su contraseña";
+        password2.placeholder="Vuelva a introducir la contraseña";
         if(itsDark){
             darkmodeText.textContent = "Activar modo claro";
         } else {

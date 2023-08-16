@@ -99,7 +99,8 @@ body::before{
 #showPasswordImg, #showPasswordImg2{
     width: 15%;
     margin-top: 20px;
-    
+    user-select: none;
+    cursor: pointer;
 }
 
 #divRow{
