@@ -38,7 +38,7 @@
 .nameElement{
     letter-spacing: 1px;
     font-weight: 700;
-    text-decoration: underline red 3px;
+    text-decoration: underline skyblue 3px;
 }
 
 .nameElement::first-letter{

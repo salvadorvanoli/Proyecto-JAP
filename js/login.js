@@ -32,12 +32,11 @@ document.addEventListener("DOMContentLoaded", function(){
     // Lógica para guardar los datos de inicio de sesión en localhost
 
     let formularioLogin = document.getElementById("formularioLogin");
-    let username;
     let email = document.getElementById("email");
 
     formularioLogin.addEventListener("submit", function(){
         if(password1.value===password2.value){
-            username = email.value;
+            localStorage.setItem('username', email.value);
             localStorage.setItem('loggeado', 'true');
         } else {
             if(englishBool){

@@ -1,0 +1,24 @@
+#perfil{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    z-index: 2;
+}
+
+#nombreDeUsuario{
+    color: white;
+    user-select: none;
+    border: 2px gray solid;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: black;
+}
+
+#fotoDePerfil{
+    user-select: none;
+    width: 30px;
+    float: right;
+    border: 2px gray solid;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
