@@ -61,13 +61,6 @@ body::before{
     left: 3vh;
 }
 
-#showPassword{
-    border: 2px black solid;
-    box-shadow: 3px 3px 3px gray;
-    border-radius: 100px;
-    padding: 5px;
-}
-
 #showPassword:active{
     border: 1px gray solid;
     background-color: lightgray;
@@ -84,7 +77,6 @@ body::before{
 }
 
 #darkmodeButton{
-    /* border: solid yellow 2px; */
     border-radius: 15px;
     padding: 5px;
     width: 2.5vw;
@@ -102,4 +94,18 @@ body::before{
     color: color;
     cursor: pointer;
     box-shadow: 3px 3px 3px gray;
+}
+
+#showPasswordImg, #showPasswordImg2{
+    width: 15%;
+    margin-top: 20px;
+    
+}
+
+#divRow{
+    width: 400px;
+}
+
+#password1, #password2{
+    max-width: 300px;
 }

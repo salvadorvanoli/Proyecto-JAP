@@ -2,40 +2,31 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let spanishBool = true;
     let englishBool = false;
-    let itsPasswordVisible = false;
     let itsDark = false;
 
     // Lógica del botón para mostrar o ocultar la contraseña en la pestaña de login
 
     const password1 = document.getElementById("password1");
     const password2 = document.getElementById("password2");
-    let showPassword = document.getElementById("showPassword");
+    let showPasswordImg = document.getElementById("showPasswordImg");
+    let showPasswordImg2 = document.getElementById("showPasswordImg2");
 
-    function visionToggle(elemento){
+    function visionToggle(elemento, boton){
         if (elemento.type === "password") {
-            itsPasswordVisible = true;
             elemento.type = "text";
-            if(spanishBool){
-                showPassword.value = "Ocultar contraseñas";
-            }
-            if(englishBool){
-                showPassword.value = "Hide passwords";
-            }
+            boton.src = "../img/not-show-password-icon.png";
         } else {
-            itsPasswordVisible = false;
             elemento.type = "password";
-            if(spanishBool){
-                showPassword.value = "Mostrar contraseñas";
-            }
-            if(englishBool){
-                showPassword.value = "Show passwords";
-            }
+            boton.src = "../img/show-password-icon.png";
         }
     }
 
-    showPassword.addEventListener("click", function(){
-        visionToggle(password1);
-        visionToggle(password2);
+    showPasswordImg.addEventListener("click", function(){
+        visionToggle(password1, showPasswordImg);
+    });
+
+    showPasswordImg2.addEventListener("click", function(){
+        visionToggle(password2, showPasswordImg2);
     });
 
     // Lógica para guardar los datos de inicio de sesión en localhost
@@ -126,11 +117,6 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             darkmodeText.textContent = "Activate dark mode";
         }
-        if(itsPasswordVisible){
-            showPassword.value = "Hide passwords";
-        } else {
-            showPassword.value = "Show passwords";
-        }
     }
 
     englishLanguage.addEventListener("click", function(){
@@ -149,11 +135,6 @@ document.addEventListener("DOMContentLoaded", function(){
             darkmodeText.textContent = "Activar modo claro";
         } else {
             darkmodeText.textContent = "Activar modo oscuro";
-        }
-        if(itsPasswordVisible){
-            showPassword.value = "Ocultar contraseñas";
-        } else {
-            showPassword.value = "Mostrar contraseñas";
         }
     }
 
