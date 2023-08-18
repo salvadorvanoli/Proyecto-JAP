@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let nombreDeUsuario = document.getElementById("nombreDeUsuario");
     let cerrarSesion = document.getElementById("cerrarSesion");
 
-    if(usuarioStorage === 'null'){
+    if(usuarioStorage === 'null' || usuarioStorage === null){
         nombreDeUsuario.textContent += "No se ha iniciado sesión - Redirigiendo";
         cerrarSesion.style.display = "none";
 
