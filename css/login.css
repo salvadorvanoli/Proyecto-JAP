@@ -1,20 +1,115 @@
-body {
-    background-color: rgb(248, 249, 250);
+body{
+    background-image: url(/img/e-Mercado\ \(2\).png);
+    background-position: bottom 20%;
+    background-repeat: no-repeat;
+    <style>}
+body{
+background-image: url(/img/79029661-padrão-sem-emenda-sobre-o-tema-de-compras-on-line-e-lojas-de-internet-contorno-de-luz-sobre-fundo.jpg);
+background-repeat: repeat;
+
 }
 
-body::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 50vh 50vw;
-    border-color: transparent transparent lightgray transparent;
-    z-index: -1;
+
+
+/* Mensaje de bienvenido */
+.p{
+    font-size: 2rem;
+}
+.welcome-back {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
 }
 
+.message {
+    padding: 1rem;
+}
+
+.message h2 {
+    font-family: 'Roboto', sans-serif;
+        font-size: 3rem;
+    padding: 1rem 0;
+}
+
+.message button {
+    padding: 1rem;
+    font-weight: 400;
+    background-color: #4a4aee;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: .9rem;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+    color: #fff;
+}
+
+.message button:hover {
+    background-color: #6464f8;
+}
+
+/* Formulario */
+.create-account {
+    padding: 2.7rem 0;
+    font-size: 1.7rem;
+    color: #fff;
+}
+.formulario {
+    width: 400px;
+    min-height:600px;
+    padding: 1rem;
+    background-color: rgb(51, 51, 51, 0.602);
+    text-align: center;
+    margin-top: 2%;
+}
+.container-form {
+    width: 90%;
+    height: 90vh;
+    display: inline-flex;
+    justify-content: space-around;
+}
+.formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: white;
+}
+.form-label {
+    color: white;
+  }
+  
+ .btn-primary {
+  border-radius: 20px;
+}
+
+.Btn{
+    padding: 1rem;
+    font-weight: 400;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: .9rem;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+    color: #fff;
+}
+.btn-primary{
+background-color: #4a4aee;}
+
+  
+
+/* Idioma */
 #languages{
     position: absolute;
     top: 10px;
@@ -27,34 +122,65 @@ body::before{
     cursor: pointer;
 }
 
-#imgPerfil {
-    max-width: 200px;
-    max-height: 200px;
-    user-select: none;
-}
 
-#formularioLogin {
-    border: solid 10px black;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px gray;
-    background-color: rgb(248, 249, 250);
-}
-
-#volverArriba{
-    border: solid black 3px;
-    box-shadow: 3px 3px 3px gray;
-    background-color: white;
-    text-decoration: none;
-    padding: 3px;
+/* Volver atras */
+.Btn {
+    width: 45px;
+    height: 45px;
+background-color: #4a4aee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    right: 30px; 
+    border: none;
+  }
+  
+  
+  
+  .arrow path {
+    fill: white;
+  }
+  
+  .text {
+    font-size: 0.8em;
+    width: 100px;
     position: absolute;
-    right: 3vh;
-    bottom: 3vh;
-    border-radius: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: black;
-    user-select: none;
-}
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -18px;
+    opacity: 0;
+    transition-duration: .7s;
+  }
+  
+  .Btn:hover .text {
+    opacity: 1;
+    transition-duration: .7s;
+  }
+  
+  .Btn:hover .arrow {
+    animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  @keyframes slide-in-bottom {
+    0% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
 
+/* Facebook y google */
 #japabajo{
     position: absolute;
     bottom: 3vh;
@@ -97,16 +223,12 @@ body::before{
 }
 
 #showPasswordImg, #showPasswordImg2{
-    width: 15%;
-    margin-top: 20px;
+    width: 10%;
+    margin-top: 15px;
     user-select: none;
     cursor: pointer;
 }
 
 #divRow{
-    width: 400px;
-}
-
-#password1, #password2{
-    max-width: 300px;
+    width: 200px;
 }

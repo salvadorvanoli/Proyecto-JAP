@@ -8,15 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="img/page-icon.png">
 </head>
 
 <body>
-
+ 
+  <!-- Idiomas -->
   <div id="languages">
     <p>
       <img src="img/spanish-language.png" alt="spanish" id="spanishLanguage">
@@ -24,6 +28,7 @@
     </p>
   </div>
 
+  <!-- Modo oscuro-->
   <div>
     <p id="darkmodeToggleButton">
 
@@ -33,40 +38,23 @@
 
       <img src="img/sun.png" alt="sun" id="darkmodeButton">
     </p>
-  </div>
+  </div> 
 
-  <main class="container mt-5">
+  <!-- Mensaje Bienvenido -->
+  <div class="container ">
 
-    <div class="d-flex justify-content-center align-items-center">
-      <img src="img/img_perfil.png" alt="Perfil default" id="imgPerfil">
-    </div>
-
-    <div class="container d-flex justify-content-center align-items-center">
-      <div class="row" id="divRow">
-        <form action="index.html" method="get" id="formularioLogin">
-
-          <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" value="" class="form-control form-floating w-100" id="email" required placeholder="123@gmail.com">
+    <div class="container-form sign-up">
+      <div class="welcome-back">
+          <div class="message">
+              <h2 class="Welcome to
+              "><span style="color: #4a4aee;">Bienven</span>ido a eMercado</h2>
+              <p><span style="color: #4a4aee;">Si ya tienes una cuenta</span> por favor inicia sesion aqui</p>
+              <button class="sign-up-btn">Iniciar Sesion</button>
           </div>
+      </div>
 
-          <div class="mb-3">
-            <label for="password1" class="form-label" id="labelPassword">Contraseña</label>
-            <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg" class="img-fluid float-end"> <input type="password" name="password" class="form-control form-floating w-100" id="password1" required placeholder="Ingrese su contraseña">
-          </div>
-
-          <div class="mb-4">
-            <label for="password2" class="form-label" id="labelRepeatPassword">Repetir contraseña</label>
-            <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg2" class="img-fluid float-end"><input type="password" class="form-control form-floating w-100" id="password2" required placeholder="Vuelva a introducir la contraseña">
-          </div>
-
-          <div class="">
-            <button class="btn btn-primary w-100" type="submit" id="regBtn"><span id="signUpText">Registrarme</span></button>
-          </div>
-
-          <div class="d-flex justify-content-center align-items-center">
-            <p class="mt-3 mb-3 text-muted">Jóvenes a programar 2023</p>
-          </div>
+        <form class="formulario" action="index.html" method="get" id="formularioLogin">
+          <h2 class="create-account">Crear una cuenta</h2>
 
           <div id="otrasOpcionesLogIn" class="d-flex justify-content-center">
             <p>
@@ -74,18 +62,40 @@
             </p>
           </div>
 
+          <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABjElEQVR4nN2UMU6CQRCFCQYsxB70BngIKTVYgBquQKAACtBoi4XxHGpvbbDWUizEqJcATbDxM2PeTza/yw8Ijb5kk903s/N2Z3cmFvvXAJJACbgEesCbhs0vZEv+Nvgu8MpkvADFWQLHgTMnwD1QA7LAisYGUAe6jt+p7Z1GIAg+BMpRm3SYiny/RaZJSxB8c4Zb5xyRQtSDBjkvh2w7QEcPPNA8H/Kpau8zkPAJlJycj9ICnEQ8cNvxWwIexO/7BOwrGmqhk6PrN4GMRstJyegmQEPcuU/gScasw92Ia3r8D2TrOJz9LkPPJ2C5NaQ8XNrjn5at73Cr4gbTCvTFZTz+67IR4n9wUSnqiGt5/A+DYEG7AJa1HvoErLcY6g6XDzYo52saFvzDETiymwPHWt9FfdNu6Ju2GY8r4DPE2Xp7XKFZ4zJUQra80jXQu1wDW7LtqXbegVtvcCdQ0UlJbqzjPFBXDESqVqGLFog7Iqj8Gyqi1CKFCmpcEzGPSMIal/UW4NEpxsUI/Al8Ac8Bap9xL7zmAAAAAElFTkSuQmCC"></label>
+            <input type="email" name="email" value="" class="form-control form-floating" id="email" required placeholder="123@gmail.com">
+          </div>
+
+          <div class="mb-3">
+            <label for="password1" class="form-label" id="labelPassword">Contraseña <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABj0lEQVR4nN2UTU4CQRCFCQRiIlwEPYHRiBcwYAxXIBAV9ASsCDFR7uAPHsWfnWgUUbe4Bxe68TOFRVJOmp4Z3fGSTqarXterqa7qRGKuAWSAMtAF+sC7Lvk+V1/mr8G3gFfC8QKU4gROAocmwC2wB+SBRV1LQB3oGV5bzkYRmAb/ACq+Q5pMVbkTkShlmQZfN/YFoAO8AUPgWGzGXzAiRd+FTmteCfg6wJdebFe/jwKcmp59BtIugbKp+a+y8JP5mdmLyDDASQF3GmPbJXChzl2HT9A0+6YYHLzGhGmSsc4ndeYD9htm4yrAle4S9F0CY3VmHdnPRICbU/PYJTBSZ84jsAKsRhAYxSmRhQRfs4YAd9lXImlBQf0fJTpQ84mvTXu2TYFrT/zLQJve+9o0ow+XoJqICWBHzw6cg6akkpJk7Asxgm8Anzrhm2HkthGpya97uCnNXIILWlGySRoRdPwbOkRZXdIt+6bmknkr0nNthIr6cIVhEFoWj0haOkLeFuBRp13WA3CqPveFzg2+AYlXjkoSN7YeAAAAAElFTkSuQmCC"></label>
+            <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg" class="img-fluid float-end"> <input type="password" name="password" class="form-control form-floating " id="password1" required placeholder="Ingrese su contraseña">
+          </div>
+
+          <div class="mb-4">
+            <label for="password2" class="form-label" id="labelRepeatPassword">Repetir contraseña<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABj0lEQVR4nN2UTU4CQRCFCQRiIlwEPYHRiBcwYAxXIBAV9ASsCDFR7uAPHsWfnWgUUbe4Bxe68TOFRVJOmp4Z3fGSTqarXterqa7qRGKuAWSAMtAF+sC7Lvk+V1/mr8G3gFfC8QKU4gROAocmwC2wB+SBRV1LQB3oGV5bzkYRmAb/ACq+Q5pMVbkTkShlmQZfN/YFoAO8AUPgWGzGXzAiRd+FTmteCfg6wJdebFe/jwKcmp59BtIugbKp+a+y8JP5mdmLyDDASQF3GmPbJXChzl2HT9A0+6YYHLzGhGmSsc4ndeYD9htm4yrAle4S9F0CY3VmHdnPRICbU/PYJTBSZ84jsAKsRhAYxSmRhQRfs4YAd9lXImlBQf0fJTpQ84mvTXu2TYFrT/zLQJve+9o0ow+XoJqICWBHzw6cg6akkpJk7Asxgm8Anzrhm2HkthGpya97uCnNXIILWlGySRoRdPwbOkRZXdIt+6bmknkr0nNthIr6cIVhEFoWj0haOkLeFuBRp13WA3CqPveFzg2+AYlXjkoSN7YeAAAAAElFTkSuQmCC"> </label>
+            <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg2" class="img-fluid float-end"><input type="password" class="form-control form-floating " id="password2" required placeholder="Vuelva a introducir la contraseña">
+          </div>
+
+          <div class="">
+            <button class="btn btn-primary " type="submit" id="regBtn"><span id="signUpText">Registrarme <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABUUlEQVR4nN2UW0oDQRREYyT58bEQH3vw8S+JiFsQzQSTFehXGNyGjwWpaIy6CImg/njkSjU0SdvdMeQnBQ0Dt+6tnpo7VanMNYA6cAjcAH3gXceer1Wr/3f4PvBKGi9Ac5LBVeDCG3ALFMAasKSzDpyq5lBab46AG/4BHAELicscA59OJMcWN3xngrfe8kQasQ/qPD/JHe5gPep9Bmohgm2E4W7US+B8rGG8f1G9hoMQwVbRUARqZIp0fplwFSo+qbj5h0BSRNtl6IeKQ/JQRgRWxBlOI3AWEVgV521WFm3ELLJsMbSn+MhdcS9ntab3sTWtK7gMrdTAUSivDIPgjyZS04uK3SAp3LcNfAHfwF6KXHoirVhCypZCww29nNtUPRHka1sbYlG9rOeu57ndvJcV155QQ8GVwiBpS0SkZhth2QI86me082CrqFr4g84NfgCBLPc5QbmxWwAAAABJRU5ErkJggg=="></span></button>
+          </div>
+
+          <div class="d-flex justify-content-center align-items-center">
+            <p class="mt-3 mb-3 text-muted">Jóvenes a programar 2023</p>
+          </div>
+
         </form>
-
       </div>
-    </div>
-
-  </main>
   <footer class="text-muted">
 
-    <div class="container">
-      <p class="float-end">
-        <a href="index.html" id="volverArriba"><span id="goUpText">Volver al inicio</span></a>
-      </p>
+    <a href="index.html">
+      <button class="Btn">
+        <svg height="1.2em" class="arrow" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path></svg>
+        <p class="text">Volver al inicio</p>
+      </button>
+    </a>
+    
       <p id="japabajo">
         Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
       </p>
