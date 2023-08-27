@@ -22,3 +22,23 @@
     margin-left: 10px;
     margin-bottom: 15px;
 }
+
+#cerrarSesion {
+    font-size: 75%;
+    position: absolute;
+    color: black;
+    border: gray solid 2px;
+    border-radius: 15px;
+    background-color: white;
+    right: 250px;
+    top: 5px;
+    max-width: 120px;
+    z-index: 2;
+    padding: 5px;
+}
+
+#cerrarSesion:active{
+    transform: translateY(4px);
+    color: gray;
+    background-color: antiquewhite;
+}
