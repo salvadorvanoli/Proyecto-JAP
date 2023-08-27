@@ -92,24 +92,27 @@ document.addEventListener("DOMContentLoaded", function(){
     let labelPassword = document.getElementById("labelPassword");
     let labelRepeatPassword = document.getElementById("labelRepeatPassword");
     let japabajo = document.getElementById("japabajo");
-    let goUpText = document.getElementById("goUpText");
     let signUpText = document.getElementById("signUpText");
+    let welcomeText = document.getElementById("welcomeText");
+    let welcomeTitle =  document.getElementById("welcomeTitle");
+    let welcomeButton =  document.getElementById("welcomeButton");
+    let createTitle = document.getElementById("createTitle");
+    let goBackText = document.getElementById("goBackText");
 
     function changeToEnglish(){
         spanishBool = false;
         englishBool = true;
-        labelPassword.textContent = "Password";
-        labelRepeatPassword.textContent = "Repeat Password";
+        labelPassword.innerHTML = 'Password <img src="img/contraseña-candado.png">';
+        labelRepeatPassword.innerHTML = 'Repeat Password <img src="img/contraseña-candado.png">';
         japabajo.innerHTML = 'This website is a property of <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
-        goUpText.textContent = 'Go back';
-        signUpText.textContent = 'Sign up';
-        password1.placeholder="Enter your password";
-        password2.placeholder="Repeat your password";
-        if(itsDark){
-            darkmodeText.textContent = "Activate light mode";
-        } else {
-            darkmodeText.textContent = "Activate dark mode";
-        }
+        signUpText.innerHTML = 'Sign up <img src="img/Flecha-derecha.png">';
+        password1.placeholder = "Enter your password";
+        password2.placeholder = "Repeat your password";
+        welcomeButton.innerHTML = 'Log In <img src="img/Flecha-derecha.png">';
+        welcomeTitle.textContent = 'Welcome to eMercado';
+        welcomeText.textContent = 'If you already have an account please log in here.';
+        createTitle.textContent = 'Create an account';
+        goBackText.textContent = 'Back to top';
     }
 
     englishLanguage.addEventListener("click", function(){
@@ -119,18 +122,17 @@ document.addEventListener("DOMContentLoaded", function(){
     function changeToSpanish(){
         spanishBool = true;
         englishBool = false;
-        labelPassword.textContent = "Contraseña";
-        labelRepeatPassword.textContent = "Repetir contraseña";
+        labelPassword.innerHTML = 'Contraseña <img src="img/contraseña-candado.png">';
+        labelRepeatPassword.innerHTML = 'Repetir contraseña <img src="img/contraseña-candado.png">';
         japabajo.innerHTML = 'Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
-        goUpText.textContent = 'Volver al inicio';
-        signUpText.textContent = 'Registrarme';
+        signUpText.innerHTML = 'Registrarme <img src="img/Flecha-derecha.png">';
         password1.placeholder="Ingrese su contraseña";
         password2.placeholder="Vuelva a introducir la contraseña";
-        if(itsDark){
-            darkmodeText.textContent = "Activar modo claro";
-        } else {
-            darkmodeText.textContent = "Activar modo oscuro";
-        }
+        welcomeButton.innerHTML = 'Iniciar Sesion <img src="img/Flecha-derecha.png">';
+        welcomeTitle.textContent = 'Bienvenido a eMercado';
+        welcomeText.textContent = 'Si ya tienes una cuenta por favor inicia sesion aquí.';
+        createTitle.textContent = 'Crear una cuenta';
+        goBackText.textContent = 'Volver al inicio';
     }
 
     spanishLanguage.addEventListener("click", function(){

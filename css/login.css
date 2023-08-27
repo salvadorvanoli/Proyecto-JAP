@@ -7,8 +7,8 @@ body{
 
 /* Mensaje de bienvenido */
 
-.p{
-  font-size: 2rem;
+p{
+  font-size: 17px;
 }
 
 .welcome-back {
@@ -19,25 +19,25 @@ body{
 }
 
 .message {
-  padding: 1rem;
+  padding: 10px;
 }
 
 .message h2 {
   font-family: 'Anton', sans-serif;
-  font-size: 3rem;
+  font-size: 50px;
   padding: 1rem 0;
 }
 
 .message button {
-  padding: 1rem;
+  padding: 10px;
   font-weight: 400;
   background-color: #4a4aee;
-  border-radius: 2rem;
+  border-radius: 25px;
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: .9rem;
-  margin-top: 2rem;
+  font-size: 15px;
+  margin-top: 15px;
   transition: all .3s ease-in;
   color: #fff;
 }
@@ -58,15 +58,15 @@ body{
   background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0.602), rgba(51, 51, 51, 1)), url(/img/compras-fondo-vertical_23-2150409471.avif);
   background-repeat: no-repeat;
   width: 400px;
-  min-height:600px;
-  padding: 1rem;
+  min-height: 600px;
+  padding: 15px;
   text-align: center;
-  margin-top: 2%;
+  margin-top: 15%;
 }
 
 .container-form {
   width: 90%;
-  height: 90vh;
+  height: 650px;
   display: inline-flex;
   justify-content: space-around;
 }
@@ -81,8 +81,8 @@ body{
   border-bottom: white thin solid;
   text-align: center;
   outline: none;
-  padding: .2rem 0;
-  font-size: .9rem;
+  padding: 1px 0;
+  font-size: 13px;
   color: white;
 }
 
@@ -97,12 +97,12 @@ border-radius: 20px;
 .Btn{
   padding: 1rem;
   font-weight: 400;
-  border-radius: 2rem;
+  border-radius: 30px;
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: .9rem;
-  margin-top: 2rem;
+  font-size: 15px;
+  margin-top: 30px;
   transition: all .3s ease-in;
   color: #fff;
 }
@@ -121,7 +121,7 @@ background-color: #4a4aee;
 }
 
 #languages img{
-  width: 2.5vw;
+  width: 45px;
   cursor: pointer;
 }
 
@@ -147,7 +147,7 @@ background-color: #4a4aee;
 }
   
 .text {
-  font-size: 0.8em;
+  font-size: 13px;
   width: 100px;
   position: absolute;
   color: #4a4aee;
@@ -185,18 +185,12 @@ background-color: #4a4aee;
 
 #japabajo{
   position: absolute;
-  bottom: 3vh;
-  left: 3vh;
-}
-
-#showPassword:active{
-  border: 1px gray solid;
-  background-color: lightgray;
-  color:white;
+  bottom: 35px;
+  left: 35px;
 }
 
 #otrasOpcionesLogIn img{
-  width: 2vw;
+  width: 30px;
   cursor: pointer;
 }
 
@@ -205,6 +199,7 @@ background-color: #4a4aee;
 }
 
 /* Modo oscuro */
+
 #darkmodeToggleButton {
   float: right;
 }
@@ -320,6 +315,11 @@ button {
 #divRow{
   width: 200px;
 }
+
+#email{
+  width: 210px;
+}
+
 .nmc{
   color: #fff;
   font-size: small;
