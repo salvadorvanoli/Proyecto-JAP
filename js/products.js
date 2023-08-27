@@ -43,11 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
   // consigue la categoria seleccionada en el index (seteada por index.js)
   const categorySelected = localStorage.getItem("catID");
-  // si la categorica seleccionada no es 101 (Autos) se redirecciona a under-construction.html
-  if(categorySelected !== "101") {
-    window.location.href = "/under-construction.html";
-    return;
-  }
+
 
   // URL para obtener la lista de productos de la categoría 101 (Autos)
   const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
