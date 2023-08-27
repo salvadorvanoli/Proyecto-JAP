@@ -1,20 +1,21 @@
-body{
-    background-image: url(/img/e-Mercado\ \(2\).png);
-    background-position: bottom 20%;
-    background-repeat: no-repeat;
-    <style>}
-body{
-background-image: url(/img/79029661-padrão-sem-emenda-sobre-o-tema-de-compras-on-line-e-lojas-de-internet-contorno-de-luz-sobre-fundo.jpg);
-background-repeat: repeat;
 
-}
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap');
+
+  body{
+    background-color: antiquewhite;
+
+    }
+    
 
 
 
 /* Mensaje de bienvenido */
 .p{
     font-size: 2rem;
+
+
 }
+
 .welcome-back {
     display: flex;
     align-items: center;
@@ -27,8 +28,8 @@ background-repeat: repeat;
 }
 
 .message h2 {
-    font-family: 'Roboto', sans-serif;
-        font-size: 3rem;
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
     padding: 1rem 0;
 }
 
@@ -57,10 +58,11 @@ background-repeat: repeat;
     color: #fff;
 }
 .formulario {
+    background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0.602), rgba(51, 51, 51, 1)), url(/img/compras-fondo-vertical_23-2150409471.avif);
+    background-repeat: no-repeat;
     width: 400px;
     min-height:600px;
     padding: 1rem;
-    background-color: rgb(51, 51, 51, 0.602);
     text-align: center;
     margin-top: 2%;
 }
@@ -149,7 +151,7 @@ background-color: #4a4aee;
     font-size: 0.8em;
     width: 100px;
     position: absolute;
-    color: white;
+    color: #4a4aee;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -202,25 +204,111 @@ background-color: #4a4aee;
     user-select: none;
 }
 
-#darkmodeButton{
-    border-radius: 15px;
-    padding: 5px;
-    width: 2.5vw;
-}
-
-#darkmodeToggleButton{
-    user-select: none;
-    position: absolute;
-    right: 0.5vw;
-    top: 0.5vh;
-    background-image: url(../img/cloudy-bckgrnd.png);
-    border: solid black 5px;
-    border-radius: 15px;
-    padding: 5px;
-    color: color;
+/* Modo oscuro */
+#darkmodeToggleButton {
+    float: right;
+  }
+  
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
     cursor: pointer;
-    box-shadow: 3px 3px 3px gray;
-}
+    font-family: inherit;
+  }
+  
+  .theme__icon {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 10px;
+    background-color: #5856d6;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .theme__icon > :nth-child(1) {
+    width: 16px;
+    height: 16px;
+    border-radius: 24px;
+    border: 3px solid #5856d6;
+    background-color: rgb(28, 28, 30);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width .4s, height .4s, border .4s, background-color .4s;
+    z-index: 10;
+  }
+  
+  .theme__icon:hover > :nth-child(1) {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(245, 245, 247);
+    background-color: rgb(245, 245, 247);
+  }
+  
+  .theme__icon > :nth-child(3) {
+    width: 4px;
+    height: 4px;
+    border-radius: 9px;
+    background-color: #5856d6;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    transition: width .6s, height .6s;
+    transition-delay: .08s;
+    z-index: 10;
+  }
+  
+  .theme__icon:hover > :nth-child(3) {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .theme__icon > :nth-child(2) {
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform .4s;
+  }
+  
+  .theme__icon:hover > :nth-child(2) {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(.8);
+  }
+  
+  .theme__icon > :nth-child(2) span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(28, 28, 30);
+    position: relative;
+  }
+  
+  .theme__icon > :nth-child(2) > :nth-child(1) {
+    top: calc(50% - 1px);
+  }
+  
+  .theme__icon > :nth-child(2) > :nth-child(2) {
+    top: calc(50% - 3px);
+    transform: rotate(90deg);
+  }
+  
+  .theme__icon > :nth-child(2) > :nth-child(3) {
+    top: calc(50% - 5px);
+    transform: rotate(45deg);
+  }
+  
+  .theme__icon > :nth-child(2) > :nth-child(4) {
+    top: calc(50% - 7px);
+    transform: rotate(-45deg);
+  }
 
 #showPasswordImg, #showPasswordImg2{
     width: 10%;
@@ -231,4 +319,8 @@ background-color: #4a4aee;
 
 #divRow{
     width: 200px;
+}
+.nmc{
+    color: #fff;
+    font-size: small;
 }

@@ -60,12 +60,8 @@ document.addEventListener("DOMContentLoaded", function(){
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
             itsDark = false;
-            fondo.style.backgroundColor = "rgb(248, 249, 250)";
-            darkmodeToggleButton.style.backgroundImage = "url(../img/cloudy-bckgrnd.png)";
-            darkmodeToggleButton.style.border = "solid black 5px"
-            darkmodeButton.src="../img/sun.png";
+            fondo.style.backgroundColor = "antiquewhite";
             darkmodeText.style.color = "black";
-            formularioLogin.style.border="solid 10px black";
             if(spanishBool){
                 darkmodeText.textContent = "Activar modo oscuro";
             }
@@ -75,11 +71,8 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             itsDark = true;
             fondo.style.backgroundColor = "black";
-            darkmodeToggleButton.style.backgroundImage = "url(../img/night-bckgrnd.png)";
-            darkmodeToggleButton.style.border = "solid white 5px"
-            darkmodeButton.src="../img/moon.png"
+           
             darkmodeText.style.color = "white";
-            formularioLogin.style.border="solid 10px darkslategray";
             if(spanishBool){
                 darkmodeText.textContent = "Activar modo claro";
             }
