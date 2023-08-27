@@ -3,13 +3,37 @@ document.addEventListener("DOMContentLoaded", function(){
     let spanishBool = true;
     let englishBool = false;
     let itsDark = false;
-
-    // Lógica del botón para mostrar o ocultar la contraseña en la pestaña de login
-
     const password1 = document.getElementById("password1");
     const password2 = document.getElementById("password2");
     let showPasswordImg = document.getElementById("showPasswordImg");
     let showPasswordImg2 = document.getElementById("showPasswordImg2");
+    let formularioLogin = document.getElementById("formularioLogin");
+    let email = document.getElementById("email");
+
+    // Lógica para guardar los datos de inicio de sesión en localhost
+
+    let usernameArray = JSON.parse(localStorage.getItem("todosLosUsuarios")) || [];
+
+    formularioLogin.addEventListener("submit", function(){
+        if(password1.value===password2.value){
+            usernameArray.push(email.value);
+            localStorage.setItem('username', email.value);
+            localStorage.setItem('todosLosUsuarios', JSON.stringify(usernameArray));
+            localStorage.setItem('loggeado', 'true');
+            localStorage.setItem('password', password1.value);
+        } else {
+            if(englishBool){
+                alert("The entered passwords do not match");
+                event.preventDefault();
+            }
+            if(spanishBool){
+                alert("Las contraseñas introducidas no coinciden");
+                event.preventDefault();
+            }
+        }
+    });
+
+    // Lógica del botón para mostrar o ocultar la contraseña en la pestaña de login
 
     function visionToggle(elemento, boton){
         if (elemento.type === "password") {
@@ -29,55 +53,18 @@ document.addEventListener("DOMContentLoaded", function(){
         visionToggle(password2, showPasswordImg2);
     });
 
-    // Lógica para guardar los datos de inicio de sesión en localhost
-
-    let formularioLogin = document.getElementById("formularioLogin");
-    let email = document.getElementById("email");
-
-    formularioLogin.addEventListener("submit", function(){
-        if(password1.value===password2.value){
-            localStorage.setItem('username', email.value);
-            localStorage.setItem('loggeado', 'true');
-        } else {
-            if(englishBool){
-                alert("The entered passwords do not match");
-                event.preventDefault();
-            }
-            if(spanishBool){
-                alert("Las contraseñas introducidas no coinciden");
-                event.preventDefault();
-            }
-        }
-    });
-
     // Lógica para el modo oscuro
 
     let darkmodeToggleButton = document.getElementById("darkmodeToggleButton");
     let fondo = document.getElementsByTagName("body")[0];
-    let darkmodeText = document.getElementById("darkmodeText");
 
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
             itsDark = false;
             fondo.style.backgroundColor = "antiquewhite";
-            darkmodeText.style.color = "black";
-            if(spanishBool){
-                darkmodeText.textContent = "Activar modo oscuro";
-            }
-            if(englishBool){
-                darkmodeText.textContent = "Activate dark mode";
-            }
         } else {
             itsDark = true;
             fondo.style.backgroundColor = "black";
-           
-            darkmodeText.style.color = "white";
-            if(spanishBool){
-                darkmodeText.textContent = "Activar modo claro";
-            }
-            if(englishBool){
-                darkmodeText.textContent = "Activate light mode";
-            }
         }
     }
 
