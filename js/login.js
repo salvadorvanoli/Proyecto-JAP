@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let darkmodeToggleButton = document.getElementById("darkmodeToggleButton");
     let fondo = document.getElementsByTagName("body")[0];
-    let darkmodeButton = document.getElementById("darkmodeButton"); 
     let darkmodeText = document.getElementById("darkmodeText");
 
     function darkmodeToggle(){
