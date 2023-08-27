@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // consigue la categoria seleccionada en el index (seteada por index.js)
   const categorySelected = localStorage.getItem("catID");
 
-
   // URL para obtener la lista de productos de la categoría 101 (Autos)
   const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
 

@@ -1,112 +1,326 @@
-body {
-    background-color: rgb(248, 249, 250);
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap');
+
+body{
+  background-color: antiquewhite;
 }
 
-body::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 50vh 50vw;
-    border-color: transparent transparent lightgray transparent;
-    z-index: -1;
+/* Mensaje de bienvenido */
+
+p{
+  font-size: 17px;
 }
+
+.welcome-back {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.message {
+  padding: 10px;
+}
+
+.message h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 50px;
+  padding: 1rem 0;
+}
+
+.message button {
+  padding: 10px;
+  font-weight: 400;
+  background-color: #4a4aee;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 15px;
+  transition: all .3s ease-in;
+  color: #fff;
+}
+
+.message button:hover {
+  background-color: #6464f8;
+}
+
+/* Formulario */
+
+.create-account {
+  padding: 2.7rem 0;
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.formulario {
+  background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0.602), rgba(51, 51, 51, 1)), url(/img/compras-fondo-vertical_23-2150409471.avif);
+  background-repeat: no-repeat;
+  width: 400px;
+  min-height: 600px;
+  padding: 15px;
+  text-align: center;
+  margin-top: 15%;
+}
+
+.container-form {
+  width: 90%;
+  height: 650px;
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+.formulario input {
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 2rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: white thin solid;
+  text-align: center;
+  outline: none;
+  padding: 1px 0;
+  font-size: 13px;
+  color: white;
+}
+
+.form-label {
+  color: white;
+}
+  
+.btn-primary {
+border-radius: 20px;
+}
+
+.Btn{
+  padding: 1rem;
+  font-weight: 400;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 30px;
+  transition: all .3s ease-in;
+  color: #fff;
+}
+
+.btn-primary{
+background-color: #4a4aee;
+}
+
+/* Idioma */
 
 #languages{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    user-select: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  user-select: none;
 }
 
 #languages img{
-    width: 2.5vw;
-    cursor: pointer;
+  width: 45px;
+  cursor: pointer;
 }
 
-#imgPerfil {
-    max-width: 200px;
-    max-height: 200px;
-    user-select: none;
+/* Volver atras */
+
+.Btn {
+  width: 45px;
+  height: 45px;
+  background-color: #4a4aee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px; 
+  border: none;
+}
+  
+.arrow path {
+  fill: white;
+}
+  
+.text {
+  font-size: 13px;
+  width: 100px;
+  position: absolute;
+  color: #4a4aee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -18px;
+  opacity: 0;
+  transition-duration: .7s;
+}
+  
+.Btn:hover .text {
+  opacity: 1;
+  transition-duration: .7s;
 }
 
-#formularioLogin {
-    border: solid 10px black;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px gray;
-    background-color: rgb(248, 249, 250);
+.Btn:hover .arrow {
+  animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-#volverArriba{
-    border: solid black 3px;
-    box-shadow: 3px 3px 3px gray;
-    background-color: white;
-    text-decoration: none;
-    padding: 3px;
-    position: absolute;
-    right: 3vh;
-    bottom: 3vh;
-    border-radius: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: black;
-    user-select: none;
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
+
+
+/* Facebook y google */
 
 #japabajo{
-    position: absolute;
-    bottom: 3vh;
-    left: 3vh;
-}
-
-#showPassword:active{
-    border: 1px gray solid;
-    background-color: lightgray;
-    color:white;
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
 }
 
 #otrasOpcionesLogIn img{
-    width: 2vw;
-    cursor: pointer;
+  width: 30px;
+  cursor: pointer;
 }
 
 #otrasOpcionesLogIn {
-    user-select: none;
+  user-select: none;
 }
 
-#darkmodeButton{
-    border-radius: 15px;
-    padding: 5px;
-    width: 2.5vw;
+/* Modo oscuro */
+
+#darkmodeToggleButton {
+  float: right;
+}
+  
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+  
+.theme__icon {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 10px;
+  background-color: #5856d6;
+  position: relative;
+  overflow: hidden;
+}
+  
+.theme__icon > :nth-child(1) {
+  width: 16px;
+  height: 16px;
+  border-radius: 24px;
+  border: 3px solid #5856d6;
+  background-color: rgb(28, 28, 30);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width .4s, height .4s, border .4s, background-color .4s;
+  z-index: 10;
+}
+  
+.theme__icon:hover > :nth-child(1) {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(245, 245, 247);
+  background-color: rgb(245, 245, 247);
+}
+  
+.theme__icon > :nth-child(3) {
+  width: 4px;
+  height: 4px;
+  border-radius: 9px;
+  background-color: #5856d6;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  transition: width .6s, height .6s;
+  transition-delay: .08s;
+  z-index: 10;
+}
+  
+.theme__icon:hover > :nth-child(3) {
+  width: 18px;
+  height: 18px;
+}
+  
+.theme__icon > :nth-child(2) {
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform .4s;
+}
+  
+.theme__icon:hover > :nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg) scale(.8);
+}
+  
+.theme__icon > :nth-child(2) span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: rgb(28, 28, 30);
+  position: relative;
 }
 
-#darkmodeToggleButton{
-    user-select: none;
-    position: absolute;
-    right: 0.5vw;
-    top: 0.5vh;
-    background-image: url(../img/cloudy-bckgrnd.png);
-    border: solid black 5px;
-    border-radius: 15px;
-    padding: 5px;
-    color: color;
-    cursor: pointer;
-    box-shadow: 3px 3px 3px gray;
+.theme__icon > :nth-child(2) > :nth-child(1) {
+  top: calc(50% - 1px);
+}
+
+.theme__icon > :nth-child(2) > :nth-child(2) {
+  top: calc(50% - 3px);
+  transform: rotate(90deg);
+}
+
+.theme__icon > :nth-child(2) > :nth-child(3) {
+  top: calc(50% - 5px);
+  transform: rotate(45deg);
+}
+
+.theme__icon > :nth-child(2) > :nth-child(4) {
+  top: calc(50% - 7px);
+  transform: rotate(-45deg);
 }
 
 #showPasswordImg, #showPasswordImg2{
-    width: 15%;
-    margin-top: 20px;
-    user-select: none;
-    cursor: pointer;
+  width: 10%;
+  margin-top: 15px;
+  user-select: none;
+  cursor: pointer;
 }
 
 #divRow{
-    width: 400px;
+  width: 200px;
 }
 
-#password1, #password2{
-    max-width: 300px;
+#email{
+  width: 210px;
+}
+
+.nmc{
+  color: #fff;
+  font-size: small;
 }
