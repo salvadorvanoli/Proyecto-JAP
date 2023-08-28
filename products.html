@@ -55,12 +55,27 @@
   <main class="pb-5 container">
     <div class="container">
       <h1 id="products-title">Listado de Productos</h1>
-      <!-- Añadimos un boton de busqueda-->
+      <!-- Añadimos un boton de busqueda
       <input type="text" placeholder="Buscar productos, autos, marcas etc..."> <button> Buscar</button>
-      
-      <script src="buscador.js"></script>
-       <!-- cerramos boton de busqueda y añadimos JS para que funciones-->
+      bOTON DE BUSQUEDA O FILTRO-->
+        
+    <label for="minPrice">Precio mínimo:</label>
+    <input type="number" id="minPrice" min="0">
+    
+    <label for="maxPrice">Precio máximo:</label>
+    <input type="number" id="maxPrice" min="0">
+    
+    <button id="filterButton">Filtrar por Precio</button>
+    <button id="clearButton">Limpiar</button> 
+    <ul id="productList">
+      <!--Fin de boton de busqueda-->
+        <!-- Aquí se mostrarán los productos -->
+    </ul>
+    
       <div id="product-list"></div>
+      
+    <script src="buscador.js"></script>
+       <!-- cerramos boton de busqueda y añadimos JS para que funciones-->
     </div>
   </main>
   <footer class="text-muted">
