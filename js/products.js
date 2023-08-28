@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
   
 // Filtrar por nombre
+
 function filterProducts() {
   // Obtener el texto ingresado en el campo de búsqueda
   let searchText = document.getElementById("searchInput").value.toLowerCase();
@@ -76,8 +77,9 @@ function filterProducts() {
   // Recorrer cada producto y ocultar/mostrar según la coincidencia con el texto de búsqueda
   for (let i = 0; i < products.length; i++) {
     let title = products[i].getElementsByClassName("nameElement")[0].innerText.toLowerCase();
-    
-    if (title.includes(searchText)) {
+    let description = products[i].getElementsByClassName("descriptionElement")[0].innerHTML.toLowerCase();
+
+    if (title.includes(searchText) || description.includes(searchText)) {
       products[i].style.display = "block";
     } else {
       products[i].style.display = "none";
