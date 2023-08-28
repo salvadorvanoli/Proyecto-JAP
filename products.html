@@ -53,11 +53,37 @@
     </div>
   </nav>
   <main class="pb-5 container">
+    
     <div class="container">
       <h1 id="products-title">Listado de Productos</h1>
+      <div class="row">
+        <div class=" col-md-12 mb-1 ">
+          <div class="row container p-0 m-0">
+            <input class="col-md-6 mb-1" type="search" name="buscador" oninput="filterProducts()" placeholder="Buscar articulos...">
+           
+            <div class="col">  
+              <p class="font-weight-normal text-end my-2">Cant.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="product-list"></div>
+      
     </div>
   </main>
+  
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

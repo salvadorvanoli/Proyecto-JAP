@@ -5,6 +5,11 @@
     z-index: 2;
 }
 
+#searchInput{
+    display: flex;
+    justify-content: flex-start;
+   
+}
 #nombreDeUsuario{
     color: white;
     user-select: none;
