@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function(){
         welcomeButton.innerHTML = 'Log In <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Welcome to eMercado';
         welcomeText.textContent = 'If you already have an account please log in here.';
-        createTitle.textContent = 'Create an account';
+        createTitle.textContent = 'Log in';
         goBackText.textContent = 'Back to top';
     }
 
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function(){
         welcomeButton.innerHTML = 'Iniciar Sesion <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Bienvenido a eMercado';
         welcomeText.textContent = 'Si ya tienes una cuenta por favor inicia sesion aquí.';
-        createTitle.textContent = 'Crear una cuenta';
+        createTitle.textContent = 'Inicia sesión';
         goBackText.textContent = 'Volver al inicio';
     }
 
