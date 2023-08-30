@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let spanishBool = true;
     let englishBool = false;
-    let itsDark = false;
     const password1 = document.getElementById("password1");
     const password2 = document.getElementById("password2");
     let showPasswordImg = document.getElementById("showPasswordImg");
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
             if(!existeElUsuario()){
                 usernameArray.push(email.value);
                 passwordArray.push(password1.value);
-                localStorage.setItem('username', email.value);
+                localStorage.setItem('username', JSON.stringify(email.value));
                 localStorage.setItem('todosLosEmail', JSON.stringify(usernameArray));
                 localStorage.setItem('todasLasContrasenias', JSON.stringify(passwordArray));
                 localStorage.setItem('loggeado', JSON.stringify(true));
@@ -76,10 +75,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
-            itsDark = false;
             fondo.style.backgroundColor = "antiquewhite";
         } else {
-            itsDark = true;
             fondo.style.backgroundColor = "black";
         }
     }
@@ -141,8 +138,4 @@ document.addEventListener("DOMContentLoaded", function(){
     spanishLanguage.addEventListener("click", function(){
         changeToSpanish();
     });
-
-    // Variable local storage para mantener la sesión iniciada y que no te rediriga al login
-
-    localStorage.setItem('loggeado', 'false');
 });

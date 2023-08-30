@@ -2,14 +2,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Lógica para mostrar el nombre de perfil en los html
 
-    usuarioStorage = localStorage.getItem('username');
+    let usuarioStorage = JSON.parse(localStorage.getItem('username')) || null;
     let nombreDeUsuario = document.getElementById("nombreDeUsuario");
     let cerrarSesion = document.getElementById("cerrarSesion");
 
-    if(usuarioStorage === 'null' || usuarioStorage === null){
+    if(usuarioStorage === null){
         nombreDeUsuario.textContent += "No se ha iniciado sesión - Redirigiendo";
         cerrarSesion.style.display = "none";
-
     } else {
         cerrarSesion.style.display = "block";
         if(usuarioStorage.length > 10){
@@ -25,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function(){
     // Lógica para el botón de cerrar sesión
 
     cerrarSesion.addEventListener("click", function(){
-        localStorage.setItem("loggeado", false);
-        localStorage.setItem("username", null);
+        localStorage.setItem("loggeado", JSON.stringify(false));
+        localStorage.setItem("username", JSON.stringify(null));
         window.location.replace('login.html');
     });
 });
