@@ -1,3 +1,27 @@
+body{
+    background-color: antiquewhite;
+  }
+  
+  #searchInput {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA3klEQVR4nN2VQQrCMBBF3wF0WduLtAewK82mqKWkuOih6qW8gwh6DBdKYIRQsGZqi9APfzOZ/J9MJgnMHQmQAQYohUZibmwwlkAO2C/MJVeFFbAPELdClxtpVq4Rt55J0E7WA8StV65eJD+IW2HcZ5CNYJD2GRhJqoGTsFbGnMZHlJLkJjyFrTJWTm1wCC1RK6yVMfPXQ06mbtNfL9qWACyA3QDxBrgAxxCTSPkeNcBZuukBVGM+1xvg6rXr26QgELF0RvfDSb0DrUTUN7kzMqqOyY0JUMjKnbgr3UzwAj9FeoZUf60KAAAAAElFTkSuQmCC);
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    padding-left: 20px;
+    }
+
+input[type="search"] {
+        display: block;
+        background-color: lightblue;
+        text-align: center;
+         width: 35%;
+         padding: 12px;
+        border: 3px solid #5856d6;
+         border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 10px;
+  }
+
+
 #products-title{
     display: flex;
     justify-content: center;
@@ -7,7 +31,7 @@
 
 }
 
-.product{
+  .product{
     position: relative;
     border: 6px black solid;
     border-radius: 10px;
@@ -63,16 +87,58 @@
     margin: 10px;
 }
 
-#volverArriba{
-    border: solid black 3px;
-    box-shadow: 3px 3px 3px gray;
-    background-color: white;
-    text-decoration: none;
-    padding: 3px;
-    right: 10px;
-    bottom: 10px;
-    border-radius: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: black;
-    user-select: none;
-}
+/* Volver arriba */
+
+.Btn {
+    width: 45px;
+    height: 45px;
+    background-color: #4a4aee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position:relative;
+    bottom: 20px;
+    right: 20px; 
+    border: none;
+  }
+    
+  .arrow path {
+    fill: white;
+  }
+    
+  .text {
+    font-size: 15px;
+    width: 100px;
+    position: absolute;
+    color: #4a4aee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -20px;
+    opacity: 0;
+    transition-duration: .7s;
+  }
+    
+  .Btn:hover .text {
+    opacity: 1;
+    transition-duration: .7s;
+  }
+  
+  .Btn:hover .arrow {
+    animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  @keyframes slide-in-bottom {
+    0% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
