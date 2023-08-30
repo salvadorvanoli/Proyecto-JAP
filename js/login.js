@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 localStorage.setItem('username', email.value);
                 localStorage.setItem('todosLosEmail', JSON.stringify(usernameArray));
                 localStorage.setItem('todasLasContrasenias', JSON.stringify(passwordArray));
-                localStorage.setItem('loggeado', 'true');
+                localStorage.setItem('loggeado', JSON.stringify(true));
             } else {
                 alert("Usuario ya existente, inicie sesión");
                 event.preventDefault();

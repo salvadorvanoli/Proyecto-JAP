@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    let valorVariable = localStorage.getItem('loggeado');
+    let valorVariable = JSON.parse(localStorage.getItem('loggeado')) || false;
 
-    if(valorVariable === "false" || (valorVariable != "true" && valorVariable != "false")){
+    if(!valorVariable){
         setTimeout(function() {
             window.location.replace('login.html');
         }, 3000);
