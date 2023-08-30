@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 localStorage.setItem('todosLosEmail', JSON.stringify(usernameArray));
                 localStorage.setItem('todasLasContrasenias', JSON.stringify(passwordArray));
                 localStorage.setItem('loggeado', 'true');
-                localStorage.setItem('password', password1.value);
             } else {
                 alert("Usuario ya existente, inicie sesión");
                 event.preventDefault();
