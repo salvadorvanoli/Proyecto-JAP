@@ -71,22 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
-  function PeticionWeb(){
-    
-  }
+
   // Filtro por precios
   const productList = document.getElementById("productList");
   const filterButton = document.getElementById("filterButton");
   const clearButton = document.getElementById("clearButton");
   const minPriceInput = document.getElementById("minPrice");
   const maxPriceInput = document.getElementById("maxPrice");
-  const sortPriceAscButton = document.getElementById("sortPriceAsc");
+ /* const sortPriceAscButton = document.getElementById("sortPriceAsc");
   const sortPriceDescButton = document.getElementById("sortPriceDesc");
-  const sortRelevanceDescButton = document.getElementById("sortRelevanceDesc");
+  const sortRelevanceDescButton = document.getElementById("sortRelevanceDesc");/*
 
   //let productsData = []; //almacena los datos 
   
-  // Al hacer click en el boton del filtro (filterButton)
+  // Evento al hacer click en el boton del filtro (filterButton)
   filterButton.addEventListener("click", () => {
     const minPrice = parseFloat(minPriceInput.value); //Obtenemos el valor del boton Precio Minimo
     const maxPrice = parseFloat(maxPriceInput.value); //"  " del precio màximo
