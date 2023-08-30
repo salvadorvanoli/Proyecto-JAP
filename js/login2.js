@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
-
     let spanishBool = true;
     let englishBool = false;
     let itsDark = false;
     const password1 = document.getElementById("password1");
-    const password2 = document.getElementById("password2");
     let showPasswordImg = document.getElementById("showPasswordImg");
-    let showPasswordImg2 = document.getElementById("showPasswordImg2");
     let formularioLogin = document.getElementById("formularioLogin");
     let email = document.getElementById("email");
 
@@ -14,20 +11,26 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let usernameArray = JSON.parse(localStorage.getItem("todosLosUsuarios")) || [];
 
+    function existeElUsuario(){
+        for(let username of usernameArray){
+            if(email.value === username){
+                return true;
+            }
+        }
+        return false;
+    }
+
     formularioLogin.addEventListener("submit", function(){
-        if(password1.value===password2.value){
-            usernameArray.push(email.value);
+        if(existeElUsuario()){
             localStorage.setItem('username', email.value);
-            localStorage.setItem('todosLosUsuarios', JSON.stringify(usernameArray));
             localStorage.setItem('loggeado', 'true');
-            localStorage.setItem('password', password1.value);
         } else {
             if(englishBool){
-                alert("The entered passwords do not match");
+                alert("The username does not exist");
                 event.preventDefault();
             }
             if(spanishBool){
-                alert("Las contraseñas introducidas no coinciden");
+                alert("El usuario no existe");
                 event.preventDefault();
             }
         }
@@ -47,10 +50,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     showPasswordImg.addEventListener("click", function(){
         visionToggle(password1, showPasswordImg);
-    });
-
-    showPasswordImg2.addEventListener("click", function(){
-        visionToggle(password2, showPasswordImg2);
     });
 
     // Lógica para el modo oscuro
@@ -77,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function(){
     let spanishLanguage = document.getElementById("spanishLanguage");
     let englishLanguage = document.getElementById("englishLanguage");
     let labelPassword = document.getElementById("labelPassword");
-    let labelRepeatPassword = document.getElementById("labelRepeatPassword");
     let japabajo = document.getElementById("japabajo");
     let signUpText = document.getElementById("signUpText");
     let welcomeText = document.getElementById("welcomeText");
@@ -90,11 +88,9 @@ document.addEventListener("DOMContentLoaded", function(){
         spanishBool = false;
         englishBool = true;
         labelPassword.innerHTML = 'Password <img src="img/contraseña-candado.png">';
-        labelRepeatPassword.innerHTML = 'Repeat Password <img src="img/contraseña-candado.png">';
         japabajo.innerHTML = 'This website is a property of <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
         signUpText.innerHTML = 'Sign up <img src="img/Flecha-derecha.png">';
         password1.placeholder = "Enter your password";
-        password2.placeholder = "Repeat your password";
         welcomeButton.innerHTML = 'Log In <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Welcome to eMercado';
         welcomeText.textContent = 'If you already have an account please log in here.';
@@ -110,11 +106,9 @@ document.addEventListener("DOMContentLoaded", function(){
         spanishBool = true;
         englishBool = false;
         labelPassword.innerHTML = 'Contraseña <img src="img/contraseña-candado.png">';
-        labelRepeatPassword.innerHTML = 'Repetir contraseña <img src="img/contraseña-candado.png">';
         japabajo.innerHTML = 'Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
         signUpText.innerHTML = 'Registrarme <img src="img/Flecha-derecha.png">';
         password1.placeholder="Ingrese su contraseña";
-        password2.placeholder="Vuelva a introducir la contraseña";
         welcomeButton.innerHTML = 'Iniciar Sesion <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Bienvenido a eMercado';
         welcomeText.textContent = 'Si ya tienes una cuenta por favor inicia sesion aquí.';
