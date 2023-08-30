@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearButton = document.getElementById("clearButton");
   const minPriceInput = document.getElementById("minPrice");
   const maxPriceInput = document.getElementById("maxPrice");
- /* const sortPriceAscButton = document.getElementById("sortPriceAsc");
+ /*const sortPriceAscButton = document.getElementById("sortPriceAsc");
   const sortPriceDescButton = document.getElementById("sortPriceDesc");
-  const sortRelevanceDescButton = document.getElementById("sortRelevanceDesc");/*
+  const sortRelevanceDescButton = document.getElementById("sortRelevanceDesc");*/
 
   //let productsData = []; //almacena los datos 
   
