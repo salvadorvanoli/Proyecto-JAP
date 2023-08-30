@@ -1,15 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-// variables del sort marcos
-const ORDER_ASC_BY_PRICE = "Asc";
-const ORDER_DESC_BY_PRICE = "Desc";
-const ORDER_BY_PROD_COUNT = "Cant.";
-let productsDataArray = [];
-let currentSortCriteria = undefined;
-let minCount = undefined;
-let maxCount = undefined;
 let products = [];
-
-
 
 fetch(PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE)
 .then(response => response.json())
@@ -26,9 +16,6 @@ fetch(PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE)
 .catch(error => {
   console.error("Error al obtener la lista de productos:", error);
 });
-
-
-
     // ... Código existente ...
     // Agregar funcionalidades de ordenamiento
     function refreshProductList() {
@@ -49,28 +36,21 @@ fetch(PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE)
         refreshProductList();
     });
     document.getElementById("sortReverse").addEventListener("click", function () {
-            products.reverse();
-            console.log(products);
-        
-         
-        
+        products.reverse();
+        console.log(products);
         refreshProductList();
     });
     document.getElementById("sortButton").addEventListener("click", function () {
         products.reverse();
         console.log(products);
-    
-     
-    
-    refreshProductList();
-});
+        refreshProductList();
+    });
     
 //  crea un de texto definido en options.element y le agrega atributos pasados por la variable options (class y textcontent) 
  function createText(options) {
    const element = document.createElement(options.element);
    element.classList.add(options.class);
    element.textContent = options.text;
-
    return element;
  }
 
