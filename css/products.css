@@ -1,3 +1,5 @@
+/* Estilo para mostrar los productos */
+
 #products-title{
     display: flex;
     justify-content: center;
@@ -63,6 +65,12 @@
     margin: 10px;
 }
 
+body{
+    background-color: antiquewhite;
+}
+
+/* Estilo del botón para subir */
+
 #volverArriba{
     border: solid black 3px;
     box-shadow: 3px 3px 3px gray;
@@ -75,4 +83,25 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
     user-select: none;
+}
+
+/* Estilo del searchbar */
+
+#searchInput {
+    background-image: url(../img/lupa-buscador.png);
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    padding-left: 20px;
+}
+
+input[type="search"] {
+    display: block;
+    background-color: lightblue;
+    text-align: center;
+    width: 35%;
+    padding: 12px;
+    border: 3px solid #5856d6;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
