@@ -9,28 +9,34 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosUsuarios")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("todosLosEmail")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("todasLasContrasenias")) || [];
 
-    function existeElUsuario(){
-        for(let username of usernameArray){
-            if(email.value === username){
-                return true;
+    function usuarioCorrecto(){
+        for(let i=0; i<usernameArray.length; i++){
+            if(email.value === usernameArray[i]){
+                if(passwordArray[i]!==password1.value){
+                    event.preventDefault();
+                    return false;
+                } else {
+                    return true;
+                }
             }
         }
         return false;
     }
 
     formularioLogin.addEventListener("submit", function(){
-        if(existeElUsuario()){
+        if(usuarioCorrecto()){
             localStorage.setItem('username', email.value);
             localStorage.setItem('loggeado', 'true');
         } else {
             if(englishBool){
-                alert("The username does not exist");
+                alert("The user does not exist or the credencials are wrong");
                 event.preventDefault();
             }
             if(spanishBool){
-                alert("El usuario no existe");
+                alert("El usuario no existe o las credenciales fueron ingresadas incorrectamente");
                 event.preventDefault();
             }
         }
@@ -91,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(){
         japabajo.innerHTML = 'This website is a property of <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
         signUpText.innerHTML = 'Sign up <img src="img/Flecha-derecha.png">';
         password1.placeholder = "Enter your password";
-        welcomeButton.innerHTML = 'Log In <img src="img/Flecha-derecha.png">';
+        welcomeButton.innerHTML = 'Sign Up <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Welcome to eMercado';
         welcomeText.textContent = 'If you already have an account please log in here.';
         createTitle.textContent = 'Log in';
@@ -109,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function(){
         japabajo.innerHTML = 'Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
         signUpText.innerHTML = 'Registrarme <img src="img/Flecha-derecha.png">';
         password1.placeholder="Ingrese su contraseña";
-        welcomeButton.innerHTML = 'Iniciar Sesion <img src="img/Flecha-derecha.png">';
+        welcomeButton.innerHTML = 'Registrarme <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Bienvenido a eMercado';
         welcomeText.textContent = 'Si ya tienes una cuenta por favor inicia sesion aquí.';
         createTitle.textContent = 'Inicia sesión';
