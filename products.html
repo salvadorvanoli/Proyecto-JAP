@@ -59,7 +59,7 @@
       <input type="text" placeholder="Buscar productos, autos, marcas etc..."> <button> Buscar</button>
       bOTON DE BUSQUEDA O FILTRO-->
         
-  <label for="minPrice">Precio mínimo:</label>
+  <!--<label for="minPrice">Precio mínimo:</label>
     <input type="number" id="minPrice" min="0">
     
     <label for="maxPrice">Precio máximo:</label>
@@ -67,16 +67,27 @@
     
     <button id="filterButton">Filtrar por Precio</button>
     <button id="clearButton">Limpiar</button> 
-    <ul id="productList">
+    <ul id="productList"> -->
+      <div>
+        <label for="minPrice">Precio Mínimo:</label>
+        <input type="number" id="minPrice" step="0.01">
+        <label for="maxPrice">Precio Máximo:</label>
+        <input type="number" id="maxPrice" step="0.01">
+        <button id="filterButton">Filtrar por Precio</button>
+        <button id="clearButton">Limpiar Filtros</button>
+        <button id="sortPriceAsc">Ordenar por Precio Ascendente</button>
+        <button id="sortPriceDesc">Ordenar por Precio Descendente</button>
+        <button id="sortRelevanceDesc">Ordenar por Relevancia Descendente</button>
+    </div>
       <!--Fin de boton de busqueda-->
         <!-- Aquí se mostrarán los productos -->
     </ul>
-    
       <div id="product-list"></div>
       
  
        <!-- cerramos boton de busqueda y añadimos JS para que funciones-->
     </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -95,7 +106,6 @@
     </div>
   </div>
   
-  <script src="buscador.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
