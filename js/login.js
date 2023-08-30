@@ -12,15 +12,32 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosUsuarios")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("todosLosEmail")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("todasLasContrasenias")) || [];
 
+    function existeElUsuario(){
+        for(let username of usernameArray){
+            if(email.value === username){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     formularioLogin.addEventListener("submit", function(){
         if(password1.value===password2.value){
-            usernameArray.push(email.value);
-            localStorage.setItem('username', email.value);
-            localStorage.setItem('todosLosUsuarios', JSON.stringify(usernameArray));
-            localStorage.setItem('loggeado', 'true');
-            localStorage.setItem('password', password1.value);
+            if(!existeElUsuario()){
+                usernameArray.push(email.value);
+                passwordArray.push(password1.value);
+                localStorage.setItem('username', email.value);
+                localStorage.setItem('todosLosEmail', JSON.stringify(usernameArray));
+                localStorage.setItem('todasLasContrasenias', JSON.stringify(passwordArray));
+                localStorage.setItem('loggeado', 'true');
+                localStorage.setItem('password', password1.value);
+            } else {
+                alert("Usuario ya existente, inicie sesión");
+                event.preventDefault();
+            }
         } else {
             if(englishBool){
                 alert("The entered passwords do not match");
