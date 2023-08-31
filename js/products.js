@@ -1,6 +1,7 @@
 // crea un de texto definido en options.element y le agrega atributos pasados por la variable options (class y textcontent) 
 
 let products = [];
+let productsShow = [];
 
 function createText(options) {
   const element = document.createElement(options.element);
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       // Verifica que "products" sea un array dentro de la respuesta
       products = data.products;
+      productsShow = [...products];
       if (Array.isArray(products)) {
         // Construir la lista de productos en el DOM
         products.forEach(product => displayProduct(product));
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error al obtener la lista de productos:", error);
     });
 });
-  
+
 // Filtrar por nombre
 
 function filterProducts() {
@@ -81,7 +83,6 @@ function filterProducts() {
   for (let i = 0; i < products.length; i++) {
     let title = products[i].getElementsByClassName("nameElement")[0].innerText.toLowerCase();
     let description = products[i].getElementsByClassName("descriptionElement")[0].innerHTML.toLowerCase();
-
     if (title.includes(searchText) || description.includes(searchText)) {
       products[i].style.display = "block";
     } else {
@@ -109,23 +110,41 @@ let filtrarRelevancia = document.getElementById("filtrarRelevancia");
 borrarPrecio.addEventListener("click", function(){
   rangeFilterCountMax.value = "";
   rangeFilterCountMin.value = "";
-})
-
-filtrarPrecio.addEventListener("click", function(){
-  
-})
-
-filtrarPrecioAlto.addEventListener("click", function(){
-  products.sort((a, b) => a.cost - b.cost);
+  products = productsShow;
   refreshProductList();
 })
 
-filtrarPrecioBajo.addEventListener("click", function(){
+filtrarPrecio.addEventListener("click", function(){
+  products = productsShow;
+  let minPrice = parseFloat(rangeFilterCountMin.value);
+  let maxPrice = parseFloat(rangeFilterCountMax.value);
+  if(minPrice<1 || !minPrice){
+    minPrice = 1;
+  }
+  if(maxPrice<1 || !maxPrice){
+    maxPrice = 1;
+  }
+  let filteredProducts = products.filter(product => {
+    return product.cost >= minPrice && product.cost <= maxPrice;
+  });
+  products = filteredProducts;
+  refreshProductList();
+});
+
+filtrarPrecioAlto.addEventListener("click", function(){
+  products = productsShow;
   products.sort((a, b) => b.cost - a.cost);
   refreshProductList();
 })
 
+filtrarPrecioBajo.addEventListener("click", function(){
+  products = productsShow;
+  products.sort((a, b) => a.cost - b.cost);
+  refreshProductList();
+})
+
 filtrarRelevancia.addEventListener("click", function(){
+  products = productsShow;
   products.sort((a, b) => b.soldCount - a.soldCount);
   refreshProductList();
 })
