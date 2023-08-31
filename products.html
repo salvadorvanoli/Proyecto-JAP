@@ -58,28 +58,35 @@
       <h1 id="products-title">Listado de Productos</h1>
       <div class="row">
         <div class=" col-md-12 mb-1 ">
+          
           <div class="row container p-0 m-0">
+            
             <input class="col-md-6 mb-1"  type="search" name="buscador" id="searchInput" oninput="filterProducts()" placeholder="Buscar articulos">
            
-            <div class="col">  
-              <p class="font-weight-normal text-end my-2">Cant.</p>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
             </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-            </div>
-            <div class="col-3 p-0">
+
+            <!-- Botones de filtrado -->
+
+            <div class="col-2 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn btn-light btn-block" id="filtrarPrecio">Filtrar</button>
+                <button class="btn btn-light btn-block" id="borrarPrecio">Limpiar</button>
+                <button class="btn btn-light btn-block" id="filtrarPrecioAlto"><i class="fas fa-sort-amount-up mr-1"></i></button>
+                <button class="btn btn-light btn-block" id="filtrarPrecioBajo"><i class="fas fa-sort-amount-down mr-1"></i></button>
+                <button class="btn btn-light btn-block" id="filtrarRelevancia">⭐</button>
               </div>
+            </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="product-list"></div>
+    <div id="product-list"></div>
       
     </div>
   </main>
