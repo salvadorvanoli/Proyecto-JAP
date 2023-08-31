@@ -133,7 +133,6 @@ filtrarPrecio.addEventListener("click", function(){
     return product.cost >= minPrice && product.cost <= maxPrice;
   });
   products = [...productsShow];
-  console.log(filteredProducts);
   products = filteredProducts;
   refreshProductList();
 });
