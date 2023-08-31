@@ -86,3 +86,29 @@ function filterProducts() {
     }
   }
 }
+
+// Funcionalidad de filtrado de productos
+
+let rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
+let rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
+let filtrarPrecio = document.getElementById("filtrarPrecio");
+let borrarPrecio = document.getElementById("borrarPrecio");
+let filtrarPrecioAlto = document.getElementById("filtrarPrecioAlto");
+let filtrarPrecioBajo = document.getElementById("filtrarPrecioBajo");
+
+borrarPrecio.addEventListener("click", function(){
+  rangeFilterCountMax.value = "";
+  rangeFilterCountMin.value = "";
+})
+
+filtrarPrecio.addEventListener("click", function(){
+
+})
+
+filtrarPrecioAlto.addEventListener("click", function(){
+
+})
+
+filtrarPrecioBajo.addEventListener("click", function(){
+  
+})
