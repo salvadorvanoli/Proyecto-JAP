@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Verifica que "products" sea un array dentro de la respuesta
       products = data.products;
       productsShow = [...products];
-      changingProducts = [...products];
       if (Array.isArray(products)) {
         // Construir la lista de productos en el DOM
         products.forEach(product => displayProduct(product));
