@@ -109,3 +109,7 @@ input[type="search"] {
 div .col{
     max-width: 275px;
 }
+
+.btn, .btn-light, .btn-block{
+    border: gray 2px solid;
+}

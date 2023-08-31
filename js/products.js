@@ -1,4 +1,7 @@
 // crea un de texto definido en options.element y le agrega atributos pasados por la variable options (class y textcontent) 
+
+let products = [];
+
 function createText(options) {
   const element = document.createElement(options.element);
   element.classList.add(options.class);
@@ -52,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
       // Verifica que "products" sea un array dentro de la respuesta
-      const products = data.products;
+      products = data.products;
       if (Array.isArray(products)) {
         // Construir la lista de productos en el DOM
         products.forEach(product => displayProduct(product));
@@ -89,12 +92,19 @@ function filterProducts() {
 
 // Funcionalidad de filtrado de productos
 
+function refreshProductList() {
+  const productList = document.getElementById("product-list");
+  productList.innerHTML = "";
+  products.forEach(product => displayProduct(product));
+}
+
 let rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
 let rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
 let filtrarPrecio = document.getElementById("filtrarPrecio");
 let borrarPrecio = document.getElementById("borrarPrecio");
 let filtrarPrecioAlto = document.getElementById("filtrarPrecioAlto");
 let filtrarPrecioBajo = document.getElementById("filtrarPrecioBajo");
+let filtrarRelevancia = document.getElementById("filtrarRelevancia");
 
 borrarPrecio.addEventListener("click", function(){
   rangeFilterCountMax.value = "";
@@ -102,7 +112,7 @@ borrarPrecio.addEventListener("click", function(){
 })
 
 filtrarPrecio.addEventListener("click", function(){
-
+  
 })
 
 filtrarPrecioAlto.addEventListener("click", function(){
@@ -115,3 +125,7 @@ filtrarPrecioBajo.addEventListener("click", function(){
   refreshProductList();
 })
 
+filtrarRelevancia.addEventListener("click", function(){
+  products.sort((a, b) => b.soldCount - a.soldCount);
+  refreshProductList();
+})
