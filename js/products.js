@@ -106,9 +106,12 @@ filtrarPrecio.addEventListener("click", function(){
 })
 
 filtrarPrecioAlto.addEventListener("click", function(){
-
+  products.sort((a, b) => a.cost - b.cost);
+  refreshProductList();
 })
 
 filtrarPrecioBajo.addEventListener("click", function(){
-  
+  products.sort((a, b) => b.cost - a.cost);
+  refreshProductList();
 })
+
