@@ -6,9 +6,14 @@ document.addEventListener("DOMContentLoaded", function(){
     let nombreDeUsuario = document.getElementById("nombreDeUsuario");
     let cerrarSesion = document.getElementById("cerrarSesion");
 
+    function agregarPunto() {
+        nombreDeUsuario.textContent += ".";
+    }
+
     if(usuarioStorage === null){
-        nombreDeUsuario.textContent += "No se ha iniciado sesión - Redirigiendo";
+        nombreDeUsuario.textContent += "Redirigiendo";
         cerrarSesion.style.display = "none";
+        setInterval(agregarPunto, 1000);
     } else {
         cerrarSesion.style.display = "block";
         if(usuarioStorage.length > 10){
