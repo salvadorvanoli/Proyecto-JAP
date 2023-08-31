@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function(){
     let nombreDeUsuario = document.getElementById("nombreDeUsuario");
     let cerrarSesion = document.getElementById("cerrarSesion");
 
+    // Agrega una animación de puntos para la redirección
+
     function agregarPunto() {
         nombreDeUsuario.textContent += ".";
     }
