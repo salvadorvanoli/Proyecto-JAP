@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     formularioLogin.addEventListener("submit", function(){
         if(usuarioCorrecto()){
-            localStorage.setItem('username', email.value);
-            localStorage.setItem('loggeado', 'true');
+            localStorage.setItem('username', JSON.stringify(email.value));
+            localStorage.setItem('loggeado', JSON.stringify(true));
         } else {
             if(englishBool){
                 alert("The user does not exist or the credencials are wrong");
