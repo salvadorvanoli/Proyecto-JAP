@@ -143,7 +143,7 @@ borrarPrecio.addEventListener("click", function(){
   document.getElementById("searchInput").value = "";
   products = [...productsShow];
   refreshProductList();
-})
+});
 
 // Filtra por precio
 
@@ -173,7 +173,7 @@ filtrarPrecioAlto.addEventListener("click", function(){
   }
   products.sort((a, b) => b.cost - a.cost);
   refreshProductList();
-})
+});
 
 // Muestra desde los precios más bajos a los más altos en orden ascendente
 
@@ -184,7 +184,7 @@ filtrarPrecioBajo.addEventListener("click", function(){
   }
   products.sort((a, b) => a.cost - b.cost);
   refreshProductList();
-})
+});
 
 // Filtra los productos por relevancia o cantidad de vendidos
 
@@ -195,4 +195,4 @@ filtrarRelevancia.addEventListener("click", function(){
   }
   products.sort((a, b) => b.soldCount - a.soldCount);
   refreshProductList();
-})
+});
