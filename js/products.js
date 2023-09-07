@@ -21,10 +21,18 @@ function createImage(options) {
   return imageElement;
 }
 
+function setProductID(product){
+  localStorage.setItem("ItemID", JSON.stringify(product.id + ".json"));
+  window.location = "product-info.html";
+}
+
 function displayProduct(product) {
   // Crea el contenedor del producto
   const productElement = document.createElement("div");
   productElement.className = "product";
+  productElement.onclick = function() {
+    setProductID(product);
+  };
 
   // crea elementos del contenedor (imagen, nombre, descripción, precio y cantidad de vendidos)
   const contentList = [
@@ -42,33 +50,31 @@ function displayProduct(product) {
   const productList = document.getElementById("product-list");
   productList.appendChild(productElement);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
     
-  // consigue la categoria seleccionada en el index (seteada por index.js)
-  const categorySelected = localStorage.getItem("catID");
+// consigue la categoria seleccionada en el index (seteada por index.js)
+const categorySelected = localStorage.getItem("catID");
 
-  // URL para obtener la lista de productos de la categoría 101 (Autos)
-  const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
+// URL para obtener la lista de productos de la categoría 101 (Autos)
+const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
 
-  // Realizar la petición web
-  fetch(productsUrl)
-    .then(response => response.json())
-    .then(data => {
-      // Verifica que "products" sea un array dentro de la respuesta
-      products = data.products;
-      productsShow = [...products];
-      if (Array.isArray(products)) {
-        // Construir la lista de productos en el DOM
-        products.forEach(product => displayProduct(product));
-      } else {
-        console.error("La respuesta de la API no contiene un array de productos.");
-      }
-    })
-    .catch(error => {
-      console.error("Error al obtener la lista de productos:", error);
-    });
-});
+// Realizar la petición web
+fetch(productsUrl)
+  .then(response => response.json())
+  .then(data => {
+    // Verifica que "products" sea un array dentro de la respuesta
+    products = data.products;
+    productsShow = [...products];
+    if (Array.isArray(products)) {
+      // Construir la lista de productos en el DOM
+      products.forEach(product => displayProduct(product));
+    } else {
+      console.error("La respuesta de la API no contiene un array de productos.");
+    }
+  })
+  .catch(error => {
+    console.error("Error al obtener la lista de productos:", error);
+  });
+
 
 // Funcionalidad de filtrado de productos
 
