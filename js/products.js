@@ -2,6 +2,9 @@
 
 let products = [];
 let productsShow = [];
+let filteredProducts = [];
+let minItemPrice = Infinity;
+let maxItemPrice = 0;
 
 function createText(options) {
   const element = document.createElement(options.element);
@@ -57,6 +60,19 @@ const categorySelected = localStorage.getItem("catID");
 // URL para obtener la lista de productos de la categoría 101 (Autos)
 const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
 
+// Calcula precios máximos y mínimos de los productos
+
+function calcPrices(products){
+  for(let i=0; i<products.length; i++){
+    if(products[i].cost < minItemPrice){
+      minItemPrice = products[i].cost;
+    }
+    if(products[i].cost > maxItemPrice){
+      maxItemPrice = products[i].cost;
+    }
+  }
+}
+
 // Realizar la petición web
 fetch(productsUrl)
   .then(response => response.json())
@@ -64,6 +80,7 @@ fetch(productsUrl)
     // Verifica que "products" sea un array dentro de la respuesta
     products = data.products;
     productsShow = [...products];
+    calcPrices(products);
     if (Array.isArray(products)) {
       // Construir la lista de productos en el DOM
       products.forEach(product => displayProduct(product));
@@ -93,12 +110,14 @@ function filterProducts() {
   let searchText = document.getElementById("searchInput").value.toLowerCase();
 
   // Obtener todos los elementos de la lista de productos
+
   let products = document.getElementById("product-list").children;
-  console.log(products);
+
   // Recorrer cada producto y ocultar/mostrar según la coincidencia con el texto de búsqueda
   for (let i = 0; i < products.length; i++) {
     let title = products[i].getElementsByClassName("nameElement")[0].innerText.toLowerCase();
     let description = products[i].getElementsByClassName("descriptionElement")[0].innerHTML.toLowerCase();
+  
     if (title.includes(searchText) || description.includes(searchText)) {
       products[i].style.display = "block";
     } else {
@@ -120,6 +139,8 @@ let filtrarRelevancia = document.getElementById("filtrarRelevancia");
 borrarPrecio.addEventListener("click", function(){
   rangeFilterCountMax.value = "";
   rangeFilterCountMin.value = "";
+  filteredProducts = [];
+  document.getElementById("searchInput").value = "";
   products = [...productsShow];
   refreshProductList();
 })
@@ -129,16 +150,16 @@ borrarPrecio.addEventListener("click", function(){
 filtrarPrecio.addEventListener("click", function(){
   let minPrice = parseFloat(rangeFilterCountMin.value);
   let maxPrice = parseFloat(rangeFilterCountMax.value);
-  if(minPrice<1 || !minPrice){
-    minPrice = 1;
+  products = [...productsShow];
+  if(minPrice<minItemPrice || !minPrice){
+    minPrice = minItemPrice;
   }
-  if(maxPrice<1 || !maxPrice){
-    maxPrice = 10000000;
+  if(maxPrice>maxItemPrice || !maxPrice){
+    maxPrice = maxItemPrice;
   }
-  let filteredProducts = products.filter(product => {
+  filteredProducts = products.filter(product => {
     return product.cost >= minPrice && product.cost <= maxPrice;
   });
-  products = [...productsShow];
   products = filteredProducts;
   refreshProductList();
 });
@@ -147,6 +168,9 @@ filtrarPrecio.addEventListener("click", function(){
 
 filtrarPrecioAlto.addEventListener("click", function(){
   products = [...productsShow];
+  if(filteredProducts){
+    products = filteredProducts;
+  }
   products.sort((a, b) => b.cost - a.cost);
   refreshProductList();
 })
@@ -155,6 +179,9 @@ filtrarPrecioAlto.addEventListener("click", function(){
 
 filtrarPrecioBajo.addEventListener("click", function(){
   products = [...productsShow];
+  if(filteredProducts){
+    products = filteredProducts;
+  }
   products.sort((a, b) => a.cost - b.cost);
   refreshProductList();
 })
@@ -163,6 +190,9 @@ filtrarPrecioBajo.addEventListener("click", function(){
 
 filtrarRelevancia.addEventListener("click", function(){
   products = [...productsShow];
+  if(filteredProducts){
+    products = filteredProducts;
+  }
   products.sort((a, b) => b.soldCount - a.soldCount);
   refreshProductList();
 })
