@@ -1,0 +1,38 @@
+main{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.name{
+    text-decoration: underline red solid 2px;
+}
+
+.name::first-letter{
+    color: red;
+    font-size: 120%;
+}
+
+.description, .cost, .category, .soldCount{
+    margin: 20px auto;
+    margin-top: 20px;
+    border: solid 1px black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px gray;
+    width: 500px;
+    padding: 5px;
+    display: block;
+}
+
+.imageElement{
+    width: 350px;
+    margin: 20px;
+    border: solid 3px black;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.imageElement:hover{
+    transform: scale(120%);
+}
