@@ -31,27 +31,32 @@ function displayProduct(product) {
     createText({ element: 'p', class: 'soldCount', text: `Vendidos: ${product.soldCount}` }),
   ];
 
-  for(let i = 0; i<product.images.length(); i++){
-    let options = {class: 'imageElement', image: product.images[i], name: product.name};
-    productInfo.appendChild(createImage(options));
-  }
-
   // agrega cada uno de los elementos al contenedor
   contentList.forEach(item => productInfo.appendChild(item));
   // agrega el contenedor a la lista de elementos
   const productInfoDiv = document.getElementById("container");
   productInfoDiv.appendChild(productInfo);
+
+  for(let i = 0; i<product.images.length; i++){
+    let options = {class: 'imageElement', image: product.images[i], name: product.name};
+    productInfo.appendChild(createImage(options));
+  }
 }
 
-fetch(PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")))
+URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
+
+console.log(URL);
+
+fetch(URL)
 .then(response => {
-    return response
+    return response.json()
 })
 .then(data => {
     info = data;
     // if (Array.isArray(info)) {
       // Construir la lista de productos en el DOM
     //   data.forEach(product => displayProduct(product));
+    console.log(data);
       displayProduct(data);
     // }
 })

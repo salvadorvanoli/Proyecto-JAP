@@ -22,7 +22,7 @@ function createImage(options) {
 }
 
 function setProductID(product){
-  localStorage.setItem("ItemID", JSON.stringify(product.id + ".json"));
+  localStorage.setItem("ItemID", JSON.stringify(product.id));
   window.location = "product-info.html";
 }
 
