@@ -2,6 +2,9 @@
 
 let products = [];
 let productsShow = [];
+let filteredProducts = [];
+let minItemPrice = Infinity;
+let maxItemPrice = 0;
 
 function createText(options) {
   const element = document.createElement(options.element);
@@ -21,10 +24,18 @@ function createImage(options) {
   return imageElement;
 }
 
+function setProductID(product){
+  localStorage.setItem("ItemID", JSON.stringify(product.id));
+  window.location = "product-info.html";
+}
+
 function displayProduct(product) {
   // Crea el contenedor del producto
   const productElement = document.createElement("div");
   productElement.className = "product";
+  productElement.onclick = function() {
+    setProductID(product);
+  };
 
   // crea elementos del contenedor (imagen, nombre, descripción, precio y cantidad de vendidos)
   const contentList = [
@@ -42,35 +53,57 @@ function displayProduct(product) {
   const productList = document.getElementById("product-list");
   productList.appendChild(productElement);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
     
-  // consigue la categoria seleccionada en el index (seteada por index.js)
-  const categorySelected = localStorage.getItem("catID");
+// consigue la categoria seleccionada en el index (seteada por index.js)
+const categorySelected = localStorage.getItem("catID");
 
-  // URL para obtener la lista de productos de la categoría 101 (Autos)
-  const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
+// URL para obtener la lista de productos de la categoría 101 (Autos)
+const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
 
-  // Realizar la petición web
-  fetch(productsUrl)
-    .then(response => response.json())
-    .then(data => {
-      // Verifica que "products" sea un array dentro de la respuesta
-      products = data.products;
-      productsShow = [...products];
-      if (Array.isArray(products)) {
-        // Construir la lista de productos en el DOM
-        products.forEach(product => displayProduct(product));
-      } else {
-        console.error("La respuesta de la API no contiene un array de productos.");
-      }
-    })
-    .catch(error => {
-      console.error("Error al obtener la lista de productos:", error);
-    });
-});
+// Calcula precios máximos y mínimos de los productos
+
+function calcPrices(products){
+  for(let i=0; i<products.length; i++){
+    if(products[i].cost < minItemPrice){
+      minItemPrice = products[i].cost;
+    }
+    if(products[i].cost > maxItemPrice){
+      maxItemPrice = products[i].cost;
+    }
+  }
+}
+
+// Realizar la petición web
+fetch(productsUrl)
+  .then(response => response.json())
+  .then(data => {
+    // Verifica que "products" sea un array dentro de la respuesta
+    products = data.products;
+    productsShow = [...products]; // Copia de los productos sin filtro
+    calcPrices(products);
+    if (Array.isArray(products)) {
+      // Construir la lista de productos en el DOM
+      products.forEach(product => displayProduct(product));
+    } else {
+      console.error("La respuesta de la API no contiene un array de productos.");
+    }
+  })
+  .catch(error => {
+    console.error("Error al obtener la lista de productos:", error);
+  });
 
 // Funcionalidad de filtrado de productos
+
+// Elementos del html
+
+let rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
+let rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
+let filtrarPrecio = document.getElementById("filtrarPrecio");
+let borrarPrecio = document.getElementById("borrarPrecio");
+let filtrarPrecioAlto = document.getElementById("filtrarPrecioAlto");
+let filtrarPrecioBajo = document.getElementById("filtrarPrecioBajo");
+let filtrarRelevancia = document.getElementById("filtrarRelevancia");
+
 
 // Refresca la lista de productos para aplicar los cambios hechos con los filtrados
 
@@ -81,82 +114,105 @@ function refreshProductList() {
 }
 
 // Filtrar por nombre
-
-function filterProducts() {
+function filterProducts(bool) {
   // Obtener el texto ingresado en el campo de búsqueda
   let searchText = document.getElementById("searchInput").value.toLowerCase();
 
-  // Obtener todos los elementos de la lista de productos
-  let products = document.getElementById("product-list").children;
-  console.log(products);
-  // Recorrer cada producto y ocultar/mostrar según la coincidencia con el texto de búsqueda
-  for (let i = 0; i < products.length; i++) {
-    let title = products[i].getElementsByClassName("nameElement")[0].innerText.toLowerCase();
-    let description = products[i].getElementsByClassName("descriptionElement")[0].innerHTML.toLowerCase();
-    if (title.includes(searchText) || description.includes(searchText)) {
-      products[i].style.display = "block";
-    } else {
-      products[i].style.display = "none";
-    }
+  // Reiniciar el arreglo cargado
+  products = [...productsShow];
+
+  // Filtrar los productos en el array 'products'
+  products = products.filter(product => {
+    let title = product.name.toLowerCase();
+    let description = product.description.toLowerCase();
+    return title.includes(searchText) || description.includes(searchText);
+  });
+
+  // Si bool es verdadero, aplicar el filtro de precio nuevamente
+  if (bool) {
+    filtrarProductosPorPrecio(false);
+  } else {
+    // Actualizar la lista de productos en el DOM con los productos filtrados
+    refreshProductList();
   }
 }
-
-let rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
-let rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
-let filtrarPrecio = document.getElementById("filtrarPrecio");
-let borrarPrecio = document.getElementById("borrarPrecio");
-let filtrarPrecioAlto = document.getElementById("filtrarPrecioAlto");
-let filtrarPrecioBajo = document.getElementById("filtrarPrecioBajo");
-let filtrarRelevancia = document.getElementById("filtrarRelevancia");
 
 // Elimina los criterios de precio y reinicia la lista
 
 borrarPrecio.addEventListener("click", function(){
   rangeFilterCountMax.value = "";
   rangeFilterCountMin.value = "";
+  filteredProducts = [];
+  document.getElementById("searchInput").value = "";
   products = [...productsShow];
   refreshProductList();
-})
+});
 
 // Filtra por precio
 
-filtrarPrecio.addEventListener("click", function(){
+function filtrarProductosPorPrecio(bool){
+  if(document.getElementById("searchInput").value){
+    if(bool){
+      filterProducts(false);
+    }
+  } else {
+    products = [...productsShow];
+  }
   let minPrice = parseFloat(rangeFilterCountMin.value);
   let maxPrice = parseFloat(rangeFilterCountMax.value);
-  if(minPrice<1 || !minPrice){
-    minPrice = 1;
+
+  // Establece los precios máximos y mínimos en el caso de que no existan
+  if(minPrice<minItemPrice || !minPrice){
+    minPrice = minItemPrice;
   }
-  if(maxPrice<1 || !maxPrice){
-    maxPrice = 10000000;
+  if(maxPrice>maxItemPrice || !maxPrice){
+    maxPrice = maxItemPrice;
   }
-  let filteredProducts = products.filter(product => {
+
+
+  // Filtra los productos por precio
+  filteredProducts = products.filter(product => {
     return product.cost >= minPrice && product.cost <= maxPrice;
   });
-  products = [...productsShow];
+
+  // Carga el arreglo de productos con los filtrados
   products = filteredProducts;
   refreshProductList();
+}
+
+filtrarPrecio.addEventListener("click", function(){
+  filtrarProductosPorPrecio(true);
 });
 
 // Muestra desde los precios más altos a los más bajos en orden descendiente
 
 filtrarPrecioAlto.addEventListener("click", function(){
   products = [...productsShow];
+  if(filteredProducts[0]){
+    products = filteredProducts;
+  }
   products.sort((a, b) => b.cost - a.cost);
   refreshProductList();
-})
+});
 
 // Muestra desde los precios más bajos a los más altos en orden ascendente
 
 filtrarPrecioBajo.addEventListener("click", function(){
   products = [...productsShow];
+  if(filteredProducts[0]){
+    products = filteredProducts;
+  }
   products.sort((a, b) => a.cost - b.cost);
   refreshProductList();
-})
+});
 
 // Filtra los productos por relevancia o cantidad de vendidos
 
 filtrarRelevancia.addEventListener("click", function(){
   products = [...productsShow];
+  if(filteredProducts[0]){
+    products = filteredProducts;
+  }
   products.sort((a, b) => b.soldCount - a.soldCount);
   refreshProductList();
-})
+});
