@@ -151,8 +151,12 @@ borrarPrecio.addEventListener("click", function(){
 // Filtra por precio
 
 function filtrarProductosPorPrecio(bool){
-  if(document.getElementById("searchInput").value && bool){
-    filterProducts(false);
+  if(document.getElementById("searchInput").value){
+    if(bool){
+      filterProducts(false);
+    }
+  } else {
+    products = [...productsShow];
   }
   let minPrice = parseFloat(rangeFilterCountMin.value);
   let maxPrice = parseFloat(rangeFilterCountMax.value);
@@ -164,6 +168,7 @@ function filtrarProductosPorPrecio(bool){
   if(maxPrice>maxItemPrice || !maxPrice){
     maxPrice = maxItemPrice;
   }
+
 
   // Filtra los productos por precio
   filteredProducts = products.filter(product => {
