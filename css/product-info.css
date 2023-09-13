@@ -36,3 +36,35 @@ main{
 .imageElement:hover{
     transform: scale(120%);
 }
+
+/* PARTE 4 CSS Estilos */
+
+
+.star {
+  font-size: 32px;
+  color: rgb(161, 154, 154);
+  transition: color 0.3s;
+  cursor: pointer
+}
+
+.star:hover,
+.star.checked{
+  color: orange;
+}
+
+#comment-section {
+    .user-box {
+        border: 2px solid #ccc;
+        padding: 5px;
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+    
+    .comment-box {
+        border: 2px solid #ccc;
+        padding: 5px;
+        margin-bottom: 5px;
+        width:fit-content;
+    }
+}
+/*finaliza Estilos 4*/
