@@ -64,7 +64,7 @@ fetch(URL)
 });
 
 
-//PARTE 4 - AÑADE EFECTO ESTRELAS
+//PARTE 4 - AÑADE EFECTO ESTRELLAS
 const ComentariOpinion = document.getElementById("Opinion")
 const ComentaPuntuacion = document.getElementById("puntuacion")
 const buttonSend = document.getElementById("button")
@@ -81,3 +81,67 @@ stars.forEach(function(star, index){
         }
     })
 })
+
+// Lógica para enviar los comentarios
+
+const submitButton = document.getElementById("submitButton");
+const userInput = JSON.parse(localStorage.getItem("username"));
+const opinionInput = document.getElementById("opinion");
+const commentsContainer = document.getElementById("comments-container");
+
+function getStarRate(){
+  let cont = 0;
+  for (let i=0; i<stars.length; i++){
+    if(stars[i].classList.contains('checked')){
+      cont++;
+    }
+  }
+  return cont;
+}
+
+function restartStars(){
+  for (let i=0; i<stars.length; i++){
+    stars[i].classList.remove('checked');
+  }
+}
+
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault(); 
+
+  const userUser = userInput;
+  const userOpinion = opinionInput.value;
+  const userPuntuacion = getStarRate();
+
+  if(!userOpinion){
+    return;
+  }
+
+  if(userPuntuacion <= 0){
+    return;
+  }
+
+  // Crear una caja para el usuario, el comentario y la puntuación
+  const commentBox = document.createElement("div");
+  commentBox.classList.add("comment-box");
+
+  const userElement = document.createElement("div");
+  userElement.textContent = `USUARIO: ${userUser}`;
+
+  const commentElement = document.createElement("div");
+  commentElement.textContent = `COMENTARIO: ${userOpinion}`;
+
+  const puntuacionElement = document.createElement("div");
+  puntuacionElement.textContent = `PUNTUACIÓN: ${userPuntuacion}`;
+
+
+  // Agregar los elementos al contenedor de comentarios
+  commentBox.appendChild(userElement);
+  commentBox.appendChild(commentElement);
+  commentBox.appendChild(puntuacionElement);
+  commentsContainer.appendChild(commentBox);
+
+  // Limpiar los campos de usuario, comentario y puntuación después de enviar
+  userInput.value = "";
+  opinionInput.value = "";
+  restartStars();
+});

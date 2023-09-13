@@ -51,4 +51,20 @@ main{
 .star.checked{
   color: orange;
 }
+
+#comment-section {
+    .user-box {
+        border: 2px solid #ccc;
+        padding: 5px;
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+    
+    .comment-box {
+        border: 2px solid #ccc;
+        padding: 5px;
+        margin-bottom: 5px;
+        width:fit-content;
+    }
+}
 /*finaliza Estilos 4*/
