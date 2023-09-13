@@ -43,24 +43,78 @@ function displayProduct(product) {
   }
 }
 
-URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
+// Display de comentarios
 
-console.log(URL);
+function displayStarsInComments(score){
+  let starString = "";
+  for(let i = 0; i<score; i++){
+    starString += `<i class="bi bi-star-fill star checked"></i>`;
+  }
+  for(let i = 0; i<(5-score); i++){
+    starString += `<i class="bi bi-star-fill star"></i>`;
+  }
+  return starString;
+}
 
-fetch(URL)
-.then(response => {
-    return response.json()
-})
-.then(data => {
-    info = data;
-    // if (Array.isArray(info)) {
-      // Construir la lista de productos en el DOM
-    //   data.forEach(product => displayProduct(product));
+function displayComments(comments){
+  
+  let commentsDiv = document.getElementById("comments-container");
+  let commentsToAppend = "";
+  let contenedorEstrellas;
+  let commentsLength = Object.keys(comments).length;
+
+  for (let i = 0; i < commentsLength; i++) {   
+    commentsToAppend += `
+      <div class="comentarios">
+        <h2>${comments[i].user}</h2>
+        <p>${comments[i].description}</p>
+        <p>${comments[i].dateTime}</p>
+        <p class="placeholderEstrellas">${
+          displayStarsInComments(comments[i].score)
+        }
+        </p>
+      </div>
+    `;
+
+    commentsDiv.innerHTML += commentsToAppend;
+
+    contenedorEstrellas = document.getElementById("placeholderEstrellas");
+
+    // displayStarsInComments();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", listado => {
+
+  URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
+  let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
+
+  // Fetch Products
+  fetch(URL)
+  .then(response => {
+      return response.json()
+  })
+  .then(data => {
+      info = data;
       displayProduct(data);
-    // }
-})
-.catch(error => {
-    console.log("Error: ", error)
+  })
+  .catch(error => {
+      console.log("Error: ", error)
+  });
+
+  // Fetch Comments
+  fetch(URL_COMMENTS)
+  .then(response => {
+      return response.json()
+  })
+  .then(dataComments => {
+      // infoComments = dataComments;
+      displayComments(dataComments);
+      
+  })
+  .catch(error => {
+      console.log("Error: ", error)
+  });
 });
 
 
@@ -110,13 +164,12 @@ submitButton.addEventListener("click", function(event) {
 
   const userUser = userInput;
   const userOpinion = opinionInput.value;
-  const userPuntuacion = getStarRate();
 
   if(!userOpinion){
     return;
   }
 
-  if(userPuntuacion <= 0){
+  if(getStarRate() <= 0){
     return;
   }
 
@@ -124,14 +177,14 @@ submitButton.addEventListener("click", function(event) {
   const commentBox = document.createElement("div");
   commentBox.classList.add("comment-box");
 
-  const userElement = document.createElement("div");
-  userElement.textContent = `USUARIO: ${userUser}`;
+  const userElement = document.createElement("h2");
+  userElement.textContent = userUser;
 
-  const commentElement = document.createElement("div");
-  commentElement.textContent = `COMENTARIO: ${userOpinion}`;
+  const commentElement = document.createElement("p");
+  commentElement.textContent = userOpinion;
 
-  const puntuacionElement = document.createElement("div");
-  puntuacionElement.textContent = `PUNTUACIÓN: ${userPuntuacion}`;
+  const puntuacionElement = document.createElement("p");
+  puntuacionElement.innerHTML = displayStarsInComments(getStarRate());
 
 
   // Agregar los elementos al contenedor de comentarios
@@ -145,3 +198,4 @@ submitButton.addEventListener("click", function(event) {
   opinionInput.value = "";
   restartStars();
 });
+
