@@ -159,6 +159,22 @@ function restartStars(){
   }
 }
 
+function obtenerFechaYHoraActual() {
+  const fechaActual = new Date();
+  
+  const año = fechaActual.getFullYear();
+  const mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0');
+  const dia = fechaActual.getDate().toString().padStart(2, '0');
+  const hora = fechaActual.getHours().toString().padStart(2, '0');
+  const minutos = fechaActual.getMinutes().toString().padStart(2, '0');
+  const segundos = fechaActual.getSeconds().toString().padStart(2, '0');
+
+  // Formatea la fecha y la hora como "YYYY-MM-DD HH:MM:SS"
+  const fechaYHoraFormateada = `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
+
+  return fechaYHoraFormateada;
+}
+
 submitButton.addEventListener("click", function(event) {
   event.preventDefault(); 
 
@@ -183,13 +199,16 @@ submitButton.addEventListener("click", function(event) {
   const commentElement = document.createElement("p");
   commentElement.textContent = userOpinion;
 
+  const fechaElement = document.createElement("p");
+  fechaElement.textContent = obtenerFechaYHoraActual();
+
   const puntuacionElement = document.createElement("p");
   puntuacionElement.innerHTML = displayStarsInComments(getStarRate());
-
 
   // Agregar los elementos al contenedor de comentarios
   commentBox.appendChild(userElement);
   commentBox.appendChild(commentElement);
+  commentBox.appendChild(fechaElement);
   commentBox.appendChild(puntuacionElement);
   commentsContainer.appendChild(commentBox);
 
