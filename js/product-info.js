@@ -62,3 +62,22 @@ fetch(URL)
 .catch(error => {
     console.log("Error: ", error)
 });
+
+
+//PARTE 4 - AÑADE EFECTO ESTRELAS
+const ComentariOpinion = document.getElementById("Opinion")
+const ComentaPuntuacion = document.getElementById("puntuacion")
+const buttonSend = document.getElementById("button")
+const stars = document.querySelectorAll('.star');
+
+
+stars.forEach(function(star, index){
+    star.addEventListener('click', function(){
+        for (let i=0; i<=index; i++){
+            stars[i].classList.add('checked');
+        }
+        for (let i=index+1; i<stars.length; i++){
+            stars[i].classList.remove('checked')
+        }
+    })
+})
