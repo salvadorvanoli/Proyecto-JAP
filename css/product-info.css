@@ -38,7 +38,24 @@ main{
 }
 
 /* PARTE 4 CSS Estilos */
+<<<<<<< Updated upstream
 
+=======
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+>>>>>>> Stashed changes
 
 .star {
   font-size: 32px;
