@@ -60,11 +60,10 @@ function displayComments(comments){
   
   let commentsDiv = document.getElementById("comments-container");
   let commentsToAppend = "";
-  let contenedorEstrellas;
   let commentsLength = Object.keys(comments).length;
 
   for (let i = 0; i < commentsLength; i++) {   
-    commentsToAppend += `
+    commentsToAppend = `
       <div class="comentarios">
         <h2>${comments[i].user}</h2>
         <p>${comments[i].description}</p>
@@ -77,10 +76,6 @@ function displayComments(comments){
     `;
 
     commentsDiv.innerHTML += commentsToAppend;
-
-    contenedorEstrellas = document.getElementById("placeholderEstrellas");
-
-    // displayStarsInComments();
   }
 }
 
@@ -108,9 +103,7 @@ document.addEventListener("DOMContentLoaded", listado => {
       return response.json()
   })
   .then(dataComments => {
-      // infoComments = dataComments;
       displayComments(dataComments);
-      
   })
   .catch(error => {
       console.log("Error: ", error)
