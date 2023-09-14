@@ -140,7 +140,7 @@ stars.forEach(function(star, index){
 // Lógica para enviar los comentarios
 
 const submitButton = document.getElementById("submitButton");
-const userInput = JSON.parse(localStorage.getItem("username"));
+let userInput = JSON.parse(localStorage.getItem("username"));
 const opinionInput = document.getElementById("opinion");
 const commentsContainer = document.getElementById("comments-container");
 
@@ -179,7 +179,7 @@ function obtenerFechaYHoraActual() {
 submitButton.addEventListener("click", function(event) {
   event.preventDefault(); 
 
-  const userUser = userInput;
+  let userUser = userInput;
   const userOpinion = opinionInput.value;
 
   if(!userOpinion){
@@ -196,7 +196,16 @@ submitButton.addEventListener("click", function(event) {
   commentBox.classList.add("comentarios");
 
   const userElement = document.createElement("h2");
-  userElement.textContent = userUser;
+  if(userUser.length>10){
+    let userMenor = "";
+    for(let i = 0; i<10; i++){
+      userMenor+=userUser[i];
+    }
+    userUser = userMenor + "...";
+    userElement.textContent = userUser;
+  } else {
+    userElement.textContent = userUser;
+  }
   userElement.classList.add("nombreUsuario");
 
   const commentElement = document.createElement("p");
