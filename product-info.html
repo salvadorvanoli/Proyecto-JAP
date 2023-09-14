@@ -60,29 +60,29 @@
   </main>
 
   <!--Inicia la parte 4-->
-
-  <div id="comment-section">
-    <h1>COMENTARIOS:</h1>
-    <div id="comments-container"></div>
-  </div>
-  <hr>
-    
-  <form id="ComentariosForm">
-    <h1>Comentar</h1>
-    <br>
-    <label for="opinion">TU OPINIÓN:</label><br>
-    <textarea id="opinion" name="opinion" rows="4" cols="50"></textarea><br><br>
-    <p>Califica el producto:</p>
-    <div class="estrella"> 
-      <i class="bi bi-star-fill star"></i>
-      <i class="bi bi-star-fill star"></i>
-      <i class="bi bi-star-fill star"></i>
-      <i class="bi bi-star-fill star"></i>
-      <i class="bi bi-star-fill star"></i>
+  <div class="seccionComentarios">
+    <div class="contenedorTituloComentarios">
+      <h2 class="titulosComentarios">COMENTAR</h2>
     </div>
-    <br>
-    <input id="submitButton" type="submit" value="Enviar">  
-  </form>
+    <form id="ComentariosForm">
+      <textarea id="opinion"  placeholder="Escribe tu opinión" name="opinion" rows="4" cols="50"></textarea>
+      <div class="calificacion">
+        <p>Califica el producto</p>
+        <div class="estrella"> 
+          <i class="bi bi-star-fill star"></i>
+          <i class="bi bi-star-fill star"></i>
+          <i class="bi bi-star-fill star"></i>
+          <i class="bi bi-star-fill star"></i>
+          <i class="bi bi-star-fill star"></i>
+        </div>
+      </div>
+      <input id="submitButton" type="submit" value="Enviar">  
+    </form>
+    <div id="comment-section">
+      <h2 class="titulosComentarios">COMENTARIOS</h2>
+      <div id="comments-container"></div>
+    </div>
+  </div>
   
   <!--Finaliza la parte 4-->
 

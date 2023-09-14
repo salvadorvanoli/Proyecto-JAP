@@ -64,11 +64,12 @@ function displayComments(comments){
   let commentsLength = Object.keys(comments).length;
 
   for (let i = 0; i < commentsLength; i++) {   
-    commentsToAppend += `
+    commentsToAppend = `
       <div class="comentarios">
-        <h2>${comments[i].user}</h2>
+      <div class="d-inline">
+        <h2 class="nombreUsuario">${comments[i].user} <span>${comments[i].dateTime}</span></h2>
+      </div>
         <p>${comments[i].description}</p>
-        <p>${comments[i].dateTime}</p>
         <p class="placeholderEstrellas">${
           displayStarsInComments(comments[i].score)
         }
@@ -192,15 +193,19 @@ submitButton.addEventListener("click", function(event) {
   // Crear una caja para el usuario, el comentario y la puntuación
   const commentBox = document.createElement("div");
   commentBox.classList.add("comment-box");
+  commentBox.classList.add("comentarios");
 
   const userElement = document.createElement("h2");
   userElement.textContent = userUser;
+  userElement.classList.add("nombreUsuario");
 
   const commentElement = document.createElement("p");
   commentElement.textContent = userOpinion;
 
-  const fechaElement = document.createElement("p");
-  fechaElement.textContent = obtenerFechaYHoraActual();
+  const fechaElement = document.createElement("span");
+  fechaElement.textContent += " " + obtenerFechaYHoraActual();
+  console.log(fechaElement)
+  userElement.appendChild(fechaElement);
 
   const puntuacionElement = document.createElement("p");
   puntuacionElement.innerHTML = displayStarsInComments(getStarRate());
@@ -208,7 +213,6 @@ submitButton.addEventListener("click", function(event) {
   // Agregar los elementos al contenedor de comentarios
   commentBox.appendChild(userElement);
   commentBox.appendChild(commentElement);
-  commentBox.appendChild(fechaElement);
   commentBox.appendChild(puntuacionElement);
   commentsContainer.appendChild(commentBox);
 
