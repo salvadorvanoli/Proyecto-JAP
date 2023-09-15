@@ -180,7 +180,7 @@ submitButton.addEventListener("click", function(event) {
   event.preventDefault(); 
 
   let userUser = userInput;
-  const userOpinion = opinionInput.value;
+  let userOpinion = opinionInput.value;
 
   if(!userOpinion){
     return;
@@ -213,7 +213,6 @@ submitButton.addEventListener("click", function(event) {
 
   const fechaElement = document.createElement("span");
   fechaElement.textContent += " " + obtenerFechaYHoraActual();
-  console.log(fechaElement)
   userElement.appendChild(fechaElement);
 
   const puntuacionElement = document.createElement("p");
