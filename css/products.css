@@ -77,7 +77,7 @@ input[type="number"]{
     font-size: 14px;
     display: block;
 
-    *max{
+    .max{
         left: 40%;
     }
 }
