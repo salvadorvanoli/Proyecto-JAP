@@ -48,10 +48,10 @@ function displayProduct(product) {
 function displayStarsInComments(score){
   let starString = "";
   for(let i = 0; i<score; i++){
-    starString += `<i class="bi bi-star-fill star checked"></i>`;
+    starString += `<i class="bi bi-star-fill starS checked"></i>`;
   }
   for(let i = 0; i<(5-score); i++){
-    starString += `<i class="bi bi-star-fill star"></i>`;
+    starString += `<i class="bi bi-star-fill starS"></i>`;
   }
   return starString;
 }
@@ -191,7 +191,7 @@ submitButton.addEventListener("click", function(event) {
   const userElement = document.createElement("h2");
   if(userUser.length>10){
     let userMenor = "";
-    for(let i = 0; i<10; i++){
+    for(let i = 0; i<20; i++){
       userMenor+=userUser[i];
     }
     userUser = userMenor + "...";
