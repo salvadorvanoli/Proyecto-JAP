@@ -176,10 +176,13 @@ submitButton.addEventListener("click", function(event) {
   let userOpinion = opinionInput.value;
 
   if(!userOpinion){
+    alert("Debe llenar el campo vacio");
     return;
+    
   }
 
   if(getStarRate() <= 0){
+    alert("Valor de estrellas no válido");
     return;
   }
 
