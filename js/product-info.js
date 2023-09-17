@@ -190,7 +190,7 @@ submitButton.addEventListener("click", function(event) {
   commentBox.classList.add("comentarios");
 
   const userElement = document.createElement("h2");
-  if(userUser.length>10){
+  if(userUser.length>20){
     let userMenor = "";
     for(let i = 0; i<20; i++){
       userMenor+=userUser[i];
