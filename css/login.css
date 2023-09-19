@@ -1,8 +1,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap');
 
-body{
-  background-color: antiquewhite;
+
+nav {
+  background-color: #344966; 
+  padding: 23px;
+}
+
+body {
+  background-color:azure;
+  margin: 0; 
+}
+
+footer {
+  position:flex;
+  bottom: 0;
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+  background-color: #344966; 
+  padding: 20px;
 }
 
 /* Mensaje de bienvenido */
@@ -12,10 +29,11 @@ p{
 }
 
 .welcome-back {
-  display: flex;
-  align-items: center;
   text-align: center;
-  color: #fff;
+  padding: 20px; 
+  display: flex;
+  justify-content: space-between; 
+  
 }
 
 .message {
@@ -26,24 +44,25 @@ p{
   font-family: 'Anton', sans-serif;
   font-size: 50px;
   padding: 1rem 0;
+  margin-top: 40%;
 }
 
 .message button {
   padding: 10px;
   font-weight: 400;
-  background-color: #4a4aee;
+  background-color: #11202c;
   border-radius: 25px;
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 15px;
-  margin-top: 15px;
+  font-size: 14px;
+  margin-top: 10px;
   transition: all .3s ease-in;
-  color: #fff;
+  color: azure;
 }
 
 .message button:hover {
-  background-color: #6464f8;
+  background-color: #172b3a;
 }
 
 /* Formulario */
@@ -51,29 +70,26 @@ p{
 .create-account {
   padding: 2.7rem 0;
   font-size: 1.7rem;
-  color: #fff;
+  color:azure;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+
 }
 
 .formulario {
-  background-image: linear-gradient(to bottom, rgba(51, 51, 51, 0.602), rgba(51, 51, 51, 1)), url(/img/compras-fondo-vertical_23-2150409471.avif);
-  background-repeat: no-repeat;
-  width: 400px;
-  min-height: 600px;
-  padding: 15px;
-  text-align: center;
-  margin-top: 15%;
+  background-image: linear-gradient(rgba(128, 128, 128, 0.5), rgba(128, 128, 128, 0.5)), url(/img/compras-fondo-vertical_23-2150409471.avif);
+  background-size: cover;
+  width: 70%;
+  height: 95%;
+  padding: 1.5%;
+  margin: 3% auto;
+  border-radius: 30px;
 }
 
-.container-form {
-  width: 90%;
-  height: 650px;
-  display: inline-flex;
-  justify-content: space-around;
-}
 
 .formulario input {
-  width: 70%;
-  display: block;
+  width: 65%; 
+  display: flex;
   margin: auto;
   margin-bottom: 2rem;
   background-color: transparent;
@@ -83,62 +99,87 @@ p{
   outline: none;
   padding: 1px 0;
   font-size: 13px;
-  color: white;
+}
+
+#email{
+  width: 65%;
+  display: flex;
+  margin: auto;
+  margin-right: 5rem;
+  margin-bottom: 2rem;
+
 }
 
 .form-label {
-  color: white;
+  color: azure;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-  
+
 .btn-primary {
 border-radius: 20px;
 }
 
-.Btn{
+.btn {
   padding: 1rem;
   font-weight: 400;
   border-radius: 30px;
   border: none;
+  font-size: 14px;
   outline: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 12px;
   margin-top: 30px;
   transition: all .3s ease-in;
-  color: #fff;
+  color: aliceblue;
+  margin: 0 auto; 
+  display: block;
+  width: 150px;
+  height: 50px;
 }
 
-.btn-primary{
-background-color: #4a4aee;
+.btn-primary {
+  background-color: #11202c;
+  border-color: #11202c;
 }
+
+.btn-primary:hover {
+  background-color: #172b3a; 
+  border-color: #172b3a;
+}
+
 
 /* Idioma */
 
 #languages{
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 1%;
+  left: 1%;
   user-select: none;
 }
 
 #languages img{
-  width: 45px;
+  width:30px;
   cursor: pointer;
+  height:auto;
 }
 
 /* Volver atras */
 
+
 .Btn {
-  width: 45px;
-  height: 45px;
-  background-color: #4a4aee;
+  width: 40px;
+  height: 40px;
+  background-color: #11202c;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
   position: fixed;
-  bottom: 30px;
-  right: 30px; 
+  bottom:18px;
+  right: 20px; 
   border: none;
 }
   
@@ -150,13 +191,14 @@ background-color: #4a4aee;
   font-size: 13px;
   width: 100px;
   position: absolute;
-  color: #4a4aee;
+  color: #151d28;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: -18px;
+  bottom: -16px;
   opacity: 0;
   transition-duration: .7s;
+  
 }
   
 .Btn:hover .text {
@@ -184,9 +226,9 @@ background-color: #4a4aee;
 /* Facebook y google */
 
 #japabajo{
-  position: absolute;
-  bottom: 35px;
-  left: 35px;
+  position:static;
+  bottom: 3%;
+  left: 1%;
 }
 
 #otrasOpcionesLogIn img{
@@ -201,8 +243,12 @@ background-color: #4a4aee;
 /* Modo oscuro */
 
 #darkmodeToggleButton {
-  float: right;
+  position: absolute;
+  top: 0; 
+  right: 10px; 
+  z-index: 999; 
 }
+
   
 button {
   border: none;
@@ -214,11 +260,11 @@ button {
 }
   
 .theme__icon {
-  width: 32px;
-  height: 32px;
-  padding: 4px;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
   border-radius: 10px;
-  background-color: #5856d6;
+  background-color: #11202c;
   position: relative;
   overflow: hidden;
 }
@@ -227,8 +273,8 @@ button {
   width: 16px;
   height: 16px;
   border-radius: 24px;
-  border: 3px solid #5856d6;
-  background-color: rgb(28, 28, 30);
+  border: 3px solid #172b3a;
+  background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -248,7 +294,7 @@ button {
   width: 4px;
   height: 4px;
   border-radius: 9px;
-  background-color: #5856d6;
+  background-color: #172b3a;
   position: absolute;
   top: 2px;
   right: 2px;
@@ -282,7 +328,7 @@ button {
   width: 24px;
   height: 2px;
   border-radius: 2px;
-  background-color: rgb(28, 28, 30);
+  background-color: #fff;
   position: relative;
 }
 
@@ -307,18 +353,18 @@ button {
 
 #showPasswordImg, #showPasswordImg2{
   width: 10%;
-  margin-top: 15px;
   user-select: none;
   cursor: pointer;
 }
-
+.mb{
+  display: flex;
+  align-items: center;
+}
 #divRow{
   width: 200px;
 }
 
-#email{
-  width: 300px;
-}
+
 
 .nmc{
   color: #fff;
