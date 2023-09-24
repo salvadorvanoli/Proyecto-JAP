@@ -1,44 +1,7 @@
-#perfil{
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    z-index: 2;
-}
-  
 #nombreDeUsuario{
-    color: white;
-    user-select: none;
     border: 2px gray solid;
     border-radius: 10px;
-    padding: 5px;
     background-color: black;
-}
-
-#fotoDePerfil{
-    user-select: none;
-    width: 30px;
-    float: right;
-    border: 2px gray solid;
-    margin-left: 10px;
-    margin-bottom: 15px;
-}
-
-#cerrarSesion {
-    font-size: 75%;
-    position: absolute;
-    color: black;
-    border: gray solid 2px;
-    border-radius: 15px;
-    background-color: white;
-    right: 250px;
-    top: 5px;
-    max-width: 120px;
-    z-index: 2;
-    padding: 5px;
-}
-
-#cerrarSesion:active{
-    transform: translateY(4px);
-    color: gray;
-    background-color: antiquewhite;
+    min-width: 160px;
+    text-align: center;
 }

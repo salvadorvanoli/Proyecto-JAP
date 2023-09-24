@@ -2,9 +2,6 @@
 <html lang="es">
 
 <head>
-  <script src="js/loggeado.js"></script>
-  <script src="js/mostrar-usuario.js"></script>
-
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
@@ -14,21 +11,13 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="img/page-icon.png">
   <link rel="stylesheet" href="css/usuario.css">
+  <link rel="stylesheet" href="css/darkmode.css">
 
+  <script src="js/loggeado.js"></script>
+  <script src="js/mostrar-usuario.js"></script>
 </head>
 
 <body>
-
-  <div id="perfil">
-    <img src="img/img_perfil.png" alt="img perfil" id="fotoDePerfil"><p id="nombreDeUsuario" class="d-inline">Usuario: </p>
-  </div>
-
-  <div>
-    <button id="cerrarSesion">
-      Cerrar sesión
-    </button>
-  </div>
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -46,7 +35,31 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="nombreDeUsuario" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" id="cerrarSesion" href="#">Cerrar sesión</a></li>
+              <li class="dropdown-item" id="darkmodeLI">
+                <div>
+                  <p id="darkmodeToggleButton">
+                  <!-- Elementos necesarios para la animación del botón modo oscuro -->
+                   <button class="theme__icon">
+                      <span></span>
+                      <span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </span>
+                      <span></span>
+                    </button> 
+                    <!-- Fin de los elementos necesarios para la animación del botón modo oscuro -->
+                   </p>
+                </div> 
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
