@@ -16,10 +16,11 @@
   <link rel="stylesheet" href="css/login.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="img/page-icon.png">
+  <link rel="stylesheet" href="css/darkmode.css">
 </head>
 
 <body>
- 
+ <nav>
   <!-- Idiomas -->
 
   <div id="languages">
@@ -45,26 +46,26 @@
       </button> 
      </p>
   </div> 
-
+</nav>
   <!-- Mensaje Bienvenido -->
 
-  <div class="container ">
-
-    <div class="container-form sign-up">
-
-      <div class="welcome-back">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="welcome-back">
           <div class="message">
-              <h2 style="color: #4a4aee;" id="welcomeTitle">Bienvenido a eMercado</h2>
-              <p style="color: #4a4aee;" id="welcomeText">Si ya tienes una cuenta por favor inicia sesion aquí.</p>
-              <a href="login2.html">
-                <button class="sign-up-btn" id="welcomeButton">
-                  Iniciar Sesion <img src="img/Flecha-derecha.png">
-                </button>
-              </a>
+            <h2 style="color: #4a4aee;" id="welcomeTitle">Bienvenido a eMercado</h2>
+            <p style="color: #4a4aee;" id="welcomeText">Si ya tienes una cuenta, por favor inicia sesión aquí.</p>
+            <a href="login2.html">
+              <button class="sign-up-btn" id="welcomeButton">
+                Iniciar Sesión <img src="img/Flecha-derecha.png">
+              </button>
+            </a>
           </div>
+        </div>
       </div>
-
-        <form class="formulario" action="index.html" method="get" id="formularioLogin">
+      <div class="col-md-6">
+        <form class="formulario" action="index.html" method="get" id="loginForm">
           <h2 class="create-account" id="createTitle">Crear una cuenta</h2>
 
           <div id="otrasOpcionesLogIn" class="d-flex justify-content-center">
@@ -80,12 +81,12 @@
             <input type="email" name="email" value="" class="form-control form-floating" id="email" required placeholder="123@gmail.com">
           </div>
 
-          <div class="mb-3">
+          <div class="mb-3 ">
             <label for="password1" class="form-label" id="labelPassword">
               Contraseña <img src="img/contraseña-candado.png">
             </label>
             <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg" class="img-fluid float-end">
-            <input type="password" name="password" class="form-control form-floating " id="password1" required placeholder="Ingrese su contraseña">
+            <input type="password" name="password" class="d-flex sr form-control form-floating " id="password1" required placeholder="Ingrese su contraseña">
           </div>
 
           <div class="mb-4">
@@ -93,11 +94,11 @@
               Repetir contraseña <img src="img/contraseña-candado.png">
             </label>
             <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg2" class="img-fluid float-end">
-            <input type="password" class="form-control form-floating " id="password2" required placeholder="Vuelva a introducir la contraseña">
+            <input type="password" class="d-flex align-items-center form-control form-floating " id="password2" required placeholder="Vuelva a introducir la contraseña">
           </div>
 
           <div class="">
-            <button class="btn btn-primary" type="submit" id="regBtn">
+            <button class="btn btn-primary" type="submit" id="regBtn" >
               <span id="signUpText">
                 Registrarme <img src="img/Flecha-derecha.png">
               </span>
@@ -107,10 +108,10 @@
           <div class="d-flex justify-content-center align-items-center">
             <p class="mt-3 mb-3 text-muted">Jóvenes a programar 2023</p>
           </div>
-
         </form>
       </div>
     </div>
+  </div>
   <footer class="text-muted">
 
     <a href="index.html">

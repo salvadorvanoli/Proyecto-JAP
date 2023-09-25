@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    let valorVariable = JSON.parse(localStorage.getItem('loggeado')) || false;
+    let loggedIn = JSON.parse(localStorage.getItem('loggedIn')) || false;
 
-    if(!valorVariable){
+    if(!loggedIn){
         setTimeout(function() {
             window.location.replace('login.html');
         }, 3000);
     }
 
 });
-

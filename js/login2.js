@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", function(){
     let spanishBool = true;
     let englishBool = false;
-    let itsDark = false;
     const password1 = document.getElementById("password1");
     let showPasswordImg = document.getElementById("showPasswordImg");
-    let formularioLogin = document.getElementById("formularioLogin");
+    let loginForm = document.getElementById("loginForm");
     let email = document.getElementById("email");
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosEmail")) || [];
-    let passwordArray = JSON.parse(localStorage.getItem("todasLasContrasenias")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
-    function usuarioCorrecto(){
+    function rightUser(){
         for(let i=0; i<usernameArray.length; i++){
             if(email.value === usernameArray[i]){
                 if(passwordArray[i]!==password1.value){
@@ -26,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function(){
         return false;
     }
 
-    formularioLogin.addEventListener("submit", function(){
-        if(usuarioCorrecto()){
+    loginForm.addEventListener("submit", function(){
+        if(rightUser()){
             localStorage.setItem('username', JSON.stringify(email.value));
-            localStorage.setItem('loggeado', JSON.stringify(true));
+            localStorage.setItem('loggedIn', JSON.stringify(true));
         } else {
             if(englishBool){
                 alert("The user does not exist or the credencials are wrong");
@@ -65,10 +64,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
-            itsDark = false;
-            fondo.style.backgroundColor = "antiquewhite";
+            fondo.style.backgroundColor = "azure";
         } else {
-            itsDark = true;
             fondo.style.backgroundColor = "black";
         }
     }

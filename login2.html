@@ -16,10 +16,11 @@
   <link rel="stylesheet" href="css/login.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="img/page-icon.png">
+  <link rel="stylesheet" href="css/darkmode.css">
 </head>
 
 <body>
- 
+ <nav>
   <!-- Idiomas -->
 
   <div id="languages">
@@ -45,14 +46,14 @@
       </button> 
      </p>
   </div> 
+</nav>
 
   <!-- Mensaje Bienvenido -->
 
-  <div class="container ">
-
-    <div class="container-form sign-up">
-
-      <div class="welcome-back">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="welcome-back">
           <div class="message">
               <h2 style="color: #4a4aee;" id="welcomeTitle">Bienvenido a eMercado</h2>
               <p style="color: #4a4aee;" id="welcomeText">Si no tienes una cuenta puedes registrarte aquí.</p>
@@ -61,10 +62,11 @@
                   Registrarme <img src="img/Flecha-derecha.png">
                 </button>
               </a>
+            </div>
           </div>
-      </div>
-
-        <form class="formulario" action="index.html" method="get" id="formularioLogin">
+        </div>
+      <div class="col-md-6">
+        <form class="formulario" action="index.html" method="get" id="loginForm">
           <h2 class="create-account" id="createTitle">Iniciar sesión</h2>
 
           <div id="otrasOpcionesLogIn" class="d-flex justify-content-center">
@@ -101,6 +103,7 @@
           </div>
 
         </form>
+        </div>
       </div>
     </div>
   <footer class="text-muted">

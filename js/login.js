@@ -6,15 +6,15 @@ document.addEventListener("DOMContentLoaded", function(){
     const password2 = document.getElementById("password2");
     let showPasswordImg = document.getElementById("showPasswordImg");
     let showPasswordImg2 = document.getElementById("showPasswordImg2");
-    let formularioLogin = document.getElementById("formularioLogin");
+    let loginForm = document.getElementById("loginForm");
     let email = document.getElementById("email");
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosEmail")) || [];
-    let passwordArray = JSON.parse(localStorage.getItem("todasLasContrasenias")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
-    function existeElUsuario(){
+    function userExists(){
         for(let username of usernameArray){
             if(email.value === username){
                 return true;
@@ -23,15 +23,15 @@ document.addEventListener("DOMContentLoaded", function(){
         return false;
     }
     
-    formularioLogin.addEventListener("submit", function(){
+    loginForm.addEventListener("submit", function(){
         if(password1.value===password2.value){
-            if(!existeElUsuario()){
+            if(!userExists()){
                 usernameArray.push(email.value);
                 passwordArray.push(password1.value);
                 localStorage.setItem('username', JSON.stringify(email.value));
-                localStorage.setItem('todosLosEmail', JSON.stringify(usernameArray));
-                localStorage.setItem('todasLasContrasenias', JSON.stringify(passwordArray));
-                localStorage.setItem('loggeado', JSON.stringify(true));
+                localStorage.setItem('allTheEmails', JSON.stringify(usernameArray));
+                localStorage.setItem('allThePasswords', JSON.stringify(passwordArray));
+                localStorage.setItem('loggedIn', JSON.stringify(true));
             } else {
                 alert("Usuario ya existente, inicie sesión");
                 event.preventDefault();
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
-            fondo.style.backgroundColor = "antiquewhite";
+            fondo.style.backgroundColor = "azure";
         } else {
             fondo.style.backgroundColor = "black";
         }

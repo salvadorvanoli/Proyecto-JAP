@@ -52,6 +52,17 @@ main{
     color: orange;
 }
 
+.starS {
+    font-size: 32px;
+    color: rgb(161, 154, 154);
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.starS.checked {
+    color: orange;
+}
+
 .seccionComentarios {
     display: flex;
     flex-direction: column;
@@ -72,8 +83,9 @@ main{
 #ComentariosForm {
     display: flex;
     flex-direction: column;
-    align-items: self-start;
+    align-items: center;
     gap: 1.5%;
+    margin-bottom: 3%;
 }
 
 textarea {

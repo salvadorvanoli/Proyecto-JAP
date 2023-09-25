@@ -1,0 +1,95 @@
+#darkmodeLI{
+    text-align: center;
+}
+
+.theme__icon {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 10px;
+    background-color: #5856d6;
+    position: relative;
+    overflow: hidden;
+}
+    
+.theme__icon > :nth-child(1) {
+    width: 16px;
+    height: 16px;
+    border-radius: 24px;
+    border: 3px solid #5856d6;
+    background-color: rgb(28, 28, 30);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width .4s, height .4s, border .4s, background-color .4s;
+    z-index: 10;
+}
+
+.theme__icon:hover > :nth-child(1) {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(245, 245, 247);
+    background-color: rgb(245, 245, 247);
+}
+
+.theme__icon > :nth-child(3) {
+    width: 4px;
+    height: 4px;
+    border-radius: 9px;
+    background-color: #5856d6;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    transition: width .6s, height .6s;
+    transition-delay: .08s;
+    z-index: 10;
+}
+
+.theme__icon:hover > :nth-child(3) {
+    width: 18px;
+    height: 18px;
+}
+
+.theme__icon > :nth-child(2) {
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform .4s;
+}
+
+.theme__icon:hover > :nth-child(2) {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(.8);
+}
+
+.theme__icon > :nth-child(2) span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(28, 28, 30);
+    position: relative;
+}
+
+.theme__icon > :nth-child(2) > :nth-child(1) {
+    top: calc(50% - 1px);
+}
+
+.theme__icon > :nth-child(2) > :nth-child(2) {
+    top: calc(50% - 3px);
+    transform: rotate(90deg);
+}
+
+.theme__icon > :nth-child(2) > :nth-child(3) {
+    top: calc(50% - 5px);
+    transform: rotate(45deg);
+}
+
+.theme__icon > :nth-child(2) > :nth-child(4) {
+    top: calc(50% - 7px);
+    transform: rotate(-45deg);
+}
