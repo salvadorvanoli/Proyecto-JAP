@@ -133,7 +133,7 @@ stars.forEach(function(star, index){
 // Lógica para enviar los comentarios
 
 const submitButton = document.getElementById("submitButton");
-let userInput = JSON.parse(localStorage.getItem("username"));
+let userNick = JSON.parse(localStorage.getItem("username"));
 const opinionInput = document.getElementById("opinion");
 const commentsContainer = document.getElementById("comments-container");
 
@@ -154,25 +154,24 @@ function restartStars(){
 }
 
 function obtenerFechaYHoraActual() {
-  const fechaActual = new Date();
+  const actualDate = new Date();
   
-  const año = fechaActual.getFullYear();
-  const mes = (fechaActual.getMonth() + 1).toString().padStart(2, '0');
-  const dia = fechaActual.getDate().toString().padStart(2, '0');
-  const hora = fechaActual.getHours().toString().padStart(2, '0');
-  const minutos = fechaActual.getMinutes().toString().padStart(2, '0');
-  const segundos = fechaActual.getSeconds().toString().padStart(2, '0');
+  const year = actualDate.getFullYear();
+  const month = (actualDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = actualDate.getDate().toString().padStart(2, '0');
+  const hour = actualDate.getHours().toString().padStart(2, '0');
+  const minutes = actualDate.getMinutes().toString().padStart(2, '0');
+  const seconds = actualDate.getSeconds().toString().padStart(2, '0');
 
   // Formatea la fecha y la hora como "YYYY-MM-DD HH:MM:SS"
-  const fechaYHoraFormateada = `${año}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
+  const dateAndHour = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`;
 
-  return fechaYHoraFormateada;
+  return dateAndHour;
 }
 
 submitButton.addEventListener("click", function(event) {
   event.preventDefault(); 
 
-  let userUser = userInput;
   let userOpinion = opinionInput.value;
 
   if(!userOpinion){
@@ -192,15 +191,15 @@ submitButton.addEventListener("click", function(event) {
   commentBox.classList.add("comentarios");
 
   const userElement = document.createElement("h2");
-  if(userUser.length>20){
-    let userMenor = "";
+  if(userNick.length>20){
+    let shorterUser = "";
     for(let i = 0; i<20; i++){
-      userMenor+=userUser[i];
+      shorterUser+=userNick[i];
     }
-    userUser = userMenor + "...";
-    userElement.textContent = userUser;
+    userNick = shorterUser + "...";
+    userElement.textContent = userNick;
   } else {
-    userElement.textContent = userUser;
+    userElement.textContent = userNick;
   }
   userElement.classList.add("nombreUsuario");
 
@@ -220,8 +219,7 @@ submitButton.addEventListener("click", function(event) {
   commentBox.appendChild(puntuacionElement);
   commentsContainer.appendChild(commentBox);
 
-  // Limpiar los campos de usuario, comentario y puntuación después de enviar
-  userInput.value = "";
+  // Limpiar los campos de comentario y puntuación después de enviar
   opinionInput.value = "";
   restartStars();
 });

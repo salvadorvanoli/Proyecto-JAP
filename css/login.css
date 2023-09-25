@@ -247,7 +247,6 @@ border-radius: 20px;
   right: 10px; 
   z-index: 999; 
 }
-
   
 button {
   border: none;
@@ -263,15 +262,15 @@ button {
   user-select: none;
   cursor: pointer;
 }
+
 .mb{
   display: flex;
   align-items: center;
 }
+
 #divRow{
   width: 200px;
 }
-
-
 
 .nmc{
   color: #fff;
