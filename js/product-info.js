@@ -176,7 +176,7 @@ submitButton.addEventListener("click", function(event) {
   let userOpinion = opinionInput.value;
 
   if(!userOpinion){
-    alert("Debe llenar el campo vacio");
+    alert("Debe llenar el campo vacío");
     return;
     
   }
