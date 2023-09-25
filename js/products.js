@@ -98,11 +98,11 @@ fetch(productsUrl)
 
 let rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
 let rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
-let filtrarPrecio = document.getElementById("filtrarPrecio");
-let borrarPrecio = document.getElementById("borrarPrecio");
-let filtrarPrecioAlto = document.getElementById("filtrarPrecioAlto");
-let filtrarPrecioBajo = document.getElementById("filtrarPrecioBajo");
-let filtrarRelevancia = document.getElementById("filtrarRelevancia");
+let filterPrice = document.getElementById("filtrarPrecio");
+let resetPrice = document.getElementById("borrarPrecio");
+let filterHighPrice = document.getElementById("filtrarPrecioAlto");
+let fiterLowPrice = document.getElementById("filtrarPrecioBajo");
+let filterRelevance = document.getElementById("filtrarRelevancia");
 
 
 // Refresca la lista de productos para aplicar los cambios hechos con los filtrados
@@ -139,7 +139,7 @@ function filterProducts(bool) {
 
 // Elimina los criterios de precio y reinicia la lista
 
-borrarPrecio.addEventListener("click", function(){
+resetPrice.addEventListener("click", function(){
   rangeFilterCountMax.value = "";
   rangeFilterCountMin.value = "";
   filteredProducts = [];
@@ -180,13 +180,13 @@ function filtrarProductosPorPrecio(bool){
   refreshProductList();
 }
 
-filtrarPrecio.addEventListener("click", function(){
+filterPrice.addEventListener("click", function(){
   filtrarProductosPorPrecio(true);
 });
 
 // Muestra desde los precios más altos a los más bajos en orden descendiente
 
-filtrarPrecioAlto.addEventListener("click", function(){
+filterHighPrice.addEventListener("click", function(){
   products = [...productsShow];
   if(filteredProducts[0]){
     products = filteredProducts;
@@ -197,7 +197,7 @@ filtrarPrecioAlto.addEventListener("click", function(){
 
 // Muestra desde los precios más bajos a los más altos en orden ascendente
 
-filtrarPrecioBajo.addEventListener("click", function(){
+fiterLowPrice.addEventListener("click", function(){
   products = [...productsShow];
   if(filteredProducts[0]){
     products = filteredProducts;
@@ -208,7 +208,7 @@ filtrarPrecioBajo.addEventListener("click", function(){
 
 // Filtra los productos por relevancia o cantidad de vendidos
 
-filtrarRelevancia.addEventListener("click", function(){
+filterRelevance.addEventListener("click", function(){
   products = [...productsShow];
   if(filteredProducts[0]){
     products = filteredProducts;

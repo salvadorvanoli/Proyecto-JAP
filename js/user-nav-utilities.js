@@ -2,34 +2,34 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Lógica para mostrar el nombre de perfil en los html
 
-    let usuarioStorage = JSON.parse(localStorage.getItem('username')) || null;
-    let nombreDeUsuario = document.getElementById("nombreDeUsuario");
-    let cerrarSesion = document.getElementById("cerrarSesion");
+    let userStorage = JSON.parse(localStorage.getItem('username')) || null;
+    let usernameNavButton = document.getElementById("usernameNavButton");
+    let logOut = document.getElementById("logOut");
     let navItem = document.getElementsByClassName("nav-item");
 
     // Agrega una animación de puntos para la redirección
 
-    function agregarPunto() {
-        nombreDeUsuario.textContent += ".";
+    function addDot() {
+        usernameNavButton.textContent += ".";
     }
 
-    if(usuarioStorage === null){
-        nombreDeUsuario.innerHTML += "Redirigiendo";
+    if(userStorage === null){
+        usernameNavButton.innerHTML += "Redirigiendo";
         for(let i = 0; i < navItem.length; i++){
             navItem[i].style.pointerEvents = "none";
         }
-        setInterval(agregarPunto, 1000);
+        setInterval(addDot, 1000);
     } else {
         for(let i = 0; i < navItem.length; i++){
             navItem[i].style.pointerEvents = "block";
         }
-        if(usuarioStorage.length > 10){
+        if(userStorage.length > 10){
             for(let i=0; i<10; i++){
-                nombreDeUsuario.textContent += usuarioStorage[i];
+                usernameNavButton.textContent += userStorage[i];
             }
-            nombreDeUsuario.textContent += "...";
+            usernameNavButton.textContent += "...";
         } else {
-            nombreDeUsuario.textContent += usuarioStorage;
+            usernameNavButton.textContent += userStorage;
         }
     }
 
@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Lógica para el botón de cerrar sesión
 
-    cerrarSesion.addEventListener("click", function(){
-        localStorage.setItem("loggeado", JSON.stringify(false));
+    logOut.addEventListener("click", function(){
+        localStorage.setItem("loggedIn", JSON.stringify(false));
         localStorage.setItem("username", JSON.stringify(null));
         window.location.replace('login.html');
     });
