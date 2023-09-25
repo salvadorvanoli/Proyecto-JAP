@@ -178,9 +178,11 @@ submitButton.addEventListener("click", function(event) {
   if(!userOpinion){
     alert("Debe llenar el campo vacío");
     return;
+    
   }
 
   if(getStarRate() <= 0){
+    alert("Valor de estrellas no válido");
     return;
   }
 

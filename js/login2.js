@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
             itsDark = false;
-            fondo.style.backgroundColor = "antiquewhite";
+            fondo.style.backgroundColor = "azure";
         } else {
             itsDark = true;
             fondo.style.backgroundColor = "black";
