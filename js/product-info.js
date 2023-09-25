@@ -113,9 +113,6 @@ document.addEventListener("DOMContentLoaded", listado => {
 
 
 //PARTE 4 - AÑADE EFECTO ESTRELLAS
-const ComentariOpinion = document.getElementById("Opinion")
-const ComentaPuntuacion = document.getElementById("puntuacion")
-const buttonSend = document.getElementById("button")
 const stars = document.querySelectorAll('.star');
 
 
@@ -206,9 +203,9 @@ submitButton.addEventListener("click", function(event) {
   const commentElement = document.createElement("p");
   commentElement.textContent = userOpinion;
 
-  const fechaElement = document.createElement("span");
-  fechaElement.textContent += " " + obtenerFechaYHoraActual();
-  userElement.appendChild(fechaElement);
+  const dateElement = document.createElement("span");
+  dateElement.textContent += " " + obtenerFechaYHoraActual();
+  userElement.appendChild(dateElement);
 
   const puntuacionElement = document.createElement("p");
   puntuacionElement.innerHTML = displayStarsInComments(getStarRate());

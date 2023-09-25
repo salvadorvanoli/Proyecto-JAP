@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
     let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
-    function usuarioCorrecto(){
+    function rightUser(){
         for(let i=0; i<usernameArray.length; i++){
             if(email.value === usernameArray[i]){
                 if(passwordArray[i]!==password1.value){
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     loginForm.addEventListener("submit", function(){
-        if(usuarioCorrecto()){
+        if(rightUser()){
             localStorage.setItem('username', JSON.stringify(email.value));
             localStorage.setItem('loggedIn', JSON.stringify(true));
         } else {

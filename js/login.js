@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // Lógica para guardar los datos de inicio de sesión en localhost
 
     let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
-    let passwordArray = JSON.parse(localStorage.getItem("AllThePasswords")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
     function userExists(){
         for(let username of usernameArray){
