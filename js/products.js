@@ -98,11 +98,11 @@ fetch(productsUrl)
 
 let rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
 let rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
-let filterPrice = document.getElementById("filtrarPrecio");
-let resetPrice = document.getElementById("borrarPrecio");
-let filterHighPrice = document.getElementById("filtrarPrecioAlto");
-let fiterLowPrice = document.getElementById("filtrarPrecioBajo");
-let filterRelevance = document.getElementById("filtrarRelevancia");
+let filterPrice = document.getElementById("filterPrice");
+let resetPrice = document.getElementById("resetPrice");
+let filterHighPrice = document.getElementById("filterHighPrice");
+let fiterLowPrice = document.getElementById("fiterLowPrice");
+let filterRelevance = document.getElementById("filterRelevance");
 
 
 // Refresca la lista de productos para aplicar los cambios hechos con los filtrados
