@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <script src="js/login2.js"></script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Iniciar Sesión</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="img/page-icon.png">
+  <link rel="stylesheet" href="css/darkmode.css">
+</head>
+
+<body>
+ <nav>
+  <!-- Idiomas -->
+
+  <div id="languages">
+    <p>
+      <img src="img/spanish-language.png" alt="spanish" id="spanishLanguage">
+      <img src="img/english-language.png" alt="english" id="englishLanguage">
+    </p>
+  </div>
+
+  <!-- Modo oscuro: los spans existen para formar el sol/luna -->
+
+  <div>
+    <p id="darkmodeToggleButton">
+     <button class="theme__icon">
+        <span></span>
+        <span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span></span>
+      </button> 
+     </p>
+  </div> 
+</nav>
+
+  <!-- Mensaje Bienvenido -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="welcome-back">
+          <div class="message">
+              <h2 style="color: #4a4aee;" id="welcomeTitle">Bienvenido a eMercado</h2>
+              <p style="color: #4a4aee;" id="welcomeText">Si no tienes una cuenta puedes registrarte aquí.</p>
+              <a href="login.html">
+                <button class="sign-up-btn" id="welcomeButton">
+                  Registrarme <img src="img/Flecha-derecha.png">
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      <div class="col-md-6">
+        <form class="formulario" action="index.html" method="get" id="loginForm">
+          <h2 class="create-account" id="createTitle">Iniciar sesión</h2>
+
+          <div id="otrasOpcionesLogIn" class="d-flex justify-content-center">
+            <p>
+              <img src="img/google-logo-login.png" alt="google-logo"> <img src="img/facebook-logo-login.png" alt="facebook-logo">
+            </p>
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="email" class="form-label">
+              Email <img src="img/email-arroba.png">
+            </label>
+            <input type="email" name="email" value="" class="form-control form-floating" id="email" required placeholder="123@gmail.com">
+          </div>
+
+          <div class="mb-3">
+            <label for="password1" class="form-label" id="labelPassword">
+              Contraseña <img src="img/contraseña-candado.png">
+            </label>
+            <img src="img/show-password-icon.png" alt="Mostrar contraseña" id="showPasswordImg" class="img-fluid float-end">
+            <input type="password" name="password" class="form-control form-floating " id="password1" required placeholder="Ingrese su contraseña">
+          </div>
+
+          <div class="">
+            <button class="btn btn-primary" type="submit" id="regBtn">
+              <span id="signUpText">
+                Iniciar sesión <img src="img/Flecha-derecha.png">
+              </span>
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-center align-items-center">
+            <p class="mt-3 mb-3 text-muted">Jóvenes a programar 2023</p>
+          </div>
+
+        </form>
+        </div>
+      </div>
+    </div>
+  <footer class="text-muted">
+
+    <a href="index.html">
+      <button class="Btn">
+        <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
+          <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+        </svg>
+        <p class="text" id="goBackText">Volver al inicio</p>
+      </button>
+    </a>
+    
+      <p id="japabajo">
+        Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+
+  </footer>
+</body>
+
+</html>
