@@ -2,25 +2,40 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let spanishBool = true;
     let englishBool = false;
-    let itsDark = false;
     const password1 = document.getElementById("password1");
     const password2 = document.getElementById("password2");
     let showPasswordImg = document.getElementById("showPasswordImg");
     let showPasswordImg2 = document.getElementById("showPasswordImg2");
-    let formularioLogin = document.getElementById("formularioLogin");
+    let loginForm = document.getElementById("loginForm");
     let email = document.getElementById("email");
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosUsuarios")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
-    formularioLogin.addEventListener("submit", function(){
+    function userExists(){
+        for(let username of usernameArray){
+            if(email.value === username){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    loginForm.addEventListener("submit", function(){
         if(password1.value===password2.value){
-            usernameArray.push(email.value);
-            localStorage.setItem('username', email.value);
-            localStorage.setItem('todosLosUsuarios', JSON.stringify(usernameArray));
-            localStorage.setItem('loggeado', 'true');
-            localStorage.setItem('password', password1.value);
+            if(!userExists()){
+                usernameArray.push(email.value);
+                passwordArray.push(password1.value);
+                localStorage.setItem('username', JSON.stringify(email.value));
+                localStorage.setItem('allTheEmails', JSON.stringify(usernameArray));
+                localStorage.setItem('allThePasswords', JSON.stringify(passwordArray));
+                localStorage.setItem('loggedIn', JSON.stringify(true));
+            } else {
+                alert("Usuario ya existente, inicie sesión");
+                event.preventDefault();
+            }
         } else {
             if(englishBool){
                 alert("The entered passwords do not match");
@@ -38,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function(){
     function visionToggle(elemento, boton){
         if (elemento.type === "password") {
             elemento.type = "text";
-            boton.src = "../img/not-show-password-icon.png";
+            boton.src = "img/not-show-password-icon.png";
         } else {
             elemento.type = "password";
-            boton.src = "../img/show-password-icon.png";
+            boton.src = "img/show-password-icon.png";
         }
     }
 
@@ -60,10 +75,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
-            itsDark = false;
-            fondo.style.backgroundColor = "antiquewhite";
+            fondo.style.backgroundColor = "azure";
         } else {
-            itsDark = true;
             fondo.style.backgroundColor = "black";
         }
     }
@@ -125,8 +138,4 @@ document.addEventListener("DOMContentLoaded", function(){
     spanishLanguage.addEventListener("click", function(){
         changeToSpanish();
     });
-
-    // Variable local storage para mantener la sesión iniciada y que no te rediriga al login
-
-    localStorage.setItem('loggeado', 'false');
 });

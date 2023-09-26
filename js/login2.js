@@ -1,36 +1,41 @@
 document.addEventListener("DOMContentLoaded", function(){
     let spanishBool = true;
     let englishBool = false;
-    let itsDark = false;
     const password1 = document.getElementById("password1");
     let showPasswordImg = document.getElementById("showPasswordImg");
-    let formularioLogin = document.getElementById("formularioLogin");
+    let loginForm = document.getElementById("loginForm");
     let email = document.getElementById("email");
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosUsuarios")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
-    function existeElUsuario(){
-        for(let username of usernameArray){
-            if(email.value === username){
-                return true;
+    function rightUser(){
+        for(let i=0; i<usernameArray.length; i++){
+            if(email.value === usernameArray[i]){
+                if(passwordArray[i]!==password1.value){
+                    event.preventDefault();
+                    return false;
+                } else {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    formularioLogin.addEventListener("submit", function(){
-        if(existeElUsuario()){
-            localStorage.setItem('username', email.value);
-            localStorage.setItem('loggeado', 'true');
+    loginForm.addEventListener("submit", function(){
+        if(rightUser()){
+            localStorage.setItem('username', JSON.stringify(email.value));
+            localStorage.setItem('loggedIn', JSON.stringify(true));
         } else {
             if(englishBool){
-                alert("The username does not exist");
+                alert("The user does not exist or the credencials are wrong");
                 event.preventDefault();
             }
             if(spanishBool){
-                alert("El usuario no existe");
+                alert("El usuario no existe o las credenciales fueron ingresadas incorrectamente");
                 event.preventDefault();
             }
         }
@@ -59,10 +64,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function darkmodeToggle(){
         if(fondo.style.backgroundColor == "black"){
-            itsDark = false;
-            fondo.style.backgroundColor = "antiquewhite";
+            fondo.style.backgroundColor = "azure";
         } else {
-            itsDark = true;
             fondo.style.backgroundColor = "black";
         }
     }
@@ -91,10 +94,10 @@ document.addEventListener("DOMContentLoaded", function(){
         japabajo.innerHTML = 'This website is a property of <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
         signUpText.innerHTML = 'Sign up <img src="img/Flecha-derecha.png">';
         password1.placeholder = "Enter your password";
-        welcomeButton.innerHTML = 'Log In <img src="img/Flecha-derecha.png">';
+        welcomeButton.innerHTML = 'Sign Up <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Welcome to eMercado';
         welcomeText.textContent = 'If you already have an account please log in here.';
-        createTitle.textContent = 'Create an account';
+        createTitle.textContent = 'Log in';
         goBackText.textContent = 'Back to top';
     }
 
@@ -109,10 +112,10 @@ document.addEventListener("DOMContentLoaded", function(){
         japabajo.innerHTML = 'Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>';
         signUpText.innerHTML = 'Registrarme <img src="img/Flecha-derecha.png">';
         password1.placeholder="Ingrese su contraseña";
-        welcomeButton.innerHTML = 'Iniciar Sesion <img src="img/Flecha-derecha.png">';
+        welcomeButton.innerHTML = 'Registrarme <img src="img/Flecha-derecha.png">';
         welcomeTitle.textContent = 'Bienvenido a eMercado';
         welcomeText.textContent = 'Si ya tienes una cuenta por favor inicia sesion aquí.';
-        createTitle.textContent = 'Crear una cuenta';
+        createTitle.textContent = 'Inicia sesión';
         goBackText.textContent = 'Volver al inicio';
     }
 
