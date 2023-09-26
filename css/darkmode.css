@@ -93,3 +93,18 @@
     top: calc(50% - 7px);
     transform: rotate(-45deg);
 }
+
+body.darkMode {
+    background-color: rgb(17, 17, 17);
+    color: white;
+}
+body.darkMode div{
+    background-color: #161616;
+    color: white;
+}
+body.darkMode .dropdown-menu{
+    background-color: #161616;
+}
+body.darkMode .dropdown-menu li a{
+    color: white;
+}

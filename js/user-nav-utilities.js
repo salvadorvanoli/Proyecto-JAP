@@ -36,7 +36,10 @@ document.addEventListener("DOMContentLoaded", function(){
     // Lógica para el botón de modo oscuro
 
     // Agregar código acá Nina
-
+    let darkmodeToggleButton = document.getElementById("darkmodeToggleButton");
+    darkmodeToggleButton.addEventListener("click", () =>{
+        document.body.classList.toggle("darkMode");
+    });
     // Lógica para el botón de cerrar sesión
 
     logOut.addEventListener("click", function(){
