@@ -36,7 +36,9 @@ main{
 .imageElement:hover{
     transform: scale(120%);
 }
-
+.card:hover{
+    transform: scale(120%);
+}
 /* PARTE 4 CSS Estilos */
 
 
@@ -126,5 +128,11 @@ textarea {
     color: rgba(110, 110, 110, 0.527);
 }
 
-
+#relatedProducts, #relatedProdh2{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    margin: 10px;
+}
 /*finaliza Estilos 4*/
