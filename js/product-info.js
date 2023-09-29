@@ -147,7 +147,23 @@ document.addEventListener("DOMContentLoaded", listado => {
 
   URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
   let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
-
+  console.log(URL)
+  function showRelatedProducts(data){
+  let relatedProductsContainer = document.getElementById('relatedProducts');
+  let contentToAppend = "";
+  for (const item of data.relatedProducts) {
+    contentToAppend += `
+        <div class="card" style="width: 18rem;">
+          <img src="`+item.image+`" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">`+item.name+`</h5>
+            <a href=""class="btn btn-dark">Ir al producto</a>
+          </div>
+        </div>
+      `
+  }
+  relatedProductsContainer.innerHTML+= contentToAppend
+}
   // Fetch Products
   fetch(URL)
   .then(response => {
@@ -156,6 +172,7 @@ document.addEventListener("DOMContentLoaded", listado => {
   .then(data => {
       info = data;
       displayProduct(data);
+      showRelatedProducts(data)
   })
   .catch(error => {
       console.log("Error: ", error)
