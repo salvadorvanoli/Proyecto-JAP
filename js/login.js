@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function(){
     function visionToggle(elemento, boton){
         if (elemento.type === "password") {
             elemento.type = "text";
-            boton.src = "../img/not-show-password-icon.png";
+            boton.src = "img/not-show-password-icon.png";
         } else {
             elemento.type = "password";
-            boton.src = "../img/show-password-icon.png";
+            boton.src = "img/show-password-icon.png";
         }
     }
 
