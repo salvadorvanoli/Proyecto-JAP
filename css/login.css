@@ -5,6 +5,8 @@
 nav {
   background-color: #344966; 
   padding: 23px;
+  display: flex;
+  justify-content: space-between;
 }
 
 body {
@@ -153,16 +155,12 @@ border-radius: 20px;
 /* Idioma */
 
 #languages{
-  position: absolute;
-  top: 1%;
-  left: 1%;
   user-select: none;
 }
 
 #languages img{
   width:30px;
   cursor: pointer;
-  height:auto;
 }
 
 /* Volver atras */
@@ -237,24 +235,6 @@ border-radius: 20px;
 
 #otrasOpcionesLogIn {
   user-select: none;
-}
-
-/* Modo oscuro */
-
-#darkmodeToggleButton {
-  position: absolute;
-  top: 0; 
-  right: 10px; 
-  z-index: 999; 
-}
-  
-button {
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 10px;
-  cursor: pointer;
-  font-family: inherit;
 }
 
 #showPasswordImg, #showPasswordImg2{
