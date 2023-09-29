@@ -126,5 +126,9 @@ textarea {
     color: rgba(110, 110, 110, 0.527);
 }
 
+.carousel-caption {
+   background: rgba(10,10,10, 0.3);
+}
+
 
 /*finaliza Estilos 4*/
