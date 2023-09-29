@@ -11,6 +11,7 @@ body.darkMode div{
 body.darkMode .dropdown-menu{
     background-color: #161616;
 }
+
 body.darkMode .dropdown-menu li a{
     color: white;
 }
