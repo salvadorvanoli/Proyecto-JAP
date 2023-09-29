@@ -108,3 +108,55 @@ body.darkMode .dropdown-menu{
 body.darkMode .dropdown-menu li a{
     color: white;
 }
+
+.switch{
+    margin: 10px 0px 10px 0px;
+    background-color: #343D5B;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    padding: 0;
+}
+
+.switch svg{
+    padding: 8%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background: none;
+    color: #fff;
+}
+
+.switch::after{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: #F1F1F1;
+    top: 0;
+    left: 0;
+    right: unset;
+    border-radius: 100px;
+    transition: transform 0.5s ease;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,.2);
+    transform: translateX(0);
+}
+
+.switch.active {
+    background: orange;
+    color: #000;
+}
+.switch.active::after {
+    transform: translateX(100%); 
+}
+
+@media screen and (min-width:992px){
+    .switch {
+        margin-left: 2%;
+    }
+}
