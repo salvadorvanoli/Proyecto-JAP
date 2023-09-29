@@ -55,7 +55,7 @@ function createCarousel(images, options) {
 
   // devolvemos la estructura completa del carousel, con botones de navegación y contenedor
   return `
-  <div id="carousel-product" class="carousel slide" data-bs-ride="carousel">
+  <div id="carousel-product" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       ${slideButtonsString}
     </div>
@@ -72,8 +72,9 @@ function createCarousel(images, options) {
     </button>
   </div>
   `
-
 }
+
+// Crea un carrousel 
 
 function displayProduct(product) {
   // Crea el contenedor del producto
@@ -90,7 +91,7 @@ function displayProduct(product) {
   ];
 
   // se pasan las imagenes al metodo de creacion del carousel
-  const carousel = createCarousel(product.images, { title: product.name, description: product.description });
+  const carousel = createCarousel(product.images, { title: "", description: "" });
   
 
   // agrega cada uno de los elementos al contenedor
@@ -143,12 +144,15 @@ function displayComments(comments){
   }
 }
 
-document.addEventListener("DOMContentLoaded", listado => {
+URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
+let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
 
-  URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
-  let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
-  console.log(URL)
-  function showRelatedProducts(data){
+function irAlRelacionado(id){
+  localStorage.setItem("ItemID", JSON.stringify(id));
+  window.location.replace('product-info.html');
+}
+
+function showRelatedProducts(data){
   let relatedProductsContainer = document.getElementById('relatedProducts');
   let contentToAppend = "";
   for (const item of data.relatedProducts) {
@@ -157,38 +161,37 @@ document.addEventListener("DOMContentLoaded", listado => {
           <img src="`+item.image+`" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">`+item.name+`</h5>
-            <a href=""class="btn btn-dark">Ir al producto</a>
+            <button href="" onclick="irAlRelacionado(${item.id})" class="btn btn-dark">Ir al producto</button>
           </div>
         </div>
       `
   }
-  relatedProductsContainer.innerHTML+= contentToAppend
+  relatedProductsContainer.innerHTML+= contentToAppend;
 }
-  // Fetch Products
-  fetch(URL)
-  .then(response => {
-      return response.json()
-  })
-  .then(data => {
-      info = data;
-      displayProduct(data);
-      showRelatedProducts(data)
-  })
-  .catch(error => {
-      console.log("Error: ", error)
-  });
 
-  // Fetch Comments
-  fetch(URL_COMMENTS)
-  .then(response => {
-      return response.json()
-  })
-  .then(dataComments => {
-      displayComments(dataComments);
-  })
-  .catch(error => {
-      console.log("Error: ", error)
-  });
+// Fetch Products
+fetch(URL)
+.then(response => {
+    return response.json()
+})
+.then(data => {
+    displayProduct(data);
+    showRelatedProducts(data)
+})
+.catch(error => {
+    console.log("Error: ", error)
+});
+
+// Fetch Comments
+fetch(URL_COMMENTS)
+.then(response => {
+    return response.json()
+})
+.then(dataComments => {
+    displayComments(dataComments);
+})
+.catch(error => {
+    console.log("Error: ", error)
 });
 
 
