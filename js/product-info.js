@@ -161,7 +161,7 @@ function showRelatedProducts(data){
           <img src="`+item.image+`" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">`+item.name+`</h5>
-            <button href="" onclick="irAlRelacionado(${item.id})" class="btn btn-dark">Ir al producto</button>
+            <button onclick="irAlRelacionado(${item.id})" class="btn btn-dark">Ir al producto</button>
           </div>
         </div>
       `

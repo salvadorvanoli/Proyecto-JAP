@@ -139,9 +139,6 @@ textarea {
 
 .card{
     margin: 10px;
-}
-
-.carousel-caption {
-   background: rgba(10,10,10, 0.3);
+    text-align: center;
 }
 /*finaliza Estilos 4*/
