@@ -130,7 +130,7 @@ function filterProducts(bool) {
 
   // Si bool es verdadero, aplicar el filtro de precio nuevamente
   if (bool) {
-    filtrarProductosPorPrecio(false);
+    filterProductsByPrice(false);
   } else {
     // Actualizar la lista de productos en el DOM con los productos filtrados
     refreshProductList();
@@ -150,7 +150,7 @@ resetPrice.addEventListener("click", function(){
 
 // Filtra por precio
 
-function filtrarProductosPorPrecio(bool){
+function filterProductsByPrice(bool){
   if(document.getElementById("searchInput").value){
     if(bool){
       filterProducts(false);
@@ -181,7 +181,7 @@ function filtrarProductosPorPrecio(bool){
 }
 
 filterPrice.addEventListener("click", function(){
-  filtrarProductosPorPrecio(true);
+  filterProductsByPrice(true);
 });
 
 // Muestra desde los precios más altos a los más bajos en orden descendiente

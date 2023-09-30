@@ -53,10 +53,10 @@ document.addEventListener("DOMContentLoaded", function(){
     function visionToggle(elemento, boton){
         if (elemento.type === "password") {
             elemento.type = "text";
-            boton.src = "../img/not-show-password-icon.png";
+            boton.src = "img/not-show-password-icon.png";
         } else {
             elemento.type = "password";
-            boton.src = "../img/show-password-icon.png";
+            boton.src = "img/show-password-icon.png";
         }
     }
 
@@ -66,23 +66,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     showPasswordImg2.addEventListener("click", function(){
         visionToggle(password2, showPasswordImg2);
-    });
-
-    // Lógica para el modo oscuro
-
-    let darkmodeToggleButton = document.getElementById("darkmodeToggleButton");
-    let fondo = document.getElementsByTagName("body")[0];
-
-    function darkmodeToggle(){
-        if(fondo.style.backgroundColor == "black"){
-            fondo.style.backgroundColor = "azure";
-        } else {
-            fondo.style.backgroundColor = "black";
-        }
-    }
-
-    darkmodeToggleButton.addEventListener("click", function(){
-        darkmodeToggle();
     });
 
     // Lógica para el cambio de idioma
@@ -138,4 +121,10 @@ document.addEventListener("DOMContentLoaded", function(){
     spanishLanguage.addEventListener("click", function(){
         changeToSpanish();
     });
+    let btnSwitch = document.getElementById("switch");
+    btnSwitch.addEventListener("click", () =>{
+    document.body.classList.toggle("darkMode");
+    btnSwitch.classList.toggle("active")
+    });
 });
+

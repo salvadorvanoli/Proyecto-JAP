@@ -36,7 +36,9 @@ main{
 .imageElement:hover{
     transform: scale(120%);
 }
-
+.card:hover{
+    transform: scale(120%);
+}
 /* PARTE 4 CSS Estilos */
 
 
@@ -66,12 +68,14 @@ main{
 .seccionComentarios {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     border: 2px solid rgba(231, 228, 228, 0.37);
     border-radius: 2%;
     padding-bottom: 3%;
+    margin-top: 2%;
     background-color: rgb(231, 229, 229);
+    height: 500px;
+    overflow: auto;
 }
 
 .titulosComentarios{
@@ -118,6 +122,8 @@ textarea {
     box-shadow: 3px 3px 3px gray;
     margin-top: 15px;
     padding: 5px;
+    width: 600px;
+    overflow: auto;
 }
 
 .nombreUsuario span {
@@ -126,5 +132,13 @@ textarea {
     color: rgba(110, 110, 110, 0.527);
 }
 
+#relatedProducts, #relatedProdh2{
+    display: flex;
+    justify-content: center;
+}
 
+.card{
+    margin: 10px;
+    text-align: center;
+}
 /*finaliza Estilos 4*/

@@ -9,13 +9,72 @@ function createText(options) {
   return element;
 }
 
+/* FUERA DE USO  */
 // crea un elemento IMG y le agrega atributos pasados por parámetro (class, src y alt) 
-function createImage(options) {
-    const imageElement = document.createElement("img");
-    imageElement.classList.add(options.class);
-    imageElement.src = options.image;
-    return imageElement;
+// function createImage(options) {
+//     const imageElement = document.createElement("img");
+//     imageElement.classList.add(options.class);
+//     imageElement.src = options.image;
+//     return imageElement;
+// }
+
+// crea un carousel de bootstrap 
+function createCarousel(images, options) {
+
+  let imageElementsString = "";
+  let slideButtonsString = "";
+  
+  // para cada una de las imágenes
+  // Hacemos una string que contiene la estructura para una imagen del carousel 
+  // y le injectamos el src obtenido por parametro 
+  for (let i = 0; i < images.length; i++) {
+    // usamos un operador ternario para que solo el primer elemento tenga la clase active
+    const imageDOMString = `
+    <div class="carousel-item ${ i === 0 ? "active" : "" }">
+      <img src="${images[i]}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>${options.title}</h5>
+        <p>${options.description}</p>
+      </div>
+    </div>
+    `;
+
+    // por cada imagen, se crea el botón para navegar hacia ella en el slider
+    // usando el mismo ternario de antes
+    slideButtonsString +=  `
+      <button
+        type="button"
+        data-bs-target="#carousel-product"
+        data-bs-slide-to="${i}" 
+        ${ i === 0 ? 'class="active"' : '' }
+        aria-current="true" aria-label="${options.title}-${i}"
+      ></button>
+    `
+    imageElementsString += imageDOMString;
+  }
+
+  // devolvemos la estructura completa del carousel, con botones de navegación y contenedor
+  return `
+  <div id="carousel-product" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      ${slideButtonsString}
+    </div>
+    <div class="carousel-inner">
+      ${imageElementsString}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-product" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-product" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  `
 }
+
+// Crea un carrousel 
 
 function displayProduct(product) {
   // Crea el contenedor del producto
@@ -31,16 +90,21 @@ function displayProduct(product) {
     createText({ element: 'p', class: 'soldCount', text: `Vendidos: ${product.soldCount}` }),
   ];
 
+  // se pasan las imagenes al metodo de creacion del carousel
+  const carousel = createCarousel(product.images, { title: "", description: "" });
+  
+
   // agrega cada uno de los elementos al contenedor
   contentList.forEach(item => productInfo.appendChild(item));
   // agrega el contenedor a la lista de elementos
   const productInfoDiv = document.getElementById("containerInfo");
+  // se agrega el carousel por innerHTML porque no es un objeto DOM, si no una string con html
+  // se hace así por la cantidad de elementos que hay que crear para un carousel bootstrap 
+  productInfoDiv.innerHTML = carousel;
+  // productInfo si son objetos DOM, entonces se agregan con appendChild
   productInfoDiv.appendChild(productInfo);
 
-  for(let i = 0; i<product.images.length; i++){
-    let options = {class: 'imageElement', image: product.images[i], name: product.name};
-    productInfo.appendChild(createImage(options));
-  }
+
 }
 
 // Display de comentarios
@@ -80,35 +144,54 @@ function displayComments(comments){
   }
 }
 
-document.addEventListener("DOMContentLoaded", listado => {
+URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
+let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
 
-  URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
-  let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
+function irAlRelacionado(id){
+  localStorage.setItem("ItemID", JSON.stringify(id));
+  window.location.replace('product-info.html');
+}
 
-  // Fetch Products
-  fetch(URL)
-  .then(response => {
-      return response.json()
-  })
-  .then(data => {
-      info = data;
-      displayProduct(data);
-  })
-  .catch(error => {
-      console.log("Error: ", error)
-  });
+function showRelatedProducts(data){
+  let relatedProductsContainer = document.getElementById('relatedProducts');
+  let contentToAppend = "";
+  for (const item of data.relatedProducts) {
+    contentToAppend += `
+        <div class="card" style="width: 18rem;">
+          <img src="`+item.image+`" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">`+item.name+`</h5>
+            <button onclick="irAlRelacionado(${item.id})" class="btn btn-dark">Ir al producto</button>
+          </div>
+        </div>
+      `
+  }
+  relatedProductsContainer.innerHTML+= contentToAppend;
+}
 
-  // Fetch Comments
-  fetch(URL_COMMENTS)
-  .then(response => {
-      return response.json()
-  })
-  .then(dataComments => {
-      displayComments(dataComments);
-  })
-  .catch(error => {
-      console.log("Error: ", error)
-  });
+// Fetch Products
+fetch(URL)
+.then(response => {
+    return response.json()
+})
+.then(data => {
+    displayProduct(data);
+    showRelatedProducts(data)
+})
+.catch(error => {
+    console.log("Error: ", error)
+});
+
+// Fetch Comments
+fetch(URL_COMMENTS)
+.then(response => {
+    return response.json()
+})
+.then(dataComments => {
+    displayComments(dataComments);
+})
+.catch(error => {
+    console.log("Error: ", error)
 });
 
 
