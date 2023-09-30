@@ -35,12 +35,24 @@ document.addEventListener("DOMContentLoaded", function(){
 
     // Lógica para el botón de modo oscuro
 
-    // Agregar código acá Nina
     let btnSwitch = document.getElementById("switch");
+    let itsDark = JSON.parse(localStorage.getItem("darkmode")) || false;
+
+    if(itsDark){
+        document.body.classList.toggle("darkMode");
+        btnSwitch.classList.toggle("active");
+    }
+
     btnSwitch.addEventListener("click", () =>{
         document.body.classList.toggle("darkMode");
-        btnSwitch.classList.toggle("active")
+        btnSwitch.classList.toggle("active");
+        if(btnSwitch.classList.contains("active")){
+            localStorage.setItem("darkmode", JSON.stringify(true));
+        } else {
+            localStorage.setItem("darkmode", JSON.stringify(false));
+        }
     });
+
     // Lógica para el botón de cerrar sesión
 
     logOut.addEventListener("click", function(){
