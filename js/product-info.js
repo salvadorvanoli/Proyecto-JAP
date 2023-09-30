@@ -31,13 +31,13 @@ function createCarousel(images, options) {
     // usamos un operador ternario para que solo el primer elemento tenga la clase active
     const imageDOMString = `
     <div class="carousel-item ${ i === 0 ? "active" : "" }">
-      <img src="${images[i]}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>${options.title}</h5>
-        <p>${options.description}</p>
-      </div>
+      <picture>
+        <source media="(min-width: 768px)" srcset="${images[i]}" type="image/webp">
+        <img src="${images[i]}" class="img-fluid" alt="...">
+      </picture>
     </div>
     `;
+    
 
     // por cada imagen, se crea el botón para navegar hacia ella en el slider
     // usando el mismo ternario de antes
@@ -89,6 +89,25 @@ function displayProduct(product) {
     createText({ element: 'p', class: 'category', text: `Categoría: ${product.category}` }),
     createText({ element: 'p', class: 'soldCount', text: `Vendidos: ${product.soldCount}` }),
   ];
+
+  //Hace que los titulos esten en negrita
+  function createText(options) {
+    const element = document.createElement(options.element);
+    element.classList.add(options.class);
+  
+    const titles = ['Descripción:', 'Precio:', 'Categoría:', 'Vendidos:'];
+    const matches = titles.filter(title => options.text.includes(title));
+  
+    if (matches.length > 0) {
+      const title = matches[0];
+      const content = options.text.split(title)[1];
+      element.innerHTML = `<b>${title}</b>${content}`;
+    } else {
+      element.textContent = options.text;
+    }
+  
+    return element;
+  }
 
   // se pasan las imagenes al metodo de creacion del carousel
   const carousel = createCarousel(product.images, { title: "", description: "" });
