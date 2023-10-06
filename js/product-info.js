@@ -1,5 +1,22 @@
 let images = [];
-let productsShow = [];
+let productInfoFetch;
+let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
+
+function inTheCart(info){
+  for(let i = 0; i<productsInTheCart.length; i++){
+    if(info.id == productsInTheCart[i].id){
+      return true;
+    }
+  }
+  return false;
+}
+
+function buyProduct(){
+  if(!inTheCart(productInfoFetch)){
+    productsInTheCart.push(productInfoFetch);
+    localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+  }
+}
 
 function createText(options) {
   const element = document.createElement(options.element);
@@ -115,15 +132,20 @@ function displayProduct(product) {
 
   // agrega cada uno de los elementos al contenedor
   contentList.forEach(item => productInfo.appendChild(item));
+
   // agrega el contenedor a la lista de elementos
   const productInfoDiv = document.getElementById("containerInfo");
+
   // se agrega el carousel por innerHTML porque no es un objeto DOM, si no una string con html
-  // se hace así por la cantidad de elementos que hay que crear para un carousel bootstrap 
+  // se hace así por la cantidad de elementos que hay que crear para un carousel bootstrap
   productInfoDiv.innerHTML = carousel;
+
+  // botón de compra
+  let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()">Comprar</button>`;
+  productInfo.innerHTML+=button;
+
   // productInfo si son objetos DOM, entonces se agregan con appendChild
   productInfoDiv.appendChild(productInfo);
-
-
 }
 
 // Display de comentarios
@@ -191,14 +213,15 @@ function showRelatedProducts(data){
 // Fetch Products
 fetch(URL)
 .then(response => {
-    return response.json()
+  return response.json()
 })
 .then(data => {
-    displayProduct(data);
-    showRelatedProducts(data)
+  displayProduct(data);
+  showRelatedProducts(data);
+  productInfoFetch = data;
 })
 .catch(error => {
-    console.log("Error: ", error)
+  console.log("Error: ", error)
 });
 
 // Fetch Comments
