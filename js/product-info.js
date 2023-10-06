@@ -2,6 +2,10 @@ let images = [];
 let productInfoFetch;
 let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
 
+function redirectToTheCart(){
+  window.location.replace('cart.html');
+}
+
 function inTheCart(info){
   for(let i = 0; i<productsInTheCart.length; i++){
     if(info.id == productsInTheCart[i].id){
@@ -26,24 +30,15 @@ function createText(options) {
   return element;
 }
 
-/* FUERA DE USO  */
-// crea un elemento IMG y le agrega atributos pasados por parámetro (class, src y alt) 
-// function createImage(options) {
-//     const imageElement = document.createElement("img");
-//     imageElement.classList.add(options.class);
-//     imageElement.src = options.image;
-//     return imageElement;
-// }
-
-// crea un carousel de bootstrap 
+// Crea un carousel de bootstrap 
 function createCarousel(images, options) {
 
   let imageElementsString = "";
   let slideButtonsString = "";
   
-  // para cada una de las imágenes
-  // Hacemos una string que contiene la estructura para una imagen del carousel 
-  // y le injectamos el src obtenido por parametro 
+  // Para cada una de las imágenes
+  // hacemos un string que contiene la estructura para una imagen del carousel 
+  // y le inyectamos el src obtenido por parametro 
   for (let i = 0; i < images.length; i++) {
     // usamos un operador ternario para que solo el primer elemento tenga la clase active
     const imageDOMString = `
@@ -141,10 +136,25 @@ function displayProduct(product) {
   productInfoDiv.innerHTML = carousel;
 
   // botón de compra
-  let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()">Comprar</button>`;
+  let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
+  
+  <div class="modal" id="cartModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Producto añadido al carrito</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="redirectToTheCart()">Ir al carrito</button>
+      </div>
+    </div>
+  </div>
+</div>`;
   productInfo.innerHTML+=button;
 
   // productInfo si son objetos DOM, entonces se agregan con appendChild
+  productInfoDiv.classList.add("text-center");
   productInfoDiv.appendChild(productInfo);
 }
 
