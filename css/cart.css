@@ -1,0 +1,13 @@
+.productImage{
+    max-width: 150px;
+    max-height: 150px;
+    transition: transform ease 0.5;
+}
+
+.productImage:hover{
+    transform: scale(1.3);
+}
+
+#tableDiv{
+    max-width: 1000px;
+}
