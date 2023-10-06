@@ -135,22 +135,23 @@ function displayProduct(product) {
   // se hace así por la cantidad de elementos que hay que crear para un carousel bootstrap
   productInfoDiv.innerHTML = carousel;
 
-  // botón de compra
+  // Botón de compra y desplegable para redirigir al carrito
+
   let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
-  
   <div class="modal" id="cartModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Producto añadido al carrito</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" onclick="redirectToTheCart()">Ir al carrito</button>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Producto añadido al carrito</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="redirectToTheCart()">Ir al carrito</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>`;
+  </div>`;
+  
   productInfo.innerHTML+=button;
 
   // productInfo si son objetos DOM, entonces se agregan con appendChild
