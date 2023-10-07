@@ -1,4 +1,5 @@
 /* maximo 720px */
+
 @media screen and (max-width:720px) {
     #containerInfo {
         display: flex;
@@ -30,7 +31,34 @@
         transform: scale(120%);
     }
 }
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  
+  .jumbotron {
+    height: 50vh;
+    padding: 5em inherit;
+    margin-bottom: 0;
+    background-color: #53C0FB;
+    background: url('../img/cover-back.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+    font-weight: bold;
+  }
+  
+  @media (min-width: 768px) {
+    .jumbotron {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
    
+/* pantallas de maximo 320, 430, 450 */
+
 @media screen and (max-width:320px ) and (max-width:430px )and (max-width:450px) {
     #containerInfo {
         display: grid;
@@ -60,6 +88,12 @@
     .imageElement:hover{
         transform: scale(120%);
     }
-    
-  }
+
+    .jumbotron {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        background-position: center;
+
+      }
   
+  }
