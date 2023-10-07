@@ -12,7 +12,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/products.css">
   <link rel="icon" type="image/x-icon" href="img/page-icon.png">
-
+<link rel="stylesheet" href="/css/responcelist.css">
   <link rel="stylesheet" href="css/user-nav-style.css">
   <link rel="stylesheet" href="css/darkmode.css">
 
@@ -71,16 +71,14 @@
         <div class=" col-md-12 mb-1 ">
           
           <div class="row container p-0 m-0">
-            
-            <input class="col-md-6 mb-1"  type="search" name="buscador" id="searchInput" oninput="filterProducts(true)" placeholder="Buscar articulos">
-           
-            <div class="col">
+            <div class="search">
+              <input class="col-md-6 mb-1"  type="search" name="buscador" id="searchInput" oninput="filterProducts(true)" placeholder="Buscar articulos">
+           </div>
+           <div class="maxmin">
               <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
-            </div>
-            <div class="col">
+              <br>
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
             </div>
-
             <!-- Botones de filtrado -->
 
             <div class="col-2 p-0">
@@ -102,9 +100,12 @@
   
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#" id="volverArriba">Volver arriba</a>
-      </p>
+      <a class="Btn" href="#">
+        <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
+          <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+        </svg>
+        <p class="text" id="goBackText">Volver arriba</p>
+      </a> 
       <p id="japabajo">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
