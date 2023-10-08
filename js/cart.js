@@ -20,11 +20,14 @@ function createListItem(product){
         <td class="align-middle">${product.name}</td>
         <td class="align-middle" id="costo">${product.currency} ${product.cost}</td>
         <td class="align-middle"><input type="number"id="cantidad" min="1" value="1"></td>
-        <td class="align-middle" id="subtotal">${product.cost}</td>
+        <td class="align-middle"> ${product.currency} <span id="subtotal"> ${product.cost} </span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
     </tr>`
     return productListItem;
 }
+
+// Permite calcular en tiempo real los el subtotal
+
 document.addEventListener('DOMContentLoaded', function(){
     let cantidad = document.getElementById('cantidad');
     cantidad.dataset.oldValue = cantidad.value;
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function(){
         cantidad.dataset.oldValue = cantidad.value;
     });
 });
+
 // Muestra los productos en el carrito
 
 function displayProductInTheCart(productList){
@@ -41,7 +45,6 @@ function displayProductInTheCart(productList){
         cartProductList.innerHTML += createListItem(product);
     }
 }
-
 
 // Llamado a la función para mostrar todos los productos del carrito
 
