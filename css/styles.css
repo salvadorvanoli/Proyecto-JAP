@@ -15,6 +15,7 @@ body{
 
 nav a {
   text-decoration: none;
+  
 }
 
 .bd-placeholder-img {
@@ -191,4 +192,74 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+/* Volver atras */
+
+
+.Btn {
+  width: 40px;
+  height: 40px;
+  background-color: #11202c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom:18px;
+  right: 30px; 
+  border: none;
+}
+  
+.arrow path {
+  fill: white;
+}
+  
+.text {
+  font-size: 13px;
+  width: 100px;
+  position: absolute;
+  color: #151d28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -16px;
+  opacity: 0;
+  transition-duration: .7s;
+  font-weight: bolder;
+
+}
+  
+.Btn:hover .text {
+  opacity: 1;
+  transition-duration: .7s;
+}
+
+.Btn:hover .arrow {
+  animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (max-width: 300px) {
+    .Btn {
+        width: 20px;
+        height: 20px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .text {
+        width: 30px;
+        bottom: -5px;
+    }
 }

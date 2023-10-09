@@ -1,5 +1,26 @@
 let images = [];
-let productsShow = [];
+let productInfoFetch;
+let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
+
+function redirectToTheCart(){
+  window.location.replace('cart.html');
+}
+
+function inTheCart(info){
+  for(let i = 0; i<productsInTheCart.length; i++){
+    if(info.id == productsInTheCart[i].id){
+      return true;
+    }
+  }
+  return false;
+}
+
+function buyProduct(){
+  if(!inTheCart(productInfoFetch)){
+    productsInTheCart.push(productInfoFetch);
+    localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+  }
+}
 
 function createText(options) {
   const element = document.createElement(options.element);
@@ -9,35 +30,26 @@ function createText(options) {
   return element;
 }
 
-/* FUERA DE USO  */
-// crea un elemento IMG y le agrega atributos pasados por parámetro (class, src y alt) 
-// function createImage(options) {
-//     const imageElement = document.createElement("img");
-//     imageElement.classList.add(options.class);
-//     imageElement.src = options.image;
-//     return imageElement;
-// }
-
-// crea un carousel de bootstrap 
+// Crea un carousel de bootstrap 
 function createCarousel(images, options) {
 
   let imageElementsString = "";
   let slideButtonsString = "";
   
-  // para cada una de las imágenes
-  // Hacemos una string que contiene la estructura para una imagen del carousel 
-  // y le injectamos el src obtenido por parametro 
+  // Para cada una de las imágenes
+  // hacemos un string que contiene la estructura para una imagen del carousel 
+  // y le inyectamos el src obtenido por parametro 
   for (let i = 0; i < images.length; i++) {
     // usamos un operador ternario para que solo el primer elemento tenga la clase active
     const imageDOMString = `
     <div class="carousel-item ${ i === 0 ? "active" : "" }">
-      <img src="${images[i]}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>${options.title}</h5>
-        <p>${options.description}</p>
-      </div>
+      <picture>
+        <source media="(min-width: 768px)" srcset="${images[i]}" type="image/webp">
+        <img src="${images[i]}" class="img-fluid" alt="...">
+      </picture>
     </div>
     `;
+    
 
     // por cada imagen, se crea el botón para navegar hacia ella en el slider
     // usando el mismo ternario de antes
@@ -90,21 +102,61 @@ function displayProduct(product) {
     createText({ element: 'p', class: 'soldCount', text: `Vendidos: ${product.soldCount}` }),
   ];
 
+  //Hace que los titulos esten en negrita
+  function createText(options) {
+    const element = document.createElement(options.element);
+    element.classList.add(options.class);
+  
+    const titles = ['Descripción:', 'Precio:', 'Categoría:', 'Vendidos:'];
+    const matches = titles.filter(title => options.text.includes(title));
+  
+    if (matches.length > 0) {
+      const title = matches[0];
+      const content = options.text.split(title)[1];
+      element.innerHTML = `<b>${title}</b>${content}`;
+    } else {
+      element.textContent = options.text;
+    }
+  
+    return element;
+  }
+
   // se pasan las imagenes al metodo de creacion del carousel
   const carousel = createCarousel(product.images, { title: "", description: "" });
   
 
   // agrega cada uno de los elementos al contenedor
   contentList.forEach(item => productInfo.appendChild(item));
+
   // agrega el contenedor a la lista de elementos
   const productInfoDiv = document.getElementById("containerInfo");
+
   // se agrega el carousel por innerHTML porque no es un objeto DOM, si no una string con html
-  // se hace así por la cantidad de elementos que hay que crear para un carousel bootstrap 
+  // se hace así por la cantidad de elementos que hay que crear para un carousel bootstrap
   productInfoDiv.innerHTML = carousel;
+
+  // Botón de compra y desplegable para redirigir al carrito
+
+  let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
+  <div class="modal" id="cartModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Producto añadido al carrito</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="redirectToTheCart()">Ir al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+  
+  productInfo.innerHTML+=button;
+
   // productInfo si son objetos DOM, entonces se agregan con appendChild
+  productInfoDiv.classList.add("text-center");
   productInfoDiv.appendChild(productInfo);
-
-
 }
 
 // Display de comentarios
@@ -172,14 +224,15 @@ function showRelatedProducts(data){
 // Fetch Products
 fetch(URL)
 .then(response => {
-    return response.json()
+  return response.json()
 })
 .then(data => {
-    displayProduct(data);
-    showRelatedProducts(data)
+  displayProduct(data);
+  showRelatedProducts(data);
+  productInfoFetch = data;
 })
 .catch(error => {
-    console.log("Error: ", error)
+  console.log("Error: ", error)
 });
 
 // Fetch Comments

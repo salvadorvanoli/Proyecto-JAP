@@ -49,8 +49,6 @@
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" id="logOut" href="#">Cerrar sesión</a></li>
-              <li class="dropdown-item" id="darkmodeLI">
-              </li>
             </ul>
           </li>
         </ul>
@@ -67,12 +65,10 @@
     </div>
   </nav>
   <main>
-    <div class="container" id="containerInfo">
+  <div class="container" id="containerInfo">
+    <!-- Acá se inyecta el producto -->
+  </div>
 
-      <!-- Acá se inyecta el producto -->
-    </div>
- 
-  </main>
   <h2 id="relatedProdh2">Productos relacionados</h2>
   <div id="relatedProducts">
   </div>
@@ -105,9 +101,12 @@
 
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
+        <a class="Btn" href="#">
+          <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
+            <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+          </svg>
+          <p class="text" id="goBackText">Volver arriba</p>
+        </a>    
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
@@ -119,10 +118,13 @@
       <div></div>
     </div>
   </div>
-  
+  </main>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
