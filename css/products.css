@@ -1,14 +1,5 @@
 /* Estilo para mostrar los productos */
 
-#products-title{
-    display: flex;
-    justify-content: center;
-    letter-spacing: 10px;
-    text-decoration: underline 2px black;
-    user-select: none;
-
-}
-
 .product{
     position: relative;
     border: 6px black solid;
@@ -91,7 +82,6 @@
 }
 
 input[type="search"] {
-    display: block;
     background-color: lightblue;
     text-align: center;
     width: 35%;

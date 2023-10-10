@@ -63,49 +63,86 @@
       </nav>
     </div>
   </header>
+
+  <!-- <div class="text-center m-3">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filtros de búsqueda</button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+      <li class="row btn-group">
+        <div class="container">
+          <div class="row container">
+            <div class="col w-50 m-1">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+          </div>
+
+        <div class="row container">
+          <div class="col w-50 m-1">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+          </div>
+        </div>
+      </div>
+      </li>
+
+      <li class="col m-1 text-center">
+        <div class="btn-group" role="group">
+          <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+          <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+        </div>
+      </li>
+
+      <li class="col m-1 text-center">
+        <input type="radio" class="btn-check" name="options" id="sortAsc">
+        <label class="btn btn-light" for="sortAsc">A-Z</label>
+        <input type="radio" class="btn-check" name="options" id="sortDesc">
+        <label class="btn btn-light" for="sortDesc">Z-A</label>
+        <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+        <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+      </li>
+    </ul>
+  </div> -->
+
+
   <main class="pb-5">
     <section class="text-center p-4">
       <h2>Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </section>
     <div class="text-center m-3">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filtros de búsqueda</button>
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filtros de búsqueda</button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li class="container">
-          <div class="row">
-            <div class="col">
-              <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-                <input type="radio" class="btn-check" name="options" id="sortAsc">
-                <label class="btn btn-light" for="sortAsc">A-Z</label>
-                <input type="radio" class="btn-check" name="options" id="sortDesc">
-                <label class="btn btn-light" for="sortDesc">Z-A</label>
-                <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-                <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+  
+        <li class="row btn-group">
+          <div class="container">
+            <div class="row container">
+              <div class="col w-50 m-1">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
               </div>
+            </div>
+  
+          <div class="row container">
+            <div class="col w-50 m-1">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
           </div>
+        </div>
         </li>
-          <li class="row btn-group">
-            <div class="container">
-              <div class="row container">
-                <div class="">
-                  <p class="font-weight-normal">Cant.</p>
-                </div>
-                <div class="w-50">
-                  <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-                </div>
-                <div class="w-50">
-                  <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="col-3 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-            </div>
-          </li>
+  
+        <li class="col m-1 text-center">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
+          </div>
+        </li>
+  
+        <li class="col m-1 text-center">
+          <input type="radio" class="btn-check" name="options" id="sortAsc">
+          <label class="btn btn-light" for="sortAsc">A-Z</label>
+          <input type="radio" class="btn-check" name="options" id="sortDesc">
+          <label class="btn btn-light" for="sortDesc">Z-A</label>
+          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+          <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+        </li>
       </ul>
     </div>
     <div class="container">
