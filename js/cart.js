@@ -33,16 +33,38 @@ function deleteItem(idP){
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
     window.location.replace('cart.html');
 }
+
+// Resetea las cantidades negativas
+
+function resetNegatives(number){
+    if(document.getElementById("quantity" + number).value <= 0){
+        document.getElementById("quantity" + number).value = 1;
+    }
+}
+
+// Cambia de manera dinámica los subtotales de los productos
+
+function changeValue(num){
+    let priceTag = document.getElementById("price" + num);
+    let newQuantity = document.getElementById("quantity" + num);
+    let subtotalPrice = document.getElementById("subtotal" + num);
+    if(newQuantity.value > 0){
+        subtotalPrice.innerHTML = newQuantity.value * priceTag.innerHTML;
+    } else {
+        subtotalPrice.innerHTML = priceTag.innerHTML;
+    }
+}
+
 // Agrega un elemento a la tabla del carrito
 
-function createListItem(product){
+function createListItem(product, num){
     let productListItem = 
     `<tr>
         <td class="align-middle"><img src="${product.image}" alt="Picture" class="img-thumbnail productImage"></td>
         <td class="align-middle">${product.name}</td>
-        <td class="align-middle" id="costo">${product.currency} ${product.unitCost}</td>
-        <td class="align-middle"><input type="number" id="cantidad" min="1" value="${product.count}"></td>
-        <td class="align-middle"> ${product.currency} <span id="subtotal"> ${product.unitCost} </span></td>
+        <td class="align-middle">${product.currency} <span id="price${num}">${product.unitCost}</span></td>
+        <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num})" onblur="resetNegatives(${num})"></td>
+        <td class="align-middle"> ${product.currency} <span id="subtotal${num}"> ${product.unitCost} </span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
     </tr>`
     return productListItem;
@@ -63,8 +85,10 @@ function createListItem(product){
 // Muestra los productos en el carrito
 
 function displayProductInTheCart(productList){
+    let cantProd = 0;
     for(let product of productList[actualUserCart].articles){
-        cartProductList.innerHTML += createListItem(product);
+        cartProductList.innerHTML += createListItem(product, cantProd);
+        cantProd++;
     }
 }
 
