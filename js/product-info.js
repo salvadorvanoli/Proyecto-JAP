@@ -288,8 +288,8 @@ fetch(URL_COMMENTS)
 
 
 //PARTE 4 - AÑADE EFECTO ESTRELLAS
-const stars = document.querySelectorAll('.star');
 
+const stars = document.querySelectorAll('.star');
 
 stars.forEach(function(star, index){
     star.addEventListener('click', function(){
