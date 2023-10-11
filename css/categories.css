@@ -1,3 +1,39 @@
 .btn, .btn-light, .btn-block{
     border: gray 2px solid;
 }
+
+/* Estilo para dar tamaño a las cards de los elementos según la pantalla*/
+
+/* Estilos para pantallas pequeñas */
+
+@media (max-width: 767px) {
+    #cat-list-container{
+        width: 75%;
+    }
+}
+  
+/* Estilos para pantallas medianas */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #cat-list-container{
+        width: 70%;
+    }
+}
+  
+/* Estilos para pantallas grandes */
+
+@media (min-width: 1024px) {
+    #cat-list-container{
+        width: 40%;
+    }
+}
+
+.productCard{
+    transition: transform ease 0.5s;
+}
+
+.productCard:hover{
+    transform: scale(105%);
+    z-index: 20;
+    cursor: pointer;
+}
