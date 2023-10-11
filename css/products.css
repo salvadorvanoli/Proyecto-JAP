@@ -67,3 +67,13 @@ div .col{
         width: 40%;
     }
 }
+
+.productCard{
+    transition: transform ease 0.5s;
+}
+
+.productCard:hover{
+    transform: scale(105%);
+    z-index: 20;
+    cursor: pointer;
+}
