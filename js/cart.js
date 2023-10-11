@@ -19,7 +19,7 @@ function createListItem(product){
         <td class="align-middle"><img src="${product.images[0]}" alt="Picture" class="img-thumbnail productImage"></td>
         <td class="align-middle">${product.name}</td>
         <td class="align-middle" id="costo">${product.currency} ${product.cost}</td>
-        <td class="align-middle"><input type="number"id="cantidad" min="1" value="1"></td>
+        <td class="align-middle"><input type="number" id="cantidad" min="1" value="${product.quantity}"></td>
         <td class="align-middle"> ${product.currency} <span id="subtotal"> ${product.cost} </span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
     </tr>`

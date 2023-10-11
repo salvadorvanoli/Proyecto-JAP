@@ -17,6 +17,7 @@ function inTheCart(info){
 
 function buyProduct(){
   if(!inTheCart(productInfoFetch)){
+    productInfoFetch.quantity = 1;
     productsInTheCart.push(productInfoFetch);
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
   }
