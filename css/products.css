@@ -1,61 +1,3 @@
-/* Estilo para mostrar los productos */
-
-.product{
-    position: relative;
-    border: 6px black solid;
-    border-radius: 10px;
-    margin: 10px;
-    padding-bottom: 75px;
-    user-select: none;
-    transition: transform 0.3s ease;
-}
-
-.product:hover{
-    transform: scale(1.1);
-}
-
-.imageElement{
-    width: 250px;
-    float: left;
-    border: lightblue solid 5px;
-    border-radius: 10px;
-    box-shadow: 5px 10px 10px lightgray;
-    margin: 10px;
-    transition: transform 0.3s ease;
-}
-
-.imageElement:hover{
-    transform: scale(1.1);
-}
-
-.nameElement{
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-decoration: underline skyblue 3px;
-}
-
-.nameElement::first-letter{
-    font-size: 150%;
-}
-
-.priceElement{
-    color: green;
-    font-size: 150%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 10px
-}
-
-.soldElement{
-    font-size: 50%;
-    color: gray;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-}
-
 /* Estilo del botón para subir */
 
 #volverArriba{
@@ -84,7 +26,7 @@
 input[type="search"] {
     background-color: lightblue;
     text-align: center;
-    width: 35%;
+    width: 75%;
     padding: 12px;
     border: 3px solid #5856d6;
     border-radius: 5px;
@@ -98,4 +40,30 @@ div .col{
 
 .btn, .btn-light, .btn-block{
     border: gray 2px solid;
+}
+
+/* Estilo para dar tamaño a las cards de los elementos según la pantalla*/
+
+/* Estilos para pantallas pequeñas */
+
+@media (max-width: 767px) {
+    #product-list{
+        width: 75%;
+    }
+}
+  
+/* Estilos para pantallas medianas */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #product-list{
+        width: 70%;
+    }
+}
+  
+/* Estilos para pantallas grandes */
+
+@media (min-width: 1024px) {
+    #product-list{
+        width: 40%;
+    }
 }
