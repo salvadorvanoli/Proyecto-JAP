@@ -6,19 +6,56 @@ function redirectToTheCart(){
   window.location.replace('cart.html');
 }
 
-function inTheCart(info){
-  for(let i = 0; i<productsInTheCart.length; i++){
-    if(info.id == productsInTheCart[i].id){
+function inTheCart(info, userNumber){
+  for(let i = 0; i<productsInTheCart[userNumber].articles.length; i++){
+    if(info.id == productsInTheCart[userNumber].articles[i].id){
       return true;
     }
   }
   return false;
 }
 
+function userHasItems(username){
+  let cont = 0;
+  for(let userCart of productsInTheCart){
+    if(userCart.user[0] == username){
+      return cont;
+    }
+    cont++;
+  }
+  return -1;
+}
+
 function buyProduct(){
-  if(!inTheCart(productInfoFetch)){
-    productInfoFetch.quantity = 1;
-    productsInTheCart.push(productInfoFetch);
+  let cant = userHasItems(JSON.parse(localStorage.getItem("username")));
+  if(cant !== -1){
+    let newItem = {
+      "id": productInfoFetch.id,
+      "name": productInfoFetch.name,
+      "count": 1,
+      "unitCost": productInfoFetch.cost,
+      "currency": productInfoFetch.currency,
+      "image": productInfoFetch.images[0]
+    };
+    if(!inTheCart(newItem, cant)){
+      productsInTheCart[cant].articles.push(newItem);
+      localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+    }
+  } else {
+    let newCart = {
+      "user": [JSON.parse(localStorage.getItem("username"))],
+      "articles": [
+        {
+          "id": productInfoFetch.id,
+          "name": productInfoFetch.name,
+          "count": 1,
+          "unitCost": productInfoFetch.cost,
+          "currency": productInfoFetch.currency,
+          "image": productInfoFetch.images[0]
+        }
+      ]
+    };
+    productsInTheCart.push(newCart);
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
   }
 }
@@ -32,6 +69,7 @@ function createText(options) {
 }
 
 // Crea un carousel de bootstrap 
+
 function createCarousel(images, options) {
 
   let imageElementsString = "";
