@@ -56,7 +56,7 @@ function setProductID(id){
 
 function displayProduct(product){
   let card = `
-  <div class="">
+  <div>
     <div class="card m-2 border border-dark productCard" onclick="setProductID('${product.id}')">
       <img src="${product.image}" class="card-img-top" alt="productPhoto">
       <div class="card-body">

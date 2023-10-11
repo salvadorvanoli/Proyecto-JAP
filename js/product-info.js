@@ -248,7 +248,7 @@ function showRelatedProducts(data){
   let contentToAppend = "";
   for (const item of data.relatedProducts) {
     contentToAppend += `
-        <div class="card" style="width: 18rem;">
+        <div class="card">
           <img src="`+item.image+`" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">`+item.name+`</h5>
