@@ -1,12 +1,5 @@
 let cartProductList = document.getElementById("cartProductList");
-let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [
-    {
-        "user": [
-            JSON.parse(localStorage.getItem("username"))
-        ],
-        "articles": []
-    }
-];
+let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
 
 // Busca cuál es el carrito del usuario actual
 
@@ -114,7 +107,9 @@ displayProductInTheCart(productsInTheCart);
 
 
 // Se agrega un producto pre cargado de la URL y permanece en todas las cuentas que se inicien :)
+
 const CART_URL_USER_PRODUCT = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+
 function inTheCart(info, userNumber){
     for(let i = 0; i<productsInTheCart[userNumber].articles.length; i++){
         if(info.id == productsInTheCart[userNumber].articles[i].id){
@@ -125,14 +120,13 @@ function inTheCart(info, userNumber){
 }
 
 fetch(CART_URL_USER_PRODUCT)
-    .then(response => response.json())
-    .then(data => {
-        let CART_USER_PRODUCTS = data.articles;
-        let PRODUCT_CART_USER = data.articles[0];
-        if (!inTheCart(PRODUCT_CART_USER, actualUserCart)){
-            productsInTheCart[actualUserCart].articles.push(PRODUCT_CART_USER);
-            localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
-            window.location.replace('cart.html');
-        }
-    })
-    .catch(error => console.log(error));
+.then(response => response.json())
+.then(data => {
+    let PRODUCT_CART_USER = data.articles[0];
+    if (!inTheCart(PRODUCT_CART_USER, actualUserCart)){
+        productsInTheCart[actualUserCart].articles.push(PRODUCT_CART_USER);
+        localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+        window.location.replace('cart.html');
+    }
+})
+.catch(error => console.log(error));

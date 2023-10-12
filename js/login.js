@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function(){
         return false;
     }
     
+    let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
+
     loginForm.addEventListener("submit", function(){
         if(password1.value===password2.value){
             if(!userExists()){
@@ -32,6 +34,16 @@ document.addEventListener("DOMContentLoaded", function(){
                 localStorage.setItem('allTheEmails', JSON.stringify(usernameArray));
                 localStorage.setItem('allThePasswords', JSON.stringify(passwordArray));
                 localStorage.setItem('loggedIn', JSON.stringify(true));
+                let newCart = 
+                    {
+                        "user": [
+                            email.value
+                        ],
+                        "articles": []
+                    }
+                ;
+                productsInTheCart.push(newCart);
+                localStorage.setItem('productsInTheCart', JSON.stringify(productsInTheCart));
             } else {
                 alert("Usuario ya existente, inicie sesión");
                 event.preventDefault();
