@@ -42,6 +42,28 @@ function resetNegatives(number){
     }
 }
 
+function searchProduct(id, cart){
+    let cont = 0;
+    for(let product of cart){
+        if(product.id === id){
+            return cont;
+        }
+        cont++;
+    }
+    return -1;
+}
+
+function saveQuantities(number, id){
+    let cart = productsInTheCart[actualUserCart].articles;
+    productsInTheCart[actualUserCart].articles[searchProduct(id, cart)].count = document.getElementById("quantity" + number).value;
+    localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+}
+
+function quantityOnBlur(number, id){
+    resetNegatives(number);
+    saveQuantities(number, id);
+}
+
 // Cambia de manera dinámica los subtotales de los productos
 
 function changeValue(num){
@@ -63,7 +85,7 @@ function createListItem(product, num){
         <td class="align-middle"><img src="${product.image}" alt="Picture" class="img-thumbnail productImage"></td>
         <td class="align-middle">${product.name}</td>
         <td class="align-middle">${product.currency} <span id="price${num}">${product.unitCost}</span></td>
-        <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num})" onblur="resetNegatives(${num})"></td>
+        <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num})" onblur="quantityOnBlur(${num}, ${product.id})"></td>
         <td class="align-middle"> ${product.currency} <span id="subtotal${num}"> ${product.unitCost} </span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
     </tr>`
