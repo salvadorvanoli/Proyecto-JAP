@@ -111,3 +111,13 @@ function displayProductInTheCart(productList){
 // Llamado a la función para mostrar todos los productos del carrito
 
 displayProductInTheCart(productsInTheCart);
+
+const CART_URL_USER_PRODUCT = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+fetch(CART_URL_USER_PRODUCT)
+    .then(response => response.json())
+    .then(data => {
+        let CART_USER_PRODUCTS = data.articles;
+        let PRODUCT_CART_USER = data.articles[0];
+        cartProductList.innerHTML += createListItem(PRODUCT_CART_USER, 1);
+    })
+    .catch(error => console.log(error));
