@@ -18,7 +18,7 @@ function inTheCart(info, userNumber){
 function userHasItems(username){
   let cont = 0;
   for(let userCart of productsInTheCart){
-    if(userCart.user[0] == username){
+    if(userCart.user == username){
       return cont;
     }
     cont++;
@@ -43,7 +43,7 @@ function buyProduct(){
     }
   } else {
     let newCart = {
-      "user": [JSON.parse(localStorage.getItem("username"))],
+      "user": JSON.parse(localStorage.getItem("username")),
       "articles": [
         {
           "id": productInfoFetch.id,

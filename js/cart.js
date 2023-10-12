@@ -6,7 +6,7 @@ let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) ||
 function searchUserCart(username){
     let cont = 0;
     for(let userCart of productsInTheCart){
-        if(userCart.user[0] == username){
+        if(userCart.user == username){
         return cont;
         }
         cont++;
@@ -104,7 +104,6 @@ function displayProductInTheCart(productList){
 // Llamado a la función para mostrar todos los productos del carrito
 
 displayProductInTheCart(productsInTheCart);
-
 
 // Se agrega un producto pre cargado de la URL y permanece en todas las cuentas que se inicien :)
 

@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 localStorage.setItem('loggedIn', JSON.stringify(true));
                 let newCart = 
                     {
-                        "user": [
+                        "user": 
                             email.value
-                        ],
+                        ,
                         "articles": []
                     }
                 ;
