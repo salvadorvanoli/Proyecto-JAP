@@ -42,6 +42,8 @@ function resetNegatives(number){
     }
 }
 
+// Busca el número de un producto en un array y lo devuelve
+
 function searchProduct(id, cart){
     let cont = 0;
     for(let product of cart){
@@ -53,11 +55,15 @@ function searchProduct(id, cart){
     return -1;
 }
 
+// Guarda las cantidades actualizadas de los productos agregados al carrito
+
 function saveQuantities(number, id){
     let cart = productsInTheCart[actualUserCart].articles;
     productsInTheCart[actualUserCart].articles[searchProduct(id, cart)].count = document.getElementById("quantity" + number).value;
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
 }
+
+// Combina las funciones de resetear los valores negativos y guardar las cantidades actualizadas
 
 function quantityOnBlur(number, id){
     resetNegatives(number);
@@ -91,18 +97,6 @@ function createListItem(product, num){
     </tr>`
     return productListItem;
 }
-
-// Permite calcular en tiempo real el subtotal
-
-// document.addEventListener('DOMContentLoaded', function(){
-//     let cantidad = document.getElementById('cantidad');
-//     cantidad.dataset.oldValue = cantidad.value;
-//     cantidad.addEventListener('change', function(){
-//         let subtotal = document.getElementById('subtotal');
-//         subtotal.innerHTML = subtotal.innerHTML / cantidad.dataset.oldValue * cantidad.value;
-//         cantidad.dataset.oldValue = cantidad.value;
-//     });
-// });
 
 // Muestra los productos en el carrito
 
