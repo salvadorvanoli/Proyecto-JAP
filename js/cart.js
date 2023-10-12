@@ -1,48 +1,110 @@
 let cartProductList = document.getElementById("cartProductList");
-let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
+let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [
+    {
+        "user": [
+            JSON.parse(localStorage.getItem("username"))
+        ],
+        "articles": []
+    }
+];
+
+// Busca cuál es el carrito del usuario actual
+
+function searchUserCart(username){
+    let cont = 0;
+    for(let userCart of productsInTheCart){
+      if(userCart.user[0] == username){
+        return cont;
+      }
+      cont++;
+    }
+    return -1;
+}
+
+let actualUserCart = searchUserCart(JSON.parse(localStorage.getItem("username")));
 
 // Elimina un producto del carrito
 
 function deleteItem(idP){
-    let noItemArray = productsInTheCart.filter(element => {
+    let noItemArray = productsInTheCart[actualUserCart].articles.filter(element => {
         return element.id != idP;
     })
-    productsInTheCart = noItemArray;
+    productsInTheCart[actualUserCart].articles = noItemArray;
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
     window.location.replace('cart.html');
 }
+
+// Resetea las cantidades negativas
+
+function resetNegatives(number){
+    if(document.getElementById("quantity" + number).value <= 0){
+        document.getElementById("quantity" + number).value = 1;
+    }
+}
+
+// Busca el número de un producto en un array y lo devuelve
+
+function searchProduct(id, cart){
+    let cont = 0;
+    for(let product of cart){
+        if(product.id === id){
+            return cont;
+        }
+        cont++;
+    }
+    return -1;
+}
+
+// Guarda las cantidades actualizadas de los productos agregados al carrito
+
+function saveQuantities(number, id){
+    let cart = productsInTheCart[actualUserCart].articles;
+    productsInTheCart[actualUserCart].articles[searchProduct(id, cart)].count = document.getElementById("quantity" + number).value;
+    localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+}
+
+// Combina las funciones de resetear los valores negativos y guardar las cantidades actualizadas
+
+function quantityOnBlur(number, id){
+    resetNegatives(number);
+    saveQuantities(number, id);
+}
+
+// Cambia de manera dinámica los subtotales de los productos
+
+function changeValue(num){
+    let priceTag = document.getElementById("price" + num);
+    let newQuantity = document.getElementById("quantity" + num);
+    let subtotalPrice = document.getElementById("subtotal" + num);
+    if(newQuantity.value > 0){
+        subtotalPrice.innerHTML = newQuantity.value * priceTag.innerHTML;
+    } else {
+        subtotalPrice.innerHTML = priceTag.innerHTML;
+    }
+}
+
 // Agrega un elemento a la tabla del carrito
 
-function createListItem(product){
+function createListItem(product, num){
     let productListItem = 
     `<tr>
-        <td class="align-middle"><img src="${product.images[0]}" alt="Picture" class="img-thumbnail productImage"></td>
+        <td class="align-middle"><img src="${product.image}" alt="Picture" class="img-thumbnail productImage"></td>
         <td class="align-middle">${product.name}</td>
-        <td class="align-middle" id="costo">${product.currency} ${product.cost}</td>
-        <td class="align-middle"><input type="number"id="cantidad" min="1" value="1"></td>
-        <td class="align-middle"> ${product.currency} <span id="subtotal"> ${product.cost} </span></td>
+        <td class="align-middle">${product.currency} <span id="price${num}">${product.unitCost}</span></td>
+        <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num})" onblur="quantityOnBlur(${num}, ${product.id})"></td>
+        <td class="align-middle"> ${product.currency} <span id="subtotal${num}"> ${product.unitCost} </span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
     </tr>`
     return productListItem;
 }
 
-// Permite calcular en tiempo real los el subtotal
-
-document.addEventListener('DOMContentLoaded', function(){
-    let cantidad = document.getElementById('cantidad');
-    cantidad.dataset.oldValue = cantidad.value;
-    cantidad.addEventListener('change', function(){
-        let subtotal = document.getElementById('subtotal');
-        subtotal.innerHTML = subtotal.innerHTML / cantidad.dataset.oldValue * cantidad.value;
-        cantidad.dataset.oldValue = cantidad.value;
-    });
-});
-
 // Muestra los productos en el carrito
 
 function displayProductInTheCart(productList){
-    for(let product of productList){
-        cartProductList.innerHTML += createListItem(product);
+    let cantProd = 0;
+    for(let product of productList[actualUserCart].articles){
+        cartProductList.innerHTML += createListItem(product, cantProd);
+        cantProd++;
     }
 }
 

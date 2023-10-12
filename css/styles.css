@@ -250,6 +250,7 @@ a.custom-card:hover {
     opacity: 1;
   }
 }
+
 @media (max-width: 300px) {
     .Btn {
         width: 20px;
