@@ -87,7 +87,6 @@ p{
   border-radius: 30px;
 }
 
-
 .input {
   width: 65%; 
   display: flex;
@@ -100,12 +99,14 @@ p{
   outline: none;
   padding: 1px 0;
   font-size: 13px;
+  max-width: 300px;
 }
+
 #email{
   height: auto;
   margin-bottom: 1rem;
-  margin-left: 13%;
 }
+
 .form-label {
   color: azure;
   display: flex;
@@ -114,7 +115,7 @@ p{
 }
 
 .btn-primary {
-border-radius: 20px;
+  border-radius: 20px;
 }
 
 .btn {
@@ -251,7 +252,7 @@ border-radius: 20px;
   font-size: small;
 }
 
-/* RESPONS */
+/* RESPONSIVE */
 @media only screen and (min-width: 1000px) {
   .formulario {
     width: 70%;
@@ -289,10 +290,8 @@ border-radius: 20px;
     width: 65%;
     height: auto;
     margin-bottom: 3rem;
-    margin-left: 50px;
     padding: 3px 0;
     font-size: 18px;
-
   }
 
   .create-account {
@@ -371,7 +370,6 @@ border-radius: 20px;
     margin-bottom: 3rem;
     padding: 3px 0;
     font-size: 18px;
-
   }
 
   .create-account {
@@ -423,10 +421,8 @@ border-radius: 20px;
   #email{
     height: auto;
     margin-bottom: 1rem;
-    margin-left: 13%;
     padding: 3px 0;
     font-size: 14px;
-
   }
 
   .create-account {
