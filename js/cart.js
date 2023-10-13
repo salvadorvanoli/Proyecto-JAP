@@ -78,7 +78,7 @@ function changeValue(num){
 
 // Agrega un elemento a la tabla del carrito
 
-function createListItem(product, num){
+function createListItem(product, num) {
     let productListItem = 
     `<tr>
         <td class="align-middle"><img src="${product.image}" alt="Picture" class="img-thumbnail productImage"></td>
@@ -87,23 +87,10 @@ function createListItem(product, num){
         <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num})" onblur="quantityOnBlur(${num}, ${product.id})"></td>
         <td class="align-middle"> ${product.currency} <span id="subtotal${num}"> ${product.unitCost} </span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
-    </tr>`
+    </tr>`;
+
     return productListItem;
 }
-
-// Muestra los productos en el carrito
-
-function displayProductInTheCart(productList){
-    let cantProd = 1;
-    for(let product of productList[actualUserCart].articles){
-        cartProductList.innerHTML += createListItem(product, cantProd);
-        cantProd++;
-    }
-}
-
-// Llamado a la función para mostrar todos los productos del carrito
-
-displayProductInTheCart(productsInTheCart);
 
 // Se agrega un producto pre cargado de la URL y permanece en todas las cuentas que se inicien :)
 
@@ -129,3 +116,27 @@ fetch(CART_URL_USER_PRODUCT)
     }
 })
 .catch(error => console.log(error));
+
+
+// Muestra los productos en el carrito y carga los precios de subtotal
+
+function displayProductInTheCart(productList){
+    let cantProd = 0;
+    for(let product of productList[actualUserCart].articles){
+        cartProductList.innerHTML += createListItem(product, cantProd);
+        cantProd++;
+    }
+}
+
+function loadPrices(){
+    let cont = 0;
+    for(let product of productsInTheCart[actualUserCart].articles){
+        changeValue(cont);
+        cont++;
+    }
+}
+
+// Llamado a la función para mostrar todos los productos del carrito 
+
+displayProductInTheCart(productsInTheCart);
+loadPrices();

@@ -125,7 +125,25 @@ function createCarousel(images, options) {
   `
 }
 
-// Crea un carrousel 
+// Crea elementos de texto
+
+function createText(options) {
+  const element = document.createElement(options.element);
+  element.classList.add(options.class);
+
+  const titles = ['Descripción:', 'Precio:', 'Categoría:', 'Vendidos:'];
+  const matches = titles.filter(title => options.text.includes(title));
+
+  if (matches.length > 0) {
+    const title = matches[0];
+    const content = options.text.split(title)[1];
+    element.innerHTML = `<b>${title}</b>${content}`;
+  } else {
+    element.textContent = options.text;
+  }
+
+  return element;
+}
 
 function displayProduct(product) {
   // Crea el contenedor del producto
@@ -140,25 +158,6 @@ function displayProduct(product) {
     createText({ element: 'p', class: 'category', text: `Categoría: ${product.category}` }),
     createText({ element: 'p', class: 'soldCount', text: `Vendidos: ${product.soldCount}` }),
   ];
-
-  //Hace que los titulos esten en negrita
-  function createText(options) {
-    const element = document.createElement(options.element);
-    element.classList.add(options.class);
-  
-    const titles = ['Descripción:', 'Precio:', 'Categoría:', 'Vendidos:'];
-    const matches = titles.filter(title => options.text.includes(title));
-  
-    if (matches.length > 0) {
-      const title = matches[0];
-      const content = options.text.split(title)[1];
-      element.innerHTML = `<b>${title}</b>${content}`;
-    } else {
-      element.textContent = options.text;
-    }
-  
-    return element;
-  }
 
   // se pasan las imagenes al metodo de creacion del carousel
   const carousel = createCarousel(product.images, { title: "", description: "" });
