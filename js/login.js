@@ -37,8 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 let newCart = 
                     {
                         "user": 
-                            email.value
-                        ,
+                            email.value,
                         "articles": []
                     }
                 ;
