@@ -175,7 +175,7 @@ function displayProduct(product) {
 
   // Botón de compra y desplegable para redirigir al carrito
 
-  let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
+  let button = `<button type="button" class="btn btn-cart" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
   <div class="modal" id="cartModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -184,7 +184,7 @@ function displayProduct(product) {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="redirectToTheCart()">Ir al carrito</button>
+          <button type="button" class="btn btn-cart" onclick="redirectToTheCart()">Ir al carrito</button>
         </div>
       </div>
     </div>
