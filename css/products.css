@@ -24,11 +24,11 @@
 }
 
 input[type="search"] {
-    background-color: lightblue;
+    background-color: #5856d665;
     text-align: center;
-    width: 75%;
+    width: 50%;
     padding: 12px;
-    border: 3px solid #5856d6;
+    border: 3px solid #344966;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
@@ -42,6 +42,12 @@ div .col{
     border: gray 2px solid;
 }
 
+.card-deck{
+    background-color: #344966c7;
+    background-size: cover;
+    padding: 2%;
+}
+
 /* Estilo para dar tamaño a las cards de los elementos según la pantalla*/
 
 /* Estilos para pantallas pequeñas */
@@ -49,6 +55,9 @@ div .col{
 @media (max-width: 767px) {
     #product-list{
         width: 75%;
+    }
+    input[type="search"] {
+        width: 85%;
     }
 }
   
@@ -64,7 +73,7 @@ div .col{
 
 @media (min-width: 1024px) {
     #product-list{
-        width: 40%;
+        width: 45%;
     }
 }
 
@@ -77,3 +86,4 @@ div .col{
     z-index: 20;
     cursor: pointer;
 }
+

@@ -3,6 +3,7 @@ body{
 }
 
 
+
 .jumbotron,
 .card-body,
 .container,
@@ -28,7 +29,13 @@ nav a {
   user-select: none;
 }
 
-@media (min-width: 768px) {
+@media screen and(max-width: 700px) {
+  .text-muted{
+    font-size: 14px;
+}
+}
+
+@media screen and(min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
@@ -51,6 +58,7 @@ nav a {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
+    width: 50%s;
   }
 }
 
@@ -264,4 +272,14 @@ a.custom-card:hover {
         width: 30px;
         bottom: -5px;
     }
+}
+.blue{
+    background-color: #11202c;
+    border-color: #11202c;
+    color: aliceblue;
+}
+.blue:hover {
+  background-color: #172b3a; 
+  border-color: #172b3a;
+  color: darkgray;
 }
