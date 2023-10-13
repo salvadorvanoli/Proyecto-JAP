@@ -361,14 +361,12 @@ border-radius: 20px;
     padding: 2rem 0;
   }
   .formulario input {
-    width: 65%; 
     height: auto;
     margin-bottom: 3rem;
     padding: 3px 0;
     font-size: 18px;
   }
   #email{
-    width: 65%;
     height: auto;
     margin-bottom: 3rem;
     padding: 3px 0;
