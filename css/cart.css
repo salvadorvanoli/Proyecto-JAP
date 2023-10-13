@@ -14,9 +14,14 @@
 
 #deliveryForm{
     max-width: 500px;
+    border-radius: 30px;
 }
 
-*{
+#title-send{
+    text-align: center;
+}
+
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -67,4 +72,4 @@
 .tittle-send{
     width: 700%;
     text-align: justify;
-}
+} */
