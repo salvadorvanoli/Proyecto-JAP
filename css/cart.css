@@ -22,6 +22,7 @@
     box-sizing: border-box;
 }
 
+
 .form-group {
     width: 450px;
     background-color: #24303c;
@@ -61,4 +62,9 @@
     color: rgb(255, 255, 255);
     margin: 16px;
     font-size: 16px;
+}
+
+.tittle-send{
+    width: 700%;
+    text-align: justify;
 }
