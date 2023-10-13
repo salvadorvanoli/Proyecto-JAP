@@ -14,15 +14,15 @@ function searchUserCart(username){
     return -1;
 }
 
-let actualUserCart = searchUserCart(JSON.parse(localStorage.getItem("username")));
+let currentUserCart = searchUserCart(JSON.parse(localStorage.getItem("username")));
 
 // Elimina un producto del carrito
 
 function deleteItem(idP){
-    let noItemArray = productsInTheCart[actualUserCart].articles.filter(element => {
+    let noItemArray = productsInTheCart[currentUserCart].articles.filter(element => {
         return element.id != idP;
     })
-    productsInTheCart[actualUserCart].articles = noItemArray;
+    productsInTheCart[currentUserCart].articles = noItemArray;
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
     window.location.replace('cart.html');
 }
@@ -51,8 +51,8 @@ function searchProduct(id, cart){
 // Guarda las cantidades actualizadas de los productos agregados al carrito
 
 function saveQuantities(number, id){
-    let cart = productsInTheCart[actualUserCart].articles;
-    productsInTheCart[actualUserCart].articles[searchProduct(id, cart)].count = document.getElementById("quantity" + number).value;
+    let cart = productsInTheCart[currentUserCart].articles;
+    productsInTheCart[currentUserCart].articles[searchProduct(id, cart)].count = document.getElementById("quantity" + number).value;
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
 }
 
@@ -109,8 +109,8 @@ fetch(CART_URL_USER_PRODUCT)
 .then(response => response.json())
 .then(data => {
     let PRODUCT_CART_USER = data.articles[0];
-    if (!inTheCart(PRODUCT_CART_USER, actualUserCart)){
-        productsInTheCart[actualUserCart].articles.push(PRODUCT_CART_USER);
+    if (!inTheCart(PRODUCT_CART_USER, currentUserCart)){
+        productsInTheCart[currentUserCart].articles.push(PRODUCT_CART_USER);
         localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
         window.location.replace('cart.html');
     }
@@ -122,7 +122,7 @@ fetch(CART_URL_USER_PRODUCT)
 
 function displayProductInTheCart(productList){
     let cantProd = 0;
-    for(let product of productList[actualUserCart].articles){
+    for(let product of productList[currentUserCart].articles){
         cartProductList.innerHTML += createListItem(product, cantProd);
         cantProd++;
     }
@@ -130,7 +130,7 @@ function displayProductInTheCart(productList){
 
 function loadPrices(){
     let cont = 0;
-    for(let product of productsInTheCart[actualUserCart].articles){
+    for(let product of productsInTheCart[currentUserCart].articles){
         changeValue(cont);
         cont++;
     }
