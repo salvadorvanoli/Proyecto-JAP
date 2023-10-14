@@ -254,9 +254,9 @@ p{
 
 /* RESPONSIVE */
 
-/* Se comentó ya que hay que mejorarlo */
+/* Hay que mejorarlo */
 
-/* @media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1000px) {
   .formulario {
     width: 70%;
     font-size: 1.5rem;
@@ -460,4 +460,4 @@ p{
   .text-muted{
     font-size: 14px;
   }
-} */
+}
