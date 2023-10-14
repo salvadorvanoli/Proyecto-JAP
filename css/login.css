@@ -48,7 +48,7 @@ p{
   margin-top: 40%;
 }
 
-.message button {
+.message button{
   padding: 10px;
   font-weight: 400;
   background-color: #11202c;
@@ -253,7 +253,10 @@ p{
 }
 
 /* RESPONSIVE */
-@media only screen and (min-width: 1000px) {
+
+/* Se comentó ya que hay que mejorarlo */
+
+/* @media only screen and (min-width: 1000px) {
   .formulario {
     width: 70%;
     font-size: 1.5rem;
@@ -457,4 +460,4 @@ p{
   .text-muted{
     font-size: 14px;
   }
-}
+} */
