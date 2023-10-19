@@ -17,59 +17,10 @@
     border-radius: 30px;
 }
 
+#costosContainer{
+    max-width: 700px;
+}
+
 #title-send{
     text-align: center;
 }
-
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-.form-group {
-    width: 450px;
-    background-color: #24303c;
-    padding: 20px;
-    color: white;
-    margin: auto;
-    margin-top: 50px;
-    border-radius: 10px;
-    font-family: 'calibri';
-    box-shadow: 7px 13px 37px #000;
-}
-.form-send{
-    width: 250px;
-}
-
-.form-group h2 {
-    font-size: 50px;
-    margin-bottom: 22px;
-}
-
-.controls, .button_confirm {
-    width: 100%;
-    background: #24303c;
-    padding: 7px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #1f53c5;
-    font-family: 'calibri';
-    font-size: 18px;
-    color: white;
-}
-
-.form-group button_confirm{
-    width: 100%;
-    border: none;
-    padding: 12px;
-    color: rgb(255, 255, 255);
-    margin: 16px;
-    font-size: 16px;
-}
-
-.tittle-send{
-    width: 700%;
-    text-align: justify;
-} */

@@ -86,7 +86,33 @@
         </table>
       </div>
     </div>
-    <!-- Parte2 Tipo de envio-->
+    <!-- Precios -->
+    <h2 class="text-center">Costos</h2>
+    <div class="container mb-5" id="costosContainer">
+      <div class="row mx-auto list-group m-1">
+        <div class="row mx-auto col-12 border border-dark rounded">
+          <div class="col-6">Subtotal</div>
+          <div class="col-6 text-end">USD <span id="finalSubtotal"></span></div>
+          <div class="col-12 text-muted">Costo unitario del producto por cantidad</div>
+        </div>
+      </div>
+
+      <div class="row mx-auto list-group m-1">
+        <div class="row mx-auto col-12 border border-dark rounded">
+          <div class="col-6">Costo de envío</div>
+          <div class="col-6 text-end">USD <span id="finalSend"></span></div>
+          <div class="col-12 text-muted">Según el tipo de envío</div>
+        </div>
+      </div>
+
+      <div class="row mx-auto list-group m-1">
+        <div class="row mx-auto col-12 border border-dark rounded">
+          <div class="col-6">Total ($)</div>
+          <div class="col-6 text-end fw-bold">USD <span id="finalTotal"></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Tipo de envio-->
     <div class="container border border-dark p-2 shadow-sm" id="deliveryForm">
       <form action="">
         <div class="form-group">
@@ -105,7 +131,7 @@
             </div>
 
             <div class="d-block">
-              <input class="form-check-input" type="radio" id="Standard" name="tipoEnvio" value="Standard">
+              <input class="form-check-input" type="radio" id="Standard" name="tipoEnvio" value="Standard" checked>
               <label class="form-check-label" for="Standard">Standard - 12 a 15 días (5%)</label>
             </div>
           </div>
