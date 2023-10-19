@@ -135,7 +135,7 @@ function changeValue(num, id){
     let priceTag = document.getElementById("price" + num);
     let newQuantity = document.getElementById("quantity" + num);
     let subtotalPrice = document.getElementById("subtotal" + num);
-    if(newQuantity.value >= 0 && newQuantity.value <= 10000000000000000){
+    if(newQuantity.value >= 0 && newQuantity.value <= 1000){
         subtotalPrice.innerHTML = newQuantity.value * priceTag.innerHTML;
     } else {
         subtotalPrice.innerHTML = 0;
