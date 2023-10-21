@@ -169,7 +169,112 @@
           <div>
             <input class="form-control m-1" type="text" name="aditional" placeholder="Referencia (opcional)">
           </div>
+
+ <!-- Comienza el modal de pago      -->
+   
+     <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#paymentModal" data-bs-whatever="@getbootstrap">Formas de pago</button>
+
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable d-flex"role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Formas de pago</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Tarjeta Debito/Credito
+          </label>
+        </div>
+        <hr>
+        <div class="credit-card d-flex align-content-center">
+
+          <!-- Formulario de tarjeta -->
+          <form class="d-grid">
+              <div>
+                <img src="img/icons8-chip-de-tarjeta-sim-40.png" alt="">
+              </div>
+              <div class="row">
+                <div class="form-group"> 
+                  <label>NUMERO DE TARJETA</label>
+                  <div class="input-group"> 
+                    <input type="tel" pattern="[0-9]{13,16}" required placeholder="Insertar numero" id="numberCard" /> 
+                    <span class="input-group-text" ><span class="fa fa-credit-card "></span></span> 
+                  </div>
+                </div>
+                <div class="form-group"> 
+                  <label>NOMBRE</label> 
+                  <div class="input-group"> 
+                    <input class="name" type="text" required placeholder="Insertar nombre" id="nameCard"/> 
+                  </div>
+                </div>
+                <div class="col form-group"> 
+                    <label><span class="hidden-xs" title="Fecha de vencimiento de la tarjeta">VALIDO HASTA <i class="fa fa-question-circle"></i></span></label>
+                    <div class="input-group">
+                      <input type="number" placeholder="MM" name="" class="months" id="monthsCard" required>
+                      <input type="number" placeholder="AA" name="" class="year" id="yearCard" required>
+                    </div>
+                </div>
+                  <div class="col form-group">
+                    <div class="input-group">
+                      <label title="Código de tres dígitos en el reverso de tu tarjeta">CODIGO <i class="fa fa-question-circle"></i></label> 
+                      <input type="tel" class=" code" id="codCard" placeholder="CVC" />
+                  </div>
+                </div>
+              </div>
+          </form>
+        </div>
+        <hr>
+        <div>
+          <!-- Transferencias bancaria -->
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexRadioDefault1">
+              Transferencia bancaria
+            </label>
+          </div>
+          <hr>
+        </div>
+        <!-- Formulario de transferencia bancaria -->
+        <div class="container d-flex transfer">
+        <form action="procesar_pago.php" method="post">
+        
+          <label for="numero_cuenta">NÚMERO DE CUENTA:</label>
+          <input type="text" id="accountNumber" class="form"  required placeholder="Número de cuenta"><br><br>
           
+          <label for="monto">MONTO A TRANSFERIR:</label>
+          <input type="text" id="amount"  required placeholder="Insertar monto"><br><br>
+        
+          <label for="nombre_remitente">NOMBRE DEL REMITENTE:</label>
+          <input type="text" id="senderName"   class="form" placeholder="Insertar nombre"><br><br>
+        </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-1" data-bs-dismiss="modal">Cerrar
+          <svg class="svgIcon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30"
+          style="fill:#FFFFFF;">
+              <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z"></path>
+          </svg>
+        </button>
+        <button type="button" class="btn-1">Comprar
+          <svg class="svgIcon" viewBox="0 0 576 512">
+            <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16
+            -16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm5
+            6 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7
+             24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
+          </svg>
+        </button> 
+      </div>
+    </div>
+  </div>
+</div>
+
           <div class="text-center">
             <p>¿Es tu trabajo o casa?</p>
           </div>
