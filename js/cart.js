@@ -216,7 +216,8 @@ displayProductInTheCart(productsInTheCart);
 loadPrices();
 
 // Deshabilitar los campos del modal
-let  radioButton1 = document.getElementById("flexRadioDefault1");
+
+let radioButton1 = document.getElementById("flexRadioDefault1");
 let radioButton2 = document.getElementById("flexRadioDefault2");
 
 
@@ -232,37 +233,39 @@ let input8 = document.getElementById("senderName")
 
 
 
- // Agregar un listener para detectar cambios en los radio buttons
- radioButton1.addEventListener("change", function() {
-   if (radioButton1.checked) {
-     // Si se selecciona la opción de tarjeta, habilitar los campos correspondientes
-     input1.disabled = false;
-     input2.disabled = false;
-     input3.disabled = false;
-     input4.disabled = false;
-     input5.disabled = false;
+// Agregar un listener para detectar cambios en los radio buttons
+radioButton1.addEventListener("change", function() {
+    if (radioButton1.checked) {
+        // Si se selecciona la opción de tarjeta, habilitar los campos correspondientes
+        input1.disabled = false;
+        input2.disabled = false;
+        input3.disabled = false;
+        input4.disabled = false;
+        input5.disabled = false;
 
-     // Deshabilitar los campos de transferencia
-     input6.disabled = true;
-     input7.disabled = true;
-     input8.disabled = true;
-     
-   }
- });
+        // Deshabilitar los campos de transferencia
+        input6.disabled = true;
+        input7.disabled = true;
+        input8.disabled = true;
+    }
+});
 
- radioButton2.addEventListener("change", function() {
-   if (radioButton2.checked) {
-     // Si se selecciona la opción de transferencia, habilitar los campos correspondientes
-     input6.disabled = false;
-     input7.disabled = false;
-     input8.disabled = false;
+// 'Presiono' el radiobutton para que esté activado por default
 
+radioButton1.click();
 
-     // Deshabilitar los campos de tarjeta
-     input1.disabled = true;
-     input2.disabled = true;
-     input3.disabled = true;
-     input4.disabled = true;
-     input5.disabled = true;
-   }
- });
+radioButton2.addEventListener("change", function() {
+    if (radioButton2.checked) {
+        // Si se selecciona la opción de transferencia, habilitar los campos correspondientes
+        input6.disabled = false;
+        input7.disabled = false;
+        input8.disabled = false;
+
+        // Deshabilitar los campos de tarjeta
+        input1.disabled = true;
+        input2.disabled = true;
+        input3.disabled = true;
+        input4.disabled = true;
+        input5.disabled = true;
+    }
+});

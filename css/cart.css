@@ -1,103 +1,110 @@
 .productImage{
-    max-width: 150px;
-    max-height: 150px;
-    transition: transform ease 0.5s;
+  max-width: 150px;
+  max-height: 150px;
+  transition: transform ease 0.5s;
 }
 
 .productImage:hover{
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #tableDiv{
-    max-width: 1000px;
+  max-width: 1000px;
 }
 
 #deliveryForm{
-    max-width: 500px;
-    border-radius: 30px;
+  max-width: 500px;
+  border-radius: 30px;
 }
 
 #costosContainer{
-    max-width: 700px;
+  max-width: 700px;
 }
 
 /* Boton de pagos */
 .btn-1 {
-    width: 130px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(15, 15, 15);
-    border: none;
-    color: white;
-    font-weight: 600;
-    gap: 8px;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
-    position: relative;
-    overflow: hidden;
-    transition-duration: .3s;
-  }
+  width: 130px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(15, 15, 15);
+  border: none;
+  color: white;
+  font-weight: 600;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+}
   
-  .svgIcon {
-    width: 16px;
-  }
+.svgIcon {
+  width: 16px;
+}
   
-  .svgIcon path {
-    fill: white;
-  }
+.svgIcon path {
+  fill: white;
+}
   
-  .btn-1::before {
-    width: 130px;
-    height: 130px;
-    position: absolute;
-    content: "";
-    background-color: white;
-    border-radius: 50%;
-    left: -100%;
-    top: 0;
-    transition-duration: .3s;
-    mix-blend-mode: difference;
-  }
+.btn-1::before {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  left: -100%;
+  top: 0;
+  transition-duration: .3s;
+  mix-blend-mode: difference;
+}
   
-  .btn-1:hover::before {
-    transition-duration: .3s;
-    transform: translate(100%,-50%);
-    border-radius: 0;
-  }
+.btn-1:hover::before {
+  transition-duration: .3s;
+  transform: translate(100%,-50%);
+  border-radius: 0;
+}
   
-  .btn-1:active {
-    transform: translate(5px,5px);
-    transition-duration: .3s;
-  }
+.btn-1:active {
+  transform: translate(5px,5px);
+  transition-duration: .3s;
+}
 
-  /* Tarjeta de debito y credito  */
-  .credit-card {
-    width: 19rem;
-    height: 11rem;
-    background-color:#11202c;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    color: aliceblue;
-    font-size: small;
-  }
-  .months,
-  .year{
-    width: 3rem;
-  }
-  label{
-    font-size: small;
-  }
-  input[type="tel"],
-  .name{
-    width: 70%;
-  }
-  .form-group {
-    position: relative;
-    margin-bottom: 1%;
-  }
-  .transfer{
-    font-size: small;
-    justify-content: center;
-  }
+/* Tarjeta de debito y credito */
+
+.credit-card {
+  width: 19rem;
+  height: 11rem;
+  background-color:#11202c;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: aliceblue;
+  font-size: small;
+}
+
+.months,.year{
+  width: 3rem;
+}
+
+label{
+  font-size: small;
+}
+
+input[type="tel"],.name{
+  width: 70%;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1%;
+}
+
+#CVCinfo{
+  display: none;
+}
+
+#CVCinfo:hover{
+  display: block;
+}
