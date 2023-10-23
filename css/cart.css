@@ -109,7 +109,3 @@ input[type="tel"],
 #CVCinfo:hover{
   display: block;
 }
-option,
-select{
-  font-size: small;
-}

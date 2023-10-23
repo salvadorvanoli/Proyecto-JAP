@@ -251,16 +251,6 @@
 
                   <div class="container d-flex transfer">
                     <div action="procesar_pago.php" method="post">
-                      
-                      <div class="mt-3">
-                        <select  id="senderName"  class="form-select" aria-label=".form-select-sm" required>
-                          <option value="1">Banco República</option>
-                          <option value="2">Banco Itaú</option>
-                          <option>Banco Santender</option>
-                          <option>Banco BBVA</option>
-                          <option>Banco Scotiabank</option>
-                        </select>
-                      </div>
 
                       <div class="m-1">
                         <label for="numero_cuenta">NÚMERO DE CUENTA:</label>
@@ -270,6 +260,11 @@
                       <div class="mt-3">
                         <label for="monto">MONTO A TRANSFERIR:</label>
                         <input type="text" id="amount" class="form" required placeholder="Insertar monto">
+                      </div>
+
+                      <div class="mt-3">
+                        <label for="nombre_remitente">NOMBRE DEL REMITENTE:</label>
+                        <input type="text" id="senderName"  class="form" placeholder="Insertar nombre">
                       </div>
 
                     </div>
