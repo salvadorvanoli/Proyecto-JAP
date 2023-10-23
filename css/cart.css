@@ -92,7 +92,8 @@ label{
   font-size: small;
 }
 
-input[type="tel"],.name{
+input[type="tel"],
+.name{
   width: 70%;
 }
 
@@ -107,4 +108,8 @@ input[type="tel"],.name{
 
 #CVCinfo:hover{
   display: block;
+}
+option,
+select{
+  font-size: small;
 }
