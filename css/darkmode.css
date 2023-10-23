@@ -16,6 +16,10 @@ body.darkMode .dropdown-menu li a{
     color: white;
 }
 
+body.darkMode th, body.darkMode td {
+    color:white;
+}
+
 .switch{
     margin: 10px 0px 10px 0px;
     background-color: #343D5B;
