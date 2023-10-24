@@ -1,3 +1,7 @@
+body{
+  background-color: azure;
+}
+
 .jumbotron,
 .card-body,
 .container,
@@ -11,6 +15,7 @@
 
 nav a {
   text-decoration: none;
+  
 }
 
 .bd-placeholder-img {
@@ -22,7 +27,13 @@ nav a {
   user-select: none;
 }
 
-@media (min-width: 768px) {
+@media screen and(max-width: 700px) {
+  .text-muted{
+    font-size: 14px;
+}
+}
+
+@media screen and(min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
@@ -33,7 +44,7 @@ nav a {
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background: url('../img/cover-back.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,6 +56,7 @@ nav a {
   .jumbotron {
     padding-top: 6rem;
     padding-bottom: 6rem;
+    width: 50%s;
   }
 }
 
@@ -187,4 +199,85 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+/* Volver atras */
+
+
+.Btn {
+  width: 40px;
+  height: 40px;
+  background-color: #11202c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom:18px;
+  right: 30px; 
+  border: none;
+}
+  
+.arrow path {
+  fill: white;
+}
+  
+.text {
+  font-size: 13px;
+  width: 100px;
+  position: absolute;
+  color: #151d28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -16px;
+  opacity: 0;
+  transition-duration: .7s;
+  font-weight: bolder;
+
+}
+  
+.Btn:hover .text {
+  opacity: 1;
+  transition-duration: .7s;
+}
+
+.Btn:hover .arrow {
+  animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 300px) {
+    .Btn {
+        width: 20px;
+        height: 20px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .text {
+        width: 30px;
+        bottom: -5px;
+    }
+}
+.blue{
+    background-color: #11202c;
+    border-color: #11202c;
+    color: aliceblue;
+}
+.blue:hover {
+  background-color: #172b3a; 
+  border-color: #172b3a;
+  color: darkgray;
 }

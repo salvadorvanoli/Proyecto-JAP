@@ -6,15 +6,15 @@ document.addEventListener("DOMContentLoaded", function(){
     const password2 = document.getElementById("password2");
     let showPasswordImg = document.getElementById("showPasswordImg");
     let showPasswordImg2 = document.getElementById("showPasswordImg2");
-    let formularioLogin = document.getElementById("formularioLogin");
+    let loginForm = document.getElementById("loginForm");
     let email = document.getElementById("email");
 
     // Lógica para guardar los datos de inicio de sesión en localhost
 
-    let usernameArray = JSON.parse(localStorage.getItem("todosLosEmail")) || [];
-    let passwordArray = JSON.parse(localStorage.getItem("todasLasContrasenias")) || [];
+    let usernameArray = JSON.parse(localStorage.getItem("allTheEmails")) || [];
+    let passwordArray = JSON.parse(localStorage.getItem("allThePasswords")) || [];
 
-    function existeElUsuario(){
+    function userExists(){
         for(let username of usernameArray){
             if(email.value === username){
                 return true;
@@ -23,15 +23,26 @@ document.addEventListener("DOMContentLoaded", function(){
         return false;
     }
     
-    formularioLogin.addEventListener("submit", function(){
+    let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
+
+    loginForm.addEventListener("submit", function(){
         if(password1.value===password2.value){
-            if(!existeElUsuario()){
+            if(!userExists()){
                 usernameArray.push(email.value);
                 passwordArray.push(password1.value);
                 localStorage.setItem('username', JSON.stringify(email.value));
-                localStorage.setItem('todosLosEmail', JSON.stringify(usernameArray));
-                localStorage.setItem('todasLasContrasenias', JSON.stringify(passwordArray));
-                localStorage.setItem('loggeado', JSON.stringify(true));
+                localStorage.setItem('allTheEmails', JSON.stringify(usernameArray));
+                localStorage.setItem('allThePasswords', JSON.stringify(passwordArray));
+                localStorage.setItem('loggedIn', JSON.stringify(true));
+                let newCart = 
+                    {
+                        "user": 
+                            email.value,
+                        "articles": []
+                    }
+                ;
+                productsInTheCart.push(newCart);
+                localStorage.setItem('productsInTheCart', JSON.stringify(productsInTheCart));
             } else {
                 alert("Usuario ya existente, inicie sesión");
                 event.preventDefault();
@@ -53,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function(){
     function visionToggle(elemento, boton){
         if (elemento.type === "password") {
             elemento.type = "text";
-            boton.src = "../img/not-show-password-icon.png";
+            boton.src = "img/not-show-password-icon.png";
         } else {
             elemento.type = "password";
-            boton.src = "../img/show-password-icon.png";
+            boton.src = "img/show-password-icon.png";
         }
     }
 
@@ -66,23 +77,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     showPasswordImg2.addEventListener("click", function(){
         visionToggle(password2, showPasswordImg2);
-    });
-
-    // Lógica para el modo oscuro
-
-    let darkmodeToggleButton = document.getElementById("darkmodeToggleButton");
-    let fondo = document.getElementsByTagName("body")[0];
-
-    function darkmodeToggle(){
-        if(fondo.style.backgroundColor == "black"){
-            fondo.style.backgroundColor = "antiquewhite";
-        } else {
-            fondo.style.backgroundColor = "black";
-        }
-    }
-
-    darkmodeToggleButton.addEventListener("click", function(){
-        darkmodeToggle();
     });
 
     // Lógica para el cambio de idioma
@@ -138,4 +132,10 @@ document.addEventListener("DOMContentLoaded", function(){
     spanishLanguage.addEventListener("click", function(){
         changeToSpanish();
     });
+    let btnSwitch = document.getElementById("switch");
+    btnSwitch.addEventListener("click", () =>{
+    document.body.classList.toggle("darkMode");
+    btnSwitch.classList.toggle("active")
+    });
 });
+
