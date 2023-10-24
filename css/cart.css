@@ -21,6 +21,10 @@
   max-width: 700px;
 }
 
+#modalDialog{
+  max-width: max-content;
+}
+
 /* Boton de pagos */
 .btn-1 {
   width: 130px;
