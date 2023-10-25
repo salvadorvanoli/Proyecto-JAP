@@ -115,7 +115,6 @@ Standard.addEventListener("click", function(){
 // Calcula el subtotal
 
 function calculateSubtotal(){
-    console.log(dolarPrice);
     subtotalFinalPrice = 0;
     for(let i=0; i<(productQuantity); i++){
         if(productsInTheCart[currentUserCart].articles[i].currency == "UYU"){
@@ -155,11 +154,18 @@ function changeValue(num, id){
     let priceTag = document.getElementById("price" + num);
     let newQuantity = document.getElementById("quantity" + num);
     let subtotalPrice = document.getElementById("subtotal" + num);
+    let subtotalUSD = document.getElementById("subtotalUSD" + num);
+    let productCurrency = document.getElementById("productCurrency" + num);
     if(newQuantity.value >= 0 && newQuantity.value <= 10000000000){
         subtotalPrice.innerHTML = newQuantity.value * priceTag.innerHTML;
     } else {
         subtotalPrice.innerHTML = 0;
         newQuantity.value = 0;
+    }
+    if(productCurrency.innerHTML == "UYU"){
+        subtotalUSD.innerHTML = subtotalFinalPrice = Math.round(subtotalPrice.innerHTML/dolarPrice);
+    } else {
+        subtotalUSD.innerHTML = subtotalPrice.innerHTML;
     }
     if(id !== 0){
         saveQuantities(num, id);
@@ -176,7 +182,8 @@ function createListItem(product, num) {
         <td class="align-middle">${product.name}</td>
         <td class="align-middle">${product.currency} <span id="price${num}">${product.unitCost}</span></td>
         <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num}, ${product.id})"></td>
-        <td class="align-middle"> ${product.currency} <span id="subtotal${num}"> ${product.unitCost} </span></td>
+        <td class="align-middle"> <span id="productCurrency${num}">${product.currency}</span> <span id="subtotal${num}"> ${product.unitCost} </span></td>
+        <td class="align-middle">USD <span id="subtotalUSD${num}"></span></td>
         <td class="align-middle"><button type="button" class="btn-close" aria-label="Close" onclick="deleteItem('${product.id}')"></button></td>
     </tr>`;
 
