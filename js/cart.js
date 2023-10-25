@@ -57,10 +57,17 @@ function saveQuantities(number, id){
 // Fetch al API de cotizaciones
 
 let URL_COTIZACIONES = 'https://cotizaciones-brou-v2-e449.fly.dev/currency/latest';
-let dolarPrice = 0;
+
+// Le damos un valor default al dólar por si la API está caída
+
+let dolarPrice = 40;
+
+// Hacemos el fetch a la API con el precio del dólar actualizado
 
 fetch(URL_COTIZACIONES)
-.then(response=>response.json())
+.then(response=>{
+    return response.json()
+})
 .then(data=>{
     dolarPrice = data.rates.USD.buy;
     calculateSubtotal();
@@ -68,6 +75,8 @@ fetch(URL_COTIZACIONES)
     calculateTotal();
 })
 .catch(error=>console.log(error));
+
+// Traemos los elementos html
 
 let finalTotal = document.getElementById("finalTotal");
 let finalSubtotal = document.getElementById("finalSubtotal");
@@ -80,6 +89,8 @@ let sendFinalPrice = 0;
 let Premium = document.getElementById("Premium");
 let Express = document.getElementById("Express");
 let Standard = document.getElementById("Standard");
+
+// Agregamos un eventlistener a cada radio button de envío para actualizar los precios en tiempo real
 
 Premium.addEventListener("click", function(){
     sendTax = 15;
@@ -101,7 +112,10 @@ Standard.addEventListener("click", function(){
 
 // Actualiza en tiempo real los precios finales
 
+// Calcula el subtotal
+
 function calculateSubtotal(){
+    console.log(dolarPrice);
     subtotalFinalPrice = 0;
     for(let i=0; i<(productQuantity); i++){
         if(productsInTheCart[currentUserCart].articles[i].currency == "UYU"){
@@ -113,15 +127,21 @@ function calculateSubtotal(){
     finalSubtotal.innerHTML = Math.round(subtotalFinalPrice);
 }
 
+// Calcula el precio de envío individualmente
+
 function calculateSend(){
     sendFinalPrice = 0;
     sendFinalPrice = (subtotalFinalPrice/100)*sendTax;
     finalSend.innerHTML = Math.round(sendFinalPrice);
 }
 
+// Calcula el precio final (la suma del subtotal + el envío)
+
 function calculateTotal(){
     finalTotal.innerHTML = Math.round(sendFinalPrice + subtotalFinalPrice);
 }
+
+// Actualiza los todos los precios
 
 function newTotal(){
     calculateSubtotal();
@@ -222,6 +242,7 @@ let radioButton2 = document.getElementById("flexRadioDefault2");
 
 
 // Obtener los elementos de input
+
 let input1 = document.getElementById("numberCard");
 let input2 = document.getElementById("nameCard");
 let input3 = document.getElementById("monthsCard");
@@ -234,6 +255,7 @@ let input8 = document.getElementById("senderName")
 
 
 // Agregar un listener para detectar cambios en los radio buttons
+
 radioButton1.addEventListener("change", function() {
     if (radioButton1.checked) {
         // Si se selecciona la opción de tarjeta, habilitar los campos correspondientes
@@ -256,12 +278,15 @@ radioButton1.click();
 
 radioButton2.addEventListener("change", function() {
     if (radioButton2.checked) {
+
         // Si se selecciona la opción de transferencia, habilitar los campos correspondientes
+
         input6.disabled = false;
         input7.disabled = false;
         input8.disabled = false;
 
         // Deshabilitar los campos de tarjeta
+        
         input1.disabled = true;
         input2.disabled = true;
         input3.disabled = true;
