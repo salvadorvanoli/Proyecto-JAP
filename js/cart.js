@@ -243,14 +243,14 @@ let radioButton2 = document.getElementById("flexRadioDefault2");
 
 // Obtener los elementos de input
 
-let input1 = document.getElementById("numberCard");
-let input2 = document.getElementById("nameCard");
-let input3 = document.getElementById("monthsCard");
-let input4 = document.getElementById("yearCard");
-let input5 = document.getElementById("codCard");
-let input6 = document.getElementById("accountNumber")
-let input7 = document.getElementById("amount");
-let input8 = document.getElementById("senderName")
+let cardNumber = document.getElementById("numberCard");
+let cardName = document.getElementById("nameCard");
+let cardMonth = document.getElementById("monthsCard");
+let cardYear = document.getElementById("yearCard");
+let cvc = document.getElementById("codCard");
+let accountNumber = document.getElementById("accountNumber");
+let amount = document.getElementById("amount");
+let senderName = document.getElementById("senderName")
 
 
 
@@ -259,16 +259,16 @@ let input8 = document.getElementById("senderName")
 radioButton1.addEventListener("change", function() {
     if (radioButton1.checked) {
         // Si se selecciona la opción de tarjeta, habilitar los campos correspondientes
-        input1.disabled = false;
-        input2.disabled = false;
-        input3.disabled = false;
-        input4.disabled = false;
-        input5.disabled = false;
+        cardNumber.disabled = false;
+        cardName.disabled = false;
+        cardMonth.disabled = false;
+        cardYear.disabled = false;
+        cvc.disabled = false;
 
         // Deshabilitar los campos de transferencia
-        input6.disabled = true;
-        input7.disabled = true;
-        input8.disabled = true;
+        accountNumber.disabled = true;
+        amount.disabled = true;
+        senderName.disabled = true;
     }
 });
 
@@ -281,16 +281,19 @@ radioButton2.addEventListener("change", function() {
 
         // Si se selecciona la opción de transferencia, habilitar los campos correspondientes
 
-        input6.disabled = false;
-        input7.disabled = false;
-        input8.disabled = false;
+        accountNumber.disabled = false;
+        amount.disabled = false;
+        senderName.disabled = false;
 
         // Deshabilitar los campos de tarjeta
         
-        input1.disabled = true;
-        input2.disabled = true;
-        input3.disabled = true;
-        input4.disabled = true;
-        input5.disabled = true;
+        cardNumber.disabled = true;
+        cardName.disabled = true;
+        cardMonth.disabled = true;
+        cardYear.disabled = true;
+        cvc.disabled = true;
     }
 });
+
+// Lógica de las validaciones 
+
