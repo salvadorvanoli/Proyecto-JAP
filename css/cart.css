@@ -97,7 +97,7 @@ label{
 }
 
 input[type="tel"],
-.name{
+.name, #codCard{
   width: 70%;
 }
 

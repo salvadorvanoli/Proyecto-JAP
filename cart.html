@@ -145,31 +145,31 @@
         <div class="form-group m-3"> 
           <h2 class="text-center">Datos personales</h2>
           <div>
-            <input class="form-control m-1" type="text" name="nom_LastName" placeholder="Ingrese su nombre y apellido" required>
+            <input class="form-control m-1" type="text" name="nom_LastName" pattern="[A-Za-z]+" placeholder="Ingrese su nombre y apellido" required>
           </div>
 
           <div>
-            <input class="form-control m-1" type="text" name="departamento" placeholder="Ingrese el departamento donde se encuentra" required>
+            <input class="form-control m-1" type="text" name="department" pattern="[A-Za-z]+" placeholder="Ingrese el departamento donde se encuentra" required>
           </div>
 
           <div>
-            <input class="form-control m-1" type="text" name="Localidad" placeholder="Ingrese su localidad" required> 
+            <input class="form-control m-1" type="text" name="location" pattern="[A-Za-z]+" placeholder="Ingrese su localidad" required> 
           </div>
 
           <div>
-            <input class="form-control m-1" type="text" name="direc" placeholder="Ingrese su calle" required>
+            <input class="form-control m-1" type="text" name="address" pattern="[A-Za-z]+" placeholder="Ingrese su calle" required>
           </div>
 
           <div>
-            <input class="form-control m-1" type="number" name="numero" placeholder="Ingrese el número de su casa" required>
+            <input class="form-control m-1" type="number" name="streetNumber" placeholder="Ingrese el número de su casa" required>
           </div>
           
           <div>
-            <input class="form-control m-1" type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" name="num_phone" placeholder="Celular / Formato: 123-456-789" required>
+            <input class="form-control m-1" type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" name="phoneNumber" placeholder="Celular / Formato: 123-456-789" required>
           </div>
           
           <div>
-            <input class="form-control m-1" type="text" name="aditional" placeholder="Referencia (opcional)">
+            <input class="form-control m-1" type="text" name="aditionalInfo" placeholder="Referencia (opcional)">
           </div>
 
           <!-- Comienza el modal de pago -->
@@ -205,7 +205,7 @@
                         <div class="form-group"> 
                           <label>NUMERO DE TARJETA</label>
                           <div class="input-group"> 
-                            <input type="number" pattern="[0-9]{13,16}" required placeholder="Insertar numero" id="numberCard"> 
+                            <input type="number" pattern="[0-9]{13,16}" required placeholder="Insertar numero" maxlength="16" id="numberCard"> 
                             <span class="input-group-text" ><span class="fa fa-credit-card "></span></span> 
                           </div>
                         </div>
@@ -225,7 +225,7 @@
                           <div class="col form-group">
                             <div class="input-group">
                               <label title="Código de tres dígitos en el reverso de tu tarjeta">CODIGO <i class="fa fa-question-circle"></i></label> 
-                              <input type="tel" class=" code" id="codCard" placeholder="CVC" />
+                              <input type="number" class="code" id="codCard" placeholder="CVC" />
                           </div>
                         </div>
                       </div>
@@ -238,7 +238,7 @@
                     <!-- Transferencias bancaria -->
 
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                       <label class="form-check-label" for="flexRadioDefault1">
                         Transferencia bancaria
                       </label>
@@ -253,17 +253,17 @@
 
                       <div>
                         <label for="accountNumber">NÚMERO DE CUENTA</label>
-                        <input type="text" id="accountNumber" class="form-control" required placeholder="Número de cuenta">
+                        <input type="number" id="accountNumber" class="form-control" required placeholder="Número de cuenta">
                       </div>
                       
                       <div class="mt-3">
                         <label for="amount">MONTO A TRANSFERIR</label>
-                        <input type="text" id="amount" class="form-control" required placeholder="Insertar monto">
+                        <input type="number" id="amount" class="form-control" required placeholder="Insertar monto">
                       </div>
 
                       <div class="mt-3">
                         <label for="senderName">NOMBRE DEL REMITENTE</label>
-                        <input type="text" id="senderName"  class="form-control" placeholder="Insertar nombre">
+                        <input type="text" id="senderName" class="form-control" pattern="[A-Za-z]+" placeholder="Insertar nombre">
                       </div>
 
                     </div>
