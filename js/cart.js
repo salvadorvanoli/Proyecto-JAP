@@ -123,7 +123,7 @@ function calculateSubtotal(){
             subtotalFinalPrice += parseInt(document.getElementById("subtotal" + i).innerHTML);
         }
     }
-    finalSubtotal.innerHTML = Math.round(subtotalFinalPrice);
+    finalSubtotal.innerHTML = (subtotalFinalPrice).toFixed(2);
 }
 
 // Calcula el precio de envío individualmente
@@ -131,13 +131,13 @@ function calculateSubtotal(){
 function calculateSend(){
     sendFinalPrice = 0;
     sendFinalPrice = (subtotalFinalPrice/100)*sendTax;
-    finalSend.innerHTML = Math.round(sendFinalPrice);
+    finalSend.innerHTML = (sendFinalPrice).toFixed(2);
 }
 
 // Calcula el precio final (la suma del subtotal + el envío)
 
 function calculateTotal(){
-    finalTotal.innerHTML = Math.round(sendFinalPrice + subtotalFinalPrice);
+    finalTotal.innerHTML = (sendFinalPrice + subtotalFinalPrice).toFixed(2);
 }
 
 // Actualiza los todos los precios
@@ -163,7 +163,7 @@ function changeValue(num, id){
         newQuantity.value = 0;
     }
     if(productCurrency.innerHTML == "UYU"){
-        subtotalUSD.innerHTML = subtotalFinalPrice = Math.round(subtotalPrice.innerHTML/dolarPrice);
+        subtotalUSD.innerHTML = subtotalFinalPrice = (subtotalPrice.innerHTML/dolarPrice).toFixed(2);
     } else {
         subtotalUSD.innerHTML = subtotalPrice.innerHTML;
     }
