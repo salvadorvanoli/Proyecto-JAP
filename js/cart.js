@@ -478,20 +478,12 @@ purchaseBtn.addEventListener("click", function(){
             <strong>Compra realizada con éxito</strong>
         </div>
         `;
-        event.preventDefault();
-
-        // Muestra que todos los inputs se llenaron de manera satisfactoria al enviar el formulario y que todos los datos sean correctos
-
-        let outOfTheModalInputs = [nom_LastName, department, location, address, streetNumber, phoneNumber, officeRadio];
-        for(let input of outOfTheModalInputs){
-            input.classList.add("is-valid");
-            input.classList.remove("is-invalid");
-        }
 
         // Reinicia la ventana después de 2 segundos
-
+        
+        event.preventDefault();
         setTimeout(function(){
-        window.location.replace('cart.html');
+            window.location.replace('cart.html');
         }, 2000);
     } else {
         event.preventDefault();
