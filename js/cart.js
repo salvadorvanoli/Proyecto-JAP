@@ -138,6 +138,18 @@ function calculateSend(){
 
 function calculateTotal(){
     finalTotal.innerHTML = (sendFinalPrice + subtotalFinalPrice).toFixed(2);
+
+    // Para la validación: revisa que se haya comprado al menos un producto
+
+    if(finalTotal.innerHTML <= 0){
+        let atLeastOneProduct = document.getElementById("atLeastOneProduct");
+        atLeastOneProduct.classList.add("d-block");
+        atLeastOneProduct.classList.remove("d-hide");
+    } else {
+        let atLeastOneProduct = document.getElementById("atLeastOneProduct");
+        atLeastOneProduct.classList.add("d-hide");
+        atLeastOneProduct.classList.remove("d-block");
+    }
 }
 
 // Actualiza los todos los precios
@@ -306,37 +318,134 @@ let purchaseBtn = document.getElementById("purchaseBtn");
 let confirmationForm = document.getElementById("confirmationForm");
 let modalBtn = document.getElementById("modalBtn");
 
-function checkModalPaymentMethodOne(){
-    if(cardNumber.checkValidity() && cardName.checkValidity() && cardMonth.checkValidity() && cardYear.checkValidity() && cvc.checkValidity()){
-        modalBtn.classList.add("btn-outline-primary");
-        modalBtn.classList.remove("btn-danger");
-    } else {
-        modalBtn.classList.add("btn-danger");
-        modalBtn.classList.remove("btn-outline-primary");
-    }
-}
-
-function checkModalPaymentMethodTwo(){
-    if(accountNumber.checkValidity() && senderName.checkValidity()){
-        modalBtn.classList.add("btn-outline-primary");
-        modalBtn.classList.remove("btn-danger");
-    } else {
-        modalBtn.classList.add("btn-danger");
-        modalBtn.classList.remove("btn-outline-primary");
-    } 
-}
+// Devuelve true si el radio button1 está apretado (el del método de pago 1), sino devuelve false (que es interpretado como el método de pago 2)
 
 function getPaymentMethodSelected(){
     return radioButton1.checked;
 }
 
-function checkModalValidities(){
+// Revisa que los inputs no estén vacíos
+
+function checkMethodOneInputs(){
+    const inputFields = [cardNumber, cardName, cardMonth, cardYear, cvc];
+    for(let input of inputFields){
+        if(input.value == ""){
+            return false;
+        }
+    }
+    return true;
+}
+
+function checkMethodTwoInputs(){
+    const inputFields = [accountNumber, senderName];
+    for(let input of inputFields){
+        if(input.value == ""){
+            return false;
+        }
+    }
+    return true;
+}
+
+// Muestra el feedback de cada input del modal debajo del botón de toggle del modal
+
+let modalFeedback = document.getElementById("modalFeedback");
+
+function showModalFeedback(){
+    modalFeedback.innerHTML = "";
     if(getPaymentMethodSelected()){
-        checkModalPaymentMethodOne();
+        modalBtn.classList.remove("is-invalid");
+        if(!cardNumber.checkValidity() || cardNumber.value == ""){
+            modalFeedback.innerHTML+=`Debe ingresar su numero de tarjeta, y debe tener 16 números.`;
+            modalBtn.classList.add("is-invalid");
+        }
+        if(!cardName.checkValidity() || cardName.value == ""){
+            modalFeedback.innerHTML+=`Debe ingresar el nombre del titular, solo puede contener letras.`;
+            modalBtn.classList.add("is-invalid");
+        }
+        if(!cardMonth.checkValidity() || cardMonth.value == "" || !cardYear.checkValidity() || cardYear.value == ""){
+            modalFeedback.innerHTML+=`Debe ingresar la fecha de vencimiento de su tarjeta.`;
+            modalBtn.classList.add("is-invalid");
+        }
+        if(!cvc.checkValidity() || cvc.value == ""){
+            modalFeedback.innerHTML+=`Debe ingresar su CVC.`;
+            modalBtn.classList.add("is-invalid");
+        }
     } else {
-        checkModalPaymentMethodTwo();
+        modalBtn.classList.remove("is-invalid");
+        if(!accountNumber.checkValidity() || accountNumber.value == ""){
+            modalFeedback.innerHTML+=`Debe ingresar el número de cuenta.`;
+            modalBtn.classList.add("is-invalid");
+        }
+        if(!senderName.checkValidity() || senderName.value == ""){
+            modalFeedback.innerHTML+=`Debe ingresar su nombre, solo puede contener letras.`;
+            modalBtn.classList.add("is-invalid");
+        }
     }
 }
+
+// Revisa que las condiciones de cada input se cumplan, para cambiar la estética del botón de toggle del modal
+
+function checkModalPaymentMethodOne(){
+    if(cardNumber.checkValidity() && cardName.checkValidity() && cardMonth.checkValidity() && cardYear.checkValidity() && cvc.checkValidity() && checkMethodOneInputs()){
+        modalBtn.classList.add("btn-outline-primary");
+        modalBtn.classList.remove("btn-danger");
+        modalFeedback.innerHTML = "";
+        return true;
+    } else {
+        modalBtn.classList.add("btn-danger");
+        modalBtn.classList.remove("btn-outline-primary");
+        showModalFeedback();
+        return false;
+    }
+}
+
+function checkModalPaymentMethodTwo(){
+    if(accountNumber.checkValidity() && senderName.checkValidity() && checkMethodTwoInputs()){
+        modalBtn.classList.add("btn-outline-primary");
+        modalBtn.classList.remove("btn-danger");
+        modalFeedback.innerHTML = "";
+        return true;
+    } else {
+        modalBtn.classList.add("btn-danger");
+        modalBtn.classList.remove("btn-outline-primary");
+        showModalFeedback();
+        return false;
+    } 
+}
+
+// Ve qué método de pago se seleccionó y revisa si se cumplen las condiciones de los input
+
+function checkModalValidities(){
+    if(getPaymentMethodSelected()){
+        return checkModalPaymentMethodOne();
+    } else {
+        return checkModalPaymentMethodTwo();
+    }
+}
+
+// Revisa los inputs fuera del modal, si todos cumplen con sus condiciones, retorna true
+
+function checkOutOfModalValidities(){
+    let nom_LastName = document.getElementById("nom_LastName");
+    let department = document.getElementById("department");
+    let location = document.getElementById("location");
+    let address = document.getElementById("address");
+    let streetNumber = document.getElementById("streetNumber");
+    let phoneNumber = document.getElementById("phoneNumber");
+    let officeRadio = document.getElementById("officeRadio");
+
+    let outOfTheModalInputs = [nom_LastName, department, location, address, streetNumber, phoneNumber, officeRadio];
+
+    for(let input of outOfTheModalInputs){
+        if(!input.checkValidity() || input.value == ""){
+            return false;
+        }
+    }
+    return true;
+}
+
+// Hace que los botones muestren feedback en tiempo real gracias a la clase 'was-validated' y las funciones previas
+// Si se cumplen las condiciones de compras muestra una alerta, en caso contrario impide el envío del formulario
 
 purchaseBtn.addEventListener("click", function(){
     const inputFields = [cardNumber, cardName, cardMonth, cardYear, cvc, accountNumber, senderName];
@@ -348,12 +457,44 @@ purchaseBtn.addEventListener("click", function(){
     radioButton1.addEventListener("click", function(){
         checkModalValidities();
     });
+
     radioButton2.addEventListener("click", function(){
         checkModalValidities();
     });
+
     inputFields.forEach(function(inputField) {
         inputField.addEventListener("input", function(){
             checkModalValidities();
         });
     });
+
+    if(checkModalValidities() && checkOutOfModalValidities() && finalTotal.innerHTML > 0){
+
+        // Agrega el cartel de compra satisfactoria
+
+        let body = document.getElementsByTagName("body")[0];
+        body.innerHTML += `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Compra realizada con éxito</strong>
+        </div>
+        `;
+        event.preventDefault();
+
+        // Muestra que todos los inputs se llenaron de manera satisfactoria al enviar el formulario y que todos los datos sean correctos
+
+        let outOfTheModalInputs = [nom_LastName, department, location, address, streetNumber, phoneNumber, officeRadio];
+        for(let input of outOfTheModalInputs){
+            input.classList.add("is-valid");
+            input.classList.remove("is-invalid");
+        }
+
+        // Reinicia la ventana después de 2 segundos
+
+        setTimeout(function(){
+        window.location.replace('cart.html');
+        }, 2000);
+    } else {
+        event.preventDefault();
+        event.stopPropagation();
+    }
 });

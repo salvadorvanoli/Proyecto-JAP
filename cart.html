@@ -146,42 +146,42 @@
         <div class="form-group m-3"> 
           <h2 class="text-center">Datos personales</h2>
           <div class="m-3">
-            <input class="form-control m-1" type="text" name="nom_LastName" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese su nombre y apellido" required>
+            <input class="form-control m-1" type="text" id="nom_LastName" name="nom_LastName" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese su nombre y apellido" required>
             <div class="invalid-feedback">
               Debe ingresar un nombre, que solo puede contener letras.
             </div>
           </div>
 
           <div class="m-3">
-            <input class="form-control m-1" type="text" name="department" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese el departamento donde se encuentra" required>
+            <input class="form-control m-1" type="text" id="department" name="department" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese el departamento donde se encuentra" required>
             <div class="invalid-feedback">
               Debe ingresar un departamento, que solo puede contener letras.
             </div>
           </div>
 
           <div class="m-3">
-            <input class="form-control m-1" type="text" name="location" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese su localidad" required> 
+            <input class="form-control m-1" type="text" id="location" name="location" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese su localidad" required> 
             <div class="invalid-feedback">
               Debe ingresar su localidad, que solo puede contener letras.
             </div>
           </div>
 
           <div class="m-3">
-            <input class="form-control m-1" type="text" name="address" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese su calle" required>
+            <input class="form-control m-1" type="text" id="address" name="address" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Ingrese su calle" required>
             <div class="invalid-feedback">
               Debe ingresar su calle, que solo puede contener letras.
             </div>
           </div>
 
           <div class="m-3">
-            <input class="form-control m-1" type="number" name="streetNumber" min="0" placeholder="Ingrese el número de su casa" required>
+            <input class="form-control m-1" type="number" id="streetNumber" name="streetNumber" min="0" placeholder="Ingrese el número de su casa" required>
             <div class="invalid-feedback">
               Debe ingresar el número de su casa.
             </div>
           </div>
           
           <div class="m-3">
-            <input class="form-control m-1" type="text" pattern="^[0]{1}[9]{1}[0-9]{7}" name="phoneNumber" min="" minlength="9" placeholder="Celular | Formato: 123-456-789" required>
+            <input class="form-control m-1" type="text" pattern="^[0]{1}[9]{1}[0-9]{7}" id="phoneNumber" name="phoneNumber" min="" minlength="9" placeholder="Celular | Formato: 123-456-789" required>
             <div class="invalid-feedback">
               Debe ingresar un número de teléfono, el formato debe ser 09xxxxxxx.
             </div>
@@ -193,10 +193,12 @@
 
           <!-- Comienza el modal de pago -->
    
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-primary m-3" id="modalBtn" data-bs-toggle="modal" data-bs-target="#paymentModal" data-bs-whatever="@getbootstrap">Formas de pago</button>
-          </div>
+          <div class="text-center m-3">
+              <button type="button" class="btn btn-outline-primary" id="modalBtn" data-bs-toggle="modal" data-bs-target="#paymentModal" data-bs-whatever="@getbootstrap">Formas de pago</button>
+              <div class="invalid-feedback" id="modalFeedback">
 
+              </div>
+          </div>
           <!-- Modal -->
           <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" id="modalDialog" role="document">
@@ -226,18 +228,12 @@
                           <div class="input-group"> 
                             <input type="text" pattern="[0-9]{16}" placeholder="Insertar numero" maxlength="16" name="numberCard" id="numberCard" required> 
                             <span class="input-group-text" ><span class="fa fa-credit-card "></span></span> 
-                            <div class="invalid-feedback">
-                              Debe ingresar su numero de tarjeta, y debe tener 16 números.
-                            </div>
                           </div>
                         </div>
                         <div class="form-group"> 
                           <label>NOMBRE</label> 
                           <div class="input-group"> 
                             <input class="name" type="text" pattern="^[^ 0-9]+[a-zA-Z]*" placeholder="Insertar nombre" name="nameCard" id="nameCard" required> 
-                            <div class="invalid-feedback">
-                              Debe ingresar el nombre del titular, solo puede contener letras.
-                            </div>
                           </div>
                         </div>
                         <div class="col form-group"> 
@@ -245,18 +241,12 @@
                             <div class="input-group">
                               <input type="number" min="1" max="12" placeholder="MM" name="MM" class="months" id="monthsCard" required>
                               <input type="number" min="23" max="29" placeholder="AA" name="AA" class="year" id="yearCard" required>
-                              <div class="invalid-feedback">
-                                Debe ingresar la fecha de vencimiento de su tarjeta.
-                              </div>
                             </div>
                         </div>
                           <div class="col form-group">
                             <div class="input-group">
                               <label title="Código de tres dígitos en el reverso de tu tarjeta">CODIGO <i class="fa fa-question-circle"></i></label> 
                               <input type="text" class="code" name="codCard" id="codCard" placeholder="CVC" pattern="[0-9]{3}" minlength="3" max="999" required>
-                              <div class="invalid-feedback">
-                                Debe ingresar su CVC, 
-                              </div>
                           </div>
                         </div>
                       </div>
@@ -270,7 +260,7 @@
 
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault1">
+                      <label class="form-check-label" for="flexRadioDefault2">
                         Transferencia bancaria
                       </label>
                     </div>
@@ -302,7 +292,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn-1" data-bs-dismiss="modal">Agregar
+                  <button type="button" class="btn-1" data-bs-dismiss="modal">Agregar
                     <svg viewBox="0 0 576 512" class="svgIcon"><path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3
                     0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path></svg>
                   </button> 
@@ -326,7 +316,7 @@
             </div>
         
             <div class="d-block">
-                <input class="form-check-input" type="radio" name="lugarEnvio" value="Oficina">
+                <input class="form-check-input" type="radio" name="lugarEnvio" value="Oficina" id="officeRadio">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suitcase-lg" viewBox="0 0 16 16">
                   <path d="M5 2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2h3.5A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5H14a.5.5 0 0 1-1 0H3a.5.5 0 0 1-1 0h-.5A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2H5Zm1 0h4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1ZM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5H3V3H1.5ZM15 12.5v-9a.5.5 0 0 0-.5-.5H13v10h1.5a.5.5 0 0 0 .5-.5Zm-3 .5V3H4v10h8Z"/>
                 </svg>
@@ -337,9 +327,13 @@
             </div>
           </div>
 
+          <div class="text-center invalid-feedback" id="atLeastOneProduct">
+            Debe comprar al menos un producto
+          </div>
+
           <div class="text-center m-2">
             <div class="button_confirm">
-              <input class="btn btn-primary" type="submit" value="Confirmar compra" id="purchaseBtn">
+              <input class="btn btn-primary" type="button" value="Confirmar compra" id="purchaseBtn">
             </div>
           </div>
         </div>
