@@ -255,8 +255,8 @@ let cardName = document.getElementById("nameCard");
 let cardMonth = document.getElementById("monthsCard");
 let cardYear = document.getElementById("yearCard");
 let cvc = document.getElementById("codCard");
+
 let accountNumber = document.getElementById("accountNumber");
-let amount = document.getElementById("amount");
 let senderName = document.getElementById("senderName")
 
 
@@ -274,7 +274,6 @@ radioButton1.addEventListener("change", function() {
 
         // Deshabilitar los campos de transferencia
         accountNumber.disabled = true;
-        amount.disabled = true;
         senderName.disabled = true;
     }
 });
@@ -289,7 +288,6 @@ radioButton2.addEventListener("change", function() {
         // Si se selecciona la opción de transferencia, habilitar los campos correspondientes
 
         accountNumber.disabled = false;
-        amount.disabled = false;
         senderName.disabled = false;
 
         // Deshabilitar los campos de tarjeta
@@ -304,3 +302,58 @@ radioButton2.addEventListener("change", function() {
 
 // Lógica de las validaciones 
 
+let purchaseBtn = document.getElementById("purchaseBtn");
+let confirmationForm = document.getElementById("confirmationForm");
+let modalBtn = document.getElementById("modalBtn");
+
+function checkModalPaymentMethodOne(){
+    if(cardNumber.checkValidity() && cardName.checkValidity() && cardMonth.checkValidity() && cardYear.checkValidity() && cvc.checkValidity()){
+        modalBtn.classList.add("btn-outline-primary");
+        modalBtn.classList.remove("btn-danger");
+    } else {
+        modalBtn.classList.add("btn-danger");
+        modalBtn.classList.remove("btn-outline-primary");
+    }
+}
+
+function checkModalPaymentMethodTwo(){
+    if(accountNumber.checkValidity() && senderName.checkValidity()){
+        modalBtn.classList.add("btn-outline-primary");
+        modalBtn.classList.remove("btn-danger");
+    } else {
+        modalBtn.classList.add("btn-danger");
+        modalBtn.classList.remove("btn-outline-primary");
+    } 
+}
+
+function getPaymentMethodSelected(){
+    return radioButton1.checked;
+}
+
+function checkModalValidities(){
+    if(getPaymentMethodSelected()){
+        checkModalPaymentMethodOne();
+    } else {
+        checkModalPaymentMethodTwo();
+    }
+}
+
+purchaseBtn.addEventListener("click", function(){
+    const inputFields = [cardNumber, cardName, cardMonth, cardYear, cvc, accountNumber, senderName];
+
+    confirmationForm.classList.add("was-validated");
+
+    checkModalValidities();
+
+    radioButton1.addEventListener("click", function(){
+        checkModalValidities();
+    });
+    radioButton2.addEventListener("click", function(){
+        checkModalValidities();
+    });
+    inputFields.forEach(function(inputField) {
+        inputField.addEventListener("input", function(){
+            checkModalValidities();
+        });
+    });
+});
