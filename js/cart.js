@@ -448,27 +448,9 @@ function checkOutOfModalValidities(){
 // Si se cumplen las condiciones de compras muestra una alerta, en caso contrario impide el envío del formulario
 
 purchaseBtn.addEventListener("click", function(){
-    const inputFields = [cardNumber, cardName, cardMonth, cardYear, cvc, accountNumber, senderName];
-
-    confirmationForm.classList.add("was-validated");
-
-    checkModalValidities();
-
-    radioButton1.addEventListener("click", function(){
-        checkModalValidities();
-    });
-
-    radioButton2.addEventListener("click", function(){
-        checkModalValidities();
-    });
-
-    inputFields.forEach(function(inputField) {
-        inputField.addEventListener("input", function(){
-            checkModalValidities();
-        });
-    });
-
     if(checkModalValidities() && checkOutOfModalValidities() && finalTotal.innerHTML > 0){
+
+        confirmationForm.classList.remove("was-validated");
 
         // Agrega el cartel de compra satisfactoria
 
@@ -489,4 +471,24 @@ purchaseBtn.addEventListener("click", function(){
         event.preventDefault();
         event.stopPropagation();
     }
+
+    const inputFields = [cardNumber, cardName, cardMonth, cardYear, cvc, accountNumber, senderName];
+
+    confirmationForm.classList.add("was-validated");
+
+    checkModalValidities();
+
+    radioButton1.addEventListener("click", function(){
+        checkModalValidities();
+    });
+
+    radioButton2.addEventListener("click", function(){
+        checkModalValidities();
+    });
+
+    inputFields.forEach(function(inputField) {
+        inputField.addEventListener("input", function(){
+            checkModalValidities();
+        });
+    });
 });
