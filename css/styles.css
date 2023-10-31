@@ -27,6 +27,12 @@ nav a {
   user-select: none;
 }
 
+.img-thumbnail{
+  width: 10%;
+  height: 10%;
+  
+}
+
 @media screen and(max-width: 700px) {
   .text-muted{
     font-size: 14px;
@@ -237,6 +243,7 @@ a.custom-card:hover {
 
 }
   
+
 .Btn:hover .text {
   opacity: 1;
   transition-duration: .7s;
