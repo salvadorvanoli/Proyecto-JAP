@@ -4,7 +4,7 @@
 
 nav {
   background-color: #344966; 
-  padding: 23px;
+  padding: 1%;
   display: flex;
   justify-content: space-between;
 }
@@ -91,7 +91,7 @@ p{
   width: 65%; 
   display: flex;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: transparent;
   border: none;
   border-bottom: white thin solid;
@@ -259,7 +259,7 @@ p{
 @media only screen and (min-width: 1000px) {
   .formulario {
     width: 70%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .message {
@@ -267,14 +267,14 @@ p{
   }
 
   p{
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .message button {
     padding: 15px;
     font-weight: 500;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 1%;
   }
 
   .message h2 {
@@ -284,22 +284,17 @@ p{
 
   .formulario input {
     width: 65%; 
-    height: auto;
-    margin-bottom: 3rem;
-    padding: 3px 0;
     font-size: 18px;
   }
   #email{
     width: 65%;
-    height: auto;
-    margin-bottom: 3rem;
-    padding: 3px 0;
+    margin-left: 3rem; 
     font-size: 18px;
   }
 
   .create-account {
-    padding: 2.7rem 0;
-    font-size: 40px;
+    padding: 2rem 0;
+    font-size: 35px;
   
   }
   
@@ -326,13 +321,15 @@ p{
   }
 
   #languages img{
-    width:40px;
+    width:3%;
     cursor: pointer;
   }
   #otrasOpcionesLogIn img{
     width: 30px;
     cursor: pointer;
   }
+
+  
 }
 
 @media only screen and (min-width: 1700px) {
@@ -364,19 +361,15 @@ p{
   }
   .formulario input {
     height: auto;
-    margin-bottom: 3rem;
-    padding: 3px 0;
     font-size: 18px;
   }
   #email{
-    height: auto;
-    margin-bottom: 3rem;
-    padding: 3px 0;
     font-size: 18px;
+    margin-left: 3rem;
   }
 
   .create-account {
-    padding: 2.7rem 0;
+    padding: 2rem 0;
     font-size: 50px;
   
   }
@@ -397,19 +390,6 @@ p{
     right: 35px; 
   }
 
-  .text {
-    font-size: 16px;
-    width: 160px;
-    bottom: -22px;
-  }
-  #languages img{
-    width:50px;
-    cursor: pointer;
-  }
-  #otrasOpcionesLogIn img{
-    width: 50px;
-    cursor: pointer;
-  }
 }
 
 @media screen and (min-width: 320px)and (max-width: 900px) {
@@ -423,9 +403,8 @@ p{
   }
   #email{
     height: auto;
-    margin-bottom: 1rem;
-    padding: 3px 0;
     font-size: 14px;
+    margin-right: 22%;
   }
 
   .create-account {
