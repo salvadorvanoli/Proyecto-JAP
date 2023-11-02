@@ -1,11 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap');
 
-
 nav {
   background-color: #344966; 
   padding: 1%;
-  display: flex;
   justify-content: space-between;
 }
 
@@ -14,13 +12,26 @@ body {
   margin: 0; 
 }
 
-footer {
-  position:flex;
-  bottom: 0;
+#switch {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0%;
   width: 100%;
-  min-height: fit-content;
-  display: flex;
-  background-color: #344966; 
+  background-color: #344966;
+  padding: 2vh;
+}
+
+#japabajo{
+  margin-top: 7vh;
+}
+
+#formDiv{
+  margin-bottom: 20vh;
 }
 
 /* Mensaje de bienvenido */
@@ -44,8 +55,8 @@ p{
 .message h2 {
   font-family: 'Anton', sans-serif;
   font-size: 50px;
-  padding: 1rem 0;
-  margin-top: 40%;
+  padding: 1rem;
+  margin-top: 10%;
 }
 
 .message button{
@@ -154,7 +165,7 @@ p{
 }
 
 #languages img{
-  width:30px;
+  width:50px;
   cursor: pointer;
 }
 
@@ -217,12 +228,6 @@ p{
 
 /* Facebook y google */
 
-#japabajo{
-  position:static;
-  bottom: 3%;
-  left: 1%;
-}
-
 #otrasOpcionesLogIn img{
   width: 30px;
   cursor: pointer;
@@ -254,9 +259,7 @@ p{
 
 /* RESPONSIVE */
 
-/* Hay que mejorarlo */
-
-@media only screen and (min-width: 1000px) {
+/* @media only screen and (min-width: 1000px) {
   .formulario {
     width: 70%;
     font-size: 1.2rem;
@@ -330,14 +333,12 @@ p{
   }
 
   
-}
+} */
 
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 2000px) {
   .formulario {
-    width: 90%;
     font-size: 2rem;
     margin-top: 40px;
-
   }
 
   .message {
@@ -392,7 +393,7 @@ p{
 
 }
 
-@media screen and (min-width: 320px)and (max-width: 900px) {
+/* @media screen and (min-width: 320px)and (max-width: 900px) {
   
 
   .formulario input {
@@ -439,4 +440,4 @@ p{
   .text-muted{
     font-size: 14px;
   }
-}
+} */
