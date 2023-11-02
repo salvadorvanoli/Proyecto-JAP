@@ -38,7 +38,13 @@ document.addEventListener("DOMContentLoaded", function(){
                     {
                         "user": 
                             email.value,
-                        "articles": []
+                        "articles": [],
+                        "img": "/img/img_perfil.png",
+                        "name": "",
+                        "second_name": "",
+                        "lastname": "",
+                        "second_lastname": "",
+                        "phone_number": ""
                     }
                 ;
                 productsInTheCart.push(newCart);

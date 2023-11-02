@@ -1,42 +1,110 @@
-// Archivo por defecto que va a tener la imagen
-const defaultFile ="/img/img_perfil.png";
+let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
 
-const img = document.getElementById('img');
-const file = document.getElementById('picture');
+// Busca cuál es el carrito del usuario actual
 
-// Carga la imagen guardada en el localStorage si existe
-const savedImg = localStorage.getItem("img");
-
-if (savedImg) {
-  img.src = savedImg;
+function searchUserCart(username){
+    let cont = 0;
+    for(let userCart of productsInTheCart){
+        if(userCart.user == username){
+        return cont;
+        }
+        cont++;
+    }
+    return -1;
 }
 
-// Crea una escucha del evento change 
+let currentUserCart = searchUserCart(JSON.parse(localStorage.getItem("username")));
+
+// Archivo por defecto que va a tener la imagen
+
+const img = document.getElementById("img");
+const file = document.getElementById("picture");
+
+// Carga la imagen guardada en el localStorage
+const savedImg = productsInTheCart[currentUserCart].img;
+img.src = savedImg;
+
+// Guarda el valor de una nueva imagen
+
+let newImage;
+
+// Cuando se introduce una nueva imagen, la actualiza en el html
+
 file.addEventListener('change', e => {
+
   // Pregunta si el evento target tiene un archivo seleccionado
+  
   if (e.target.files[0]) {
     const reader = new FileReader();
 
     // Establece la propiedad src del elemento de la imagen en la ruta del archivo
     reader.onload = function(e) {
       img.src = e.target.result;
-
-      // Guarda la imagen en el localStorage
-      localStorage.setItem("img", e.target.result);
+      newImage = e.target.result;
     }
 
     // Lee el contenido del archivo como una URL de datos base64
     reader.readAsDataURL(e.target.files[0]);
-
-  } else {
-    img.src = defaultFile;
-    // Elimina la imagen guardada del localStorage
-    localStorage.removeItem("img");
   }
 });
 
+// Inputs
+
+let emailInput = document.getElementById("emailInput");
+let nameInput = document.getElementById("nameInput");
+let secondNameInput = document.getElementById("secondNameInput");
+let phoneInput = document.getElementById("phoneInput");
+let lastnameInput = document.getElementById("lastnameInput");
+let secondLastnameInput = document.getElementById("secondLastnameInput");
+
+
+
 document.addEventListener("DOMContentLoaded", () =>{
-    let emailInput = document.getElementById("inputEmail");
-    let gmailUser = JSON.parse(localStorage.getItem("username"));
-    emailInput.value = gmailUser; 
+  emailInput.value = productsInTheCart[currentUserCart].user;
+  nameInput.value = productsInTheCart[currentUserCart].name;
+  secondNameInput.value =productsInTheCart[currentUserCart].second_name;
+  phoneInput.value = productsInTheCart[currentUserCart].phone_number;
+  lastnameInput.value = productsInTheCart[currentUserCart].lastname;
+  secondLastnameInput.value = productsInTheCart[currentUserCart].second_lastname;
 });
+
+// Lógica de la validación
+
+const submitBtn = document.getElementById("submitBtn");
+const form = document.getElementById("form");
+const invalidEmail = document.getElementById("invalidEmail");
+
+function emailDoesNotExist(email){
+  filteredProductsInTheCart = productsInTheCart.filter(element => {
+    return element.user != JSON.parse(localStorage.getItem("username"))
+  })
+  for(let user of filteredProductsInTheCart){
+    if(email == user.user){
+      invalidEmail.classList.add("d-block");
+      invalidEmail.classList.remove("d-none");
+      return false;
+    }
+  }
+  invalidEmail.classList.add("d-none");
+  invalidEmail.classList.remove("d-block");
+  return true;
+}
+
+submitBtn.addEventListener("click", function(){
+  form.classList.add("was-validated");
+  if(emailInput.checkValidity() && nameInput.checkValidity() && lastnameInput.checkValidity() && emailDoesNotExist(emailInput.value)){
+    productsInTheCart[currentUserCart].user = emailInput.value;
+    if(newImage){
+      productsInTheCart[currentUserCart].img = newImage;
+    }
+    productsInTheCart[currentUserCart].name = nameInput.value;
+    productsInTheCart[currentUserCart].lastname = lastnameInput.value;
+    productsInTheCart[currentUserCart].phone_number = phoneInput.value;
+    productsInTheCart[currentUserCart].second_name = secondNameInput.value;
+    productsInTheCart[currentUserCart].second_lastname = secondLastnameInput.value;
+    localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+    localStorage.setItem("username", JSON.stringify(emailInput.value));
+  } else {
+    event.preventDefault();
+  }
+})
