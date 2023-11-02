@@ -2,10 +2,11 @@
 const defaultFile ="/img/img_perfil.png";
 
 const img = document.getElementById('img');
-const file = document.getElementById('pictur');
+const file = document.getElementById('picture');
 
 // Carga la imagen guardada en el localStorage si existe
 const savedImg = localStorage.getItem("img");
+
 if (savedImg) {
   img.src = savedImg;
 }
@@ -22,14 +23,14 @@ file.addEventListener('change', e => {
 
       // Guarda la imagen en el localStorage
       localStorage.setItem("img", e.target.result);
-  }
+    }
 
-    // lee el contenido del archivo como una URL de datos base64
+    // Lee el contenido del archivo como una URL de datos base64
     reader.readAsDataURL(e.target.files[0]);
 
   } else {
     img.src = defaultFile;
-    // elimina la imagen guardada del localStorage
+    // Elimina la imagen guardada del localStorage
     localStorage.removeItem("img");
   }
 });

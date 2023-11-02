@@ -190,7 +190,7 @@ function changeValue(num, id){
 function createListItem(product, num) {
     let productListItem = 
     `<tr>
-        <td class="align-middle"><img src="${product.image}" alt="Picture" class="img-thumbnail productImage"></td>
+        <td class="align-middle"><img src="${product.image}" alt="Picture" class="border border-dark productImage"></td>
         <td class="align-middle">${product.name}</td>
         <td class="align-middle">${product.currency} <span id="price${num}">${product.unitCost}</span></td>
         <td class="align-middle"><input type="number" id="quantity${num}" min="1" value="${product.count}" oninput="changeValue(${num}, ${product.id})"></td>
