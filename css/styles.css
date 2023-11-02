@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap');
+
 body{
   background-color: azure;
 }
@@ -25,6 +27,12 @@ nav a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.img-thumbnail{
+  width: 10%;
+  height: 10%;
+  
 }
 
 @media screen and(max-width: 700px) {
@@ -79,15 +87,10 @@ nav a {
   font-size: 38px;
 }
 
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
+h2{
+  font-family: 'Anton', sans-serif;
 
-footer p {
-  margin-bottom: .25rem;
 }
-
 .site-header a {
   color: white;
   transition: ease-in-out color .15s;
@@ -237,6 +240,7 @@ a.custom-card:hover {
 
 }
   
+
 .Btn:hover .text {
   opacity: 1;
   transition-duration: .7s;

@@ -1,19 +1,87 @@
-/* Estilo del botón para subir */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap');
 
-#volverArriba{
-    border: solid black 3px;
-    box-shadow: 3px 3px 3px gray;
-    background-color: white;
-    text-decoration: none;
-    padding: 3px;
-    right: 10px;
-    bottom: 10px;
-    border-radius: 5px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: black;
+/* Estilo para mostrar los productos */
+
+#products-title{
+    display: flex;
+    justify-content: center;
+    text-decoration: underline 2px black;
     user-select: none;
+    font-family: 'Anton', sans-serif;
+
 }
 
+.product{
+    position: relative;
+    border: 6px black solid;
+    border-radius: 10px;
+    margin: 10px;
+    padding-bottom: 75px;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+.product:hover{
+    transform: scale(1.1);
+}
+
+.imageElement{
+    width: 250px;
+    float: left;
+    border: lightblue solid 5px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px lightgray;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.imageElement:hover{
+    transform: scale(1.1);
+}
+
+.nameElement{
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-decoration: underline skyblue 3px;
+}
+
+.nameElement::first-letter{
+    font-size: 150%;
+}
+
+.priceElement{
+    color: green;
+    font-size: 150%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px
+}
+
+.soldElement{
+    font-size: 50%;
+    color: gray;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+/* Estilo del botón para subir */
+
+input[type="number"] {
+    display: block;
+    background-color: lightblue;
+    text-align: center;
+    width: 48%;
+    border: 3px solid #5856d6;
+    border-radius: 5px;
+}
+.maxmin {
+    display: flex;
+    justify-content: space-between;
+  }
+  
 /* Estilo del searchbar */
 
 #searchInput {
@@ -22,7 +90,10 @@
     background-position: 8px center;
     padding-left: 20px;
 }
-
+.search{
+    display: flex;
+    justify-content: center;
+}
 input[type="search"] {
     background-color: #5856d665;
     text-align: center;

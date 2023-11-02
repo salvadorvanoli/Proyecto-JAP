@@ -68,6 +68,6 @@ body.darkMode th, body.darkMode td {
 
 @media screen and (min-width:992px){
     .switch {
-        margin-left: 2%;
+        /* margin-left: 2%; */
     }
 }
