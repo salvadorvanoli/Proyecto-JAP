@@ -43,7 +43,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="usernameNavButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <button class="btn btn-dark dropdown-toggle" type="button" id="usernameNavButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
@@ -63,52 +63,66 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
-    
-    <div class="container">
-      <h1 id="products-title">Listado de Productos</h1>
-      <div class="row">
-        <div class=" col-md-12 mb-1 ">
-          
-          <div class="row container p-0 m-0">
-            <div class="search">
-              <input class="col-md-6 mb-1"  type="search" name="buscador" id="searchInput" oninput="filterProducts(true)" placeholder="Buscar articulos">
-           </div>
-           <div class="maxmin">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
-              <br>
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
-            </div>
-            <!-- Botones de filtrado -->
 
-            <div class="col-2 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="filterPrice">Filtrar</button>
-                <button class="btn btn-light btn-block" id="resetPrice">Limpiar</button>
-                <button class="btn btn-light btn-block" id="filterHighPrice"><i class="fas fa-sort-amount-up mr-1">$</i></button>
-                <button class="btn btn-light btn-block" id="fiterLowPrice"><i class="fas fa-sort-amount-down mr-1">$</i></button>
-                <button class="btn btn-light btn-block" id="filterRelevance">⭐</button>
+  <main>
+    <section class="text-center p-4">
+      <h2>Productos</h2>
+      <p class="lead">Verás aquí los productos de la categoría seleccionada.</p>
+    </section>
+    <div class="container">
+      <div class="text-center m-3">
+        <input class="col-md-6 mb-1"  type="search" name="buscador" id="searchInput" oninput="filterProducts(true)" placeholder="Buscar articulos">
+      </div>
+      <div class="text-center m-3">
+        <button class="btn blue dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filtros de búsqueda</button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+          <li class="row btn-group">
+            <div class="container">
+              <div class="row container">
+                <div class="col w-50 m-1">
+                  <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0">
+                </div>
+              </div>
+
+            <div class="row container">
+              <div class="col w-50 m-1">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0">
               </div>
             </div>
-            </div>
-            </div>
           </div>
-        </div>
-    <div id="product-list"></div>
+          </li>
+
+          <li class="col m-1 text-center">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="filterPrice">Filtrar</button>
+              <button class="btn btn-light btn-block" id="resetPrice">Limpiar</button>
+            </div>
+          </li>
+
+          <li class="col m-1 text-center">
+            <button class="btn btn-light btn-block" id="filterHighPrice"><i class="fas fa-sort-amount-up mr-1">$</i></button>
+            <button class="btn btn-light btn-block" id="fiterLowPrice"><i class="fas fa-sort-amount-down mr-1">$</i></button>
+            <button class="btn btn-light btn-block" id="filterRelevance">⭐</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container card-deck text-center border border-dark rounded" id="product-list"></div>
 
   </main>
   
-  <footer class="text-muted">
+  <footer>
     <div class="container">
       <a class="Btn" href="#">
         <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
           <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
         </svg>
         <p class="text" id="goBackText">Volver arriba</p>
-      </a> 
-      <p id="japabajo">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      </a>
+      <p class="text-muted" id="japabajo">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
-  </footer>
+  </footer >
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

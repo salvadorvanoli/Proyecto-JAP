@@ -4,7 +4,7 @@
 
 nav {
   background-color: #344966; 
-  padding: 23px;
+  padding: 1%;
   display: flex;
   justify-content: space-between;
 }
@@ -48,7 +48,7 @@ p{
   margin-top: 40%;
 }
 
-.message button {
+.message button{
   padding: 10px;
   font-weight: 400;
   background-color: #11202c;
@@ -87,12 +87,11 @@ p{
   border-radius: 30px;
 }
 
-
-.formulario input {
+.input {
   width: 65%; 
   display: flex;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: transparent;
   border: none;
   border-bottom: white thin solid;
@@ -100,15 +99,12 @@ p{
   outline: none;
   padding: 1px 0;
   font-size: 13px;
+  max-width: 300px;
 }
 
 #email{
-  width: 65%;
-  display: flex;
-  margin: auto;
-  margin-right: 5rem;
-  margin-bottom: 2rem;
-
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .form-label {
@@ -119,7 +115,7 @@ p{
 }
 
 .btn-primary {
-border-radius: 20px;
+  border-radius: 20px;
 }
 
 .btn {
@@ -254,4 +250,193 @@ border-radius: 20px;
 .nmc{
   color: #fff;
   font-size: small;
+}
+
+/* RESPONSIVE */
+
+/* Hay que mejorarlo */
+
+@media only screen and (min-width: 1000px) {
+  .formulario {
+    width: 70%;
+    font-size: 1.2rem;
+  }
+
+  .message {
+    font-size: 1.6rem;
+  }
+
+  p{
+    font-size: 16px;
+  }
+
+  .message button {
+    padding: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 1%;
+  }
+
+  .message h2 {
+    font-size: 60px;
+    padding: 1.6rem 0;
+  }
+
+  .formulario input {
+    width: 65%; 
+    font-size: 18px;
+  }
+  #email{
+    width: 65%;
+    margin-left: 3rem; 
+    font-size: 18px;
+  }
+
+  .create-account {
+    padding: 2rem 0;
+    font-size: 35px;
+  
+  }
+  
+  .btn {
+    padding: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    width: 200px;
+    height: 60px;
+  }
+
+  .Btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    bottom:30px;
+    right: 35px; 
+  }
+
+  .text {
+    font-size: 15px;
+    width: 150px;
+    bottom: -22px;
+  }
+
+  #languages img{
+    width:3%;
+    cursor: pointer;
+  }
+  #otrasOpcionesLogIn img{
+    width: 30px;
+    cursor: pointer;
+  }
+
+  
+}
+
+@media only screen and (min-width: 1700px) {
+  .formulario {
+    width: 90%;
+    font-size: 2rem;
+    margin-top: 40px;
+
+  }
+
+  .message {
+    font-size: 2rem;
+  }
+
+  p{
+    font-size: 30px;
+  }
+
+  .message button {
+    padding: 20px;
+    font-weight: 800;
+    font-size: 20px;
+    margin-top: 50px;
+  }
+
+  .message h2 {
+    font-size: 90px;
+    padding: 2rem 0;
+  }
+  .formulario input {
+    height: auto;
+    font-size: 18px;
+  }
+  #email{
+    font-size: 18px;
+    margin-left: 3rem;
+  }
+
+  .create-account {
+    padding: 2rem 0;
+    font-size: 50px;
+  
+  }
+  
+  .btn {
+    padding: 20px;
+    font-weight: 800;
+    font-size: 18px;
+    width: 220px;
+    height: 70px;
+  }
+
+  .Btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    bottom:30px;
+    right: 35px; 
+  }
+
+}
+
+@media screen and (min-width: 320px)and (max-width: 900px) {
+  
+
+  .formulario input {
+    height: auto;
+    margin-bottom: 1rem;
+    padding: 2px 0;
+    font-size: 14px;
+  }
+  #email{
+    height: auto;
+    font-size: 14px;
+    margin-right: 22%;
+  }
+
+  .create-account {
+    padding: 1rem 0;
+    font-size: 25px;
+  
+  }
+  
+  .Btn {
+    width: 40px;
+    height: 40px;
+    bottom:15px;
+    right: 27px; 
+    border: none;
+  }
+    
+
+  .text {
+    font-size: 12px;
+    width: 100px;
+    bottom: -16px;
+  }
+
+  .btn {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 12px;
+    width: 140px;
+    height: 40px;
+  }
+
+  .text-muted{
+    font-size: 14px;
+  }
 }

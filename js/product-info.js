@@ -6,18 +6,56 @@ function redirectToTheCart(){
   window.location.replace('cart.html');
 }
 
-function inTheCart(info){
-  for(let i = 0; i<productsInTheCart.length; i++){
-    if(info.id == productsInTheCart[i].id){
+function inTheCart(info, userNumber){
+  for(let i = 0; i<productsInTheCart[userNumber].articles.length; i++){
+    if(info.id == productsInTheCart[userNumber].articles[i].id){
       return true;
     }
   }
   return false;
 }
 
+function userHasItems(username){
+  let cont = 0;
+  for(let userCart of productsInTheCart){
+    if(userCart.user == username){
+      return cont;
+    }
+    cont++;
+  }
+  return -1;
+}
+
 function buyProduct(){
-  if(!inTheCart(productInfoFetch)){
-    productsInTheCart.push(productInfoFetch);
+  let cant = userHasItems(JSON.parse(localStorage.getItem("username")));
+  if(cant !== -1){
+    let newItem = {
+      "id": productInfoFetch.id,
+      "name": productInfoFetch.name,
+      "count": 1,
+      "unitCost": productInfoFetch.cost,
+      "currency": productInfoFetch.currency,
+      "image": productInfoFetch.images[0]
+    };
+    if(!inTheCart(newItem, cant)){
+      productsInTheCart[cant].articles.push(newItem);
+      localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
+    }
+  } else {
+    let newCart = {
+      "user": JSON.parse(localStorage.getItem("username")),
+      "articles": [
+        {
+          "id": productInfoFetch.id,
+          "name": productInfoFetch.name,
+          "count": 1,
+          "unitCost": productInfoFetch.cost,
+          "currency": productInfoFetch.currency,
+          "image": productInfoFetch.images[0]
+        }
+      ]
+    };
+    productsInTheCart.push(newCart);
     localStorage.setItem("productsInTheCart", JSON.stringify(productsInTheCart));
   }
 }
@@ -31,6 +69,7 @@ function createText(options) {
 }
 
 // Crea un carousel de bootstrap 
+
 function createCarousel(images, options) {
 
   let imageElementsString = "";
@@ -86,7 +125,25 @@ function createCarousel(images, options) {
   `
 }
 
-// Crea un carrousel 
+// Crea elementos de texto
+
+function createText(options) {
+  const element = document.createElement(options.element);
+  element.classList.add(options.class);
+
+  const titles = ['Descripción:', 'Precio:', 'Categoría:', 'Vendidos:'];
+  const matches = titles.filter(title => options.text.includes(title));
+
+  if (matches.length > 0) {
+    const title = matches[0];
+    const content = options.text.split(title)[1];
+    element.innerHTML = `<b>${title}</b>${content}`;
+  } else {
+    element.textContent = options.text;
+  }
+
+  return element;
+}
 
 function displayProduct(product) {
   // Crea el contenedor del producto
@@ -101,25 +158,6 @@ function displayProduct(product) {
     createText({ element: 'p', class: 'category', text: `Categoría: ${product.category}` }),
     createText({ element: 'p', class: 'soldCount', text: `Vendidos: ${product.soldCount}` }),
   ];
-
-  //Hace que los titulos esten en negrita
-  function createText(options) {
-    const element = document.createElement(options.element);
-    element.classList.add(options.class);
-  
-    const titles = ['Descripción:', 'Precio:', 'Categoría:', 'Vendidos:'];
-    const matches = titles.filter(title => options.text.includes(title));
-  
-    if (matches.length > 0) {
-      const title = matches[0];
-      const content = options.text.split(title)[1];
-      element.innerHTML = `<b>${title}</b>${content}`;
-    } else {
-      element.textContent = options.text;
-    }
-  
-    return element;
-  }
 
   // se pasan las imagenes al metodo de creacion del carousel
   const carousel = createCarousel(product.images, { title: "", description: "" });
@@ -137,7 +175,7 @@ function displayProduct(product) {
 
   // Botón de compra y desplegable para redirigir al carrito
 
-  let button = `<button type="button" class="btn btn-primary" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
+  let button = `<button type="button" class="btn btn-cart" onclick="buyProduct()" data-toggle="modal" data-target="#cartModal">Comprar</button>
   <div class="modal" id="cartModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -146,7 +184,7 @@ function displayProduct(product) {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" onclick="redirectToTheCart()">Ir al carrito</button>
+          <button type="button" class="btn btn-cart" onclick="redirectToTheCart()">Ir al carrito</button>
         </div>
       </div>
     </div>
@@ -209,7 +247,7 @@ function showRelatedProducts(data){
   let contentToAppend = "";
   for (const item of data.relatedProducts) {
     contentToAppend += `
-        <div class="card" style="width: 18rem;">
+        <div class="card">
           <img src="`+item.image+`" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">`+item.name+`</h5>
@@ -249,8 +287,8 @@ fetch(URL_COMMENTS)
 
 
 //PARTE 4 - AÑADE EFECTO ESTRELLAS
-const stars = document.querySelectorAll('.star');
 
+const stars = document.querySelectorAll('.star');
 
 stars.forEach(function(star, index){
     star.addEventListener('click', function(){

@@ -29,6 +29,44 @@ nav a {
   user-select: none;
 }
 
+.img-thumbnail{
+  width: 10%;
+  height: 10%;
+  
+}
+
+@media screen and(max-width: 700px) {
+  .text-muted{
+    font-size: 14px;
+}
+}
+
+@media screen and(min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.jumbotron {
+  height: 50vh;
+  padding: 5em inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
+  background: url('../img/cover-back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    width: 50%s;
+  }
+}
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -211,6 +249,7 @@ a.custom-card:hover {
 
 }
   
+
 .Btn:hover .text {
   opacity: 1;
   transition-duration: .7s;
@@ -231,6 +270,7 @@ a.custom-card:hover {
     opacity: 1;
   }
 }
+
 @media (max-width: 300px) {
     .Btn {
         width: 20px;
@@ -243,4 +283,14 @@ a.custom-card:hover {
         width: 30px;
         bottom: -5px;
     }
+}
+.blue{
+    background-color: #11202c;
+    border-color: #11202c;
+    color: aliceblue;
+}
+.blue:hover {
+  background-color: #172b3a; 
+  border-color: #172b3a;
+  color: darkgray;
 }

@@ -15,6 +15,7 @@
   
   <link rel="stylesheet" href="css/user-nav-style.css">
   <link rel="stylesheet" href="css/darkmode.css">
+  <link rel="stylesheet" href="css/categories.css">
 
   <script src="js/logged-in.js"></script>
   <script src="js/user-nav-utilities.js"></script>
@@ -44,7 +45,7 @@
           </li>
 
           <li class="nav-item dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="usernameNavButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <button class="btn btn-dark dropdown-toggle" type="button" id="usernameNavButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
@@ -64,47 +65,52 @@
       </nav>
     </div>
   </header>
+
   <main class="pb-5">
     <section class="text-center p-4">
       <h2>Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </section>
-    <div class="container">
-      <div class="row">
-        <div class="col text-end">
-          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-            <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
-            <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
-            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-          <div class="row container p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text-end my-2">Cant.</p>
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+    <div class="text-center m-3">
+      <button class="btn blue dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">Filtros de búsqueda</button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  
+        <li class="row btn-group">
+          <div class="container">
+            <div class="row container">
+              <div class="col w-50 m-1">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
               </div>
             </div>
+  
+          <div class="row container">
+            <div class="col w-50 m-1">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
           </div>
         </div>
-      </div>
+        </li>
+  
+        <li class="col m-1 text-center">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
+          </div>
+        </li>
+  
+        <li class="col m-1 text-center">
+          <input type="radio" class="btn-check" name="options" id="sortAsc">
+          <label class="btn btn-light" for="sortAsc">A-Z</label>
+          <input type="radio" class="btn-check" name="options" id="sortDesc">
+          <label class="btn btn-light" for="sortDesc">Z-A</label>
+          <input type="radio" class="btn-check" name="options" id="sortByCount">
+          <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
       <div class="row">
-        <div class="list-group" id="cat-list-container">
+        <div class="container card-deck text-center border border-dark rounded" id="cat-list-container">
         </div>
       </div>
     </div>
@@ -117,7 +123,7 @@
         </svg>
         <p class="text" id="goBackText">Volver arriba</p>
     </a>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p class="text-muted">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
   <div id="spinner-wrapper">
