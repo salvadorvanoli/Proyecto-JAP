@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
                         "user": 
                             email.value,
                         "articles": [],
-                        "img": "/img/img_perfil.png",
+                        "img": "img/img_perfil.png",
                         "name": "",
                         "second_name": "",
                         "lastname": "",
