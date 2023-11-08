@@ -57,8 +57,6 @@ let phoneInput = document.getElementById("phoneInput");
 let lastnameInput = document.getElementById("lastnameInput");
 let secondLastnameInput = document.getElementById("secondLastnameInput");
 
-
-
 document.addEventListener("DOMContentLoaded", () =>{
   emailInput.value = productsInTheCart[currentUserCart].user;
   nameInput.value = productsInTheCart[currentUserCart].name;
