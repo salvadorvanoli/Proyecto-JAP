@@ -349,25 +349,31 @@ function checkMethodTwoInputs(){
 // Muestra el feedback de cada input del modal debajo del botón de toggle del modal
 
 let modalFeedback = document.getElementById("modalFeedback");
+let insideModalCardFeedback = document.getElementById("insideModalCardFeedback");
 
 function showModalFeedback(){
     modalFeedback.innerHTML = "";
+    insideModalCardFeedback.innerHTML = "";
     if(getPaymentMethodSelected()){
         modalBtn.classList.remove("is-invalid");
         if(!cardNumber.checkValidity() || cardNumber.value == ""){
             modalFeedback.innerHTML+=`Debe ingresar su numero de tarjeta, y debe tener 16 números.`;
+            insideModalCardFeedback.innerHTML+=`Ingrese el número de tarjeta <br>`;
             modalBtn.classList.add("is-invalid");
         }
         if(!cardName.checkValidity() || cardName.value == ""){
             modalFeedback.innerHTML+=`Debe ingresar el nombre del titular, solo puede contener letras.`;
+            insideModalCardFeedback.innerHTML+=`Ingrese el nombre del titular <br>`;
             modalBtn.classList.add("is-invalid");
         }
         if(!cardMonth.checkValidity() || cardMonth.value == "" || !cardYear.checkValidity() || cardYear.value == ""){
             modalFeedback.innerHTML+=`Debe ingresar la fecha de vencimiento de su tarjeta.`;
+            insideModalCardFeedback.innerHTML+=`Ingrese fecha de vencimiento <br>`;
             modalBtn.classList.add("is-invalid");
         }
         if(!cvc.checkValidity() || cvc.value == ""){
             modalFeedback.innerHTML+=`Debe ingresar su CVC.`;
+            insideModalCardFeedback.innerHTML+=`Ingrese el CVC <br>`;
             modalBtn.classList.add("is-invalid");
         }
     } else {
@@ -389,6 +395,7 @@ function checkModalPaymentMethodOne(){
     if(cardNumber.checkValidity() && cardName.checkValidity() && cardMonth.checkValidity() && cardYear.checkValidity() && cvc.checkValidity() && checkMethodOneInputs()){
         modalBtn.classList.add("btn-outline-primary");
         modalBtn.classList.remove("btn-danger");
+        insideModalCardFeedback.innerHTML = "";
         modalFeedback.innerHTML = "";
         return true;
     } else {
@@ -404,6 +411,7 @@ function checkModalPaymentMethodTwo(){
         modalBtn.classList.add("btn-outline-primary");
         modalBtn.classList.remove("btn-danger");
         modalFeedback.innerHTML = "";
+        insideModalCardFeedback.innerHTML = "";
         return true;
     } else {
         modalBtn.classList.add("btn-danger");
