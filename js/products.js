@@ -29,31 +29,6 @@ function setProductID(id){
   window.location = "product-info.html";
 }
 
-// function displayProduct(product) {
-//   // Crea el contenedor del producto
-//   const productElement = document.createElement("div");
-//   productElement.className = "product";
-//   productElement.onclick = function() {
-//     setProductID(product);
-//   };
-
-//   // crea elementos del contenedor (imagen, nombre, descripción, precio y cantidad de vendidos)
-//   const contentList = [
-//     createImage({ class: 'imageElement', image: product.image, name: product.name }),
-//     createText({ element: 'h2', class: 'nameElement', text: product.name }),
-//     createText({ element: 'p', class: 'descriptionElement', text: product.description }),
-//     createText({ element: 'p', class: 'priceElement', text: `${product.cost} ${product.currency}` }),
-//     createText({ element: 'p', class: 'soldElement', text: `Vendidos: ${product.soldCount}` }),
-//   ];
-
-
-//   // agrega cada uno de los elementos al contenedor
-//   contentList.forEach(item => productElement.appendChild(item));
-//   // agrega el contenedor a la lista de elementos
-//   const productList = document.getElementById("product-list");
-//   productList.appendChild(productElement);
-// }
-
 function displayProduct(product){
   let card = `
   <div>
