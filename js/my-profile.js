@@ -1,4 +1,5 @@
 let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
+let allTheEmails = JSON.parse(localStorage.getItem("allTheEmails"));
 
 // Busca cuál es el carrito del usuario actual
 
@@ -14,6 +15,7 @@ function searchUserCart(username){
 }
 
 let currentUserCart = searchUserCart(JSON.parse(localStorage.getItem("username")));
+let username = JSON.parse(localStorage.getItem("username"));
 
 // Archivo por defecto que va a tener la imagen
 
@@ -73,11 +75,11 @@ const form = document.getElementById("form");
 const invalidEmail = document.getElementById("invalidEmail");
 
 function emailDoesNotExist(email){
-  filteredProductsInTheCart = productsInTheCart.filter(element => {
-    return element.user != JSON.parse(localStorage.getItem("username"))
+  filteredAllTheEmails = allTheEmails.filter(element => {
+    return element != JSON.parse(localStorage.getItem("username"))
   })
-  for(let user of filteredProductsInTheCart){
-    if(email == user.user){
+  for(let user of filteredAllTheEmails){
+    if(email == user){
       invalidEmail.classList.add("d-block");
       invalidEmail.classList.remove("d-none");
       return false;
@@ -88,10 +90,25 @@ function emailDoesNotExist(email){
   return true;
 }
 
+function searchUserInTheArray(array){
+  let userNumber = 0;
+  for(let user of array){
+    console.log(user);
+    console.log(username);
+    if(user == username){
+      console.log(userNumber);
+      return userNumber;
+    }
+    userNumber++;
+  }
+}
+
 submitBtn.addEventListener("click", function(){
   form.classList.add("was-validated");
   if(emailInput.checkValidity() && nameInput.checkValidity() && lastnameInput.checkValidity() && emailDoesNotExist(emailInput.value)){
     productsInTheCart[currentUserCart].user = emailInput.value;
+    allTheEmails[searchUserInTheArray(allTheEmails)] = emailInput.value;
+    localStorage.setItem("allTheEmails", JSON.stringify(allTheEmails));
     if(newImage){
       productsInTheCart[currentUserCart].img = newImage;
     }
