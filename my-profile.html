@@ -66,12 +66,16 @@
       </div>
       <div class="text-center">
         <hr>
-        <div class="m-5 text-center">
-          <picture>
-            <!-- float-end rounded-start img-fluid border border-secondary border border-4 img-thumbnail -->
-            <img src="/img/img_perfil.png" alt="avatar" id="img" class="img-thumbnail border border-secondary border border-4 mb-3"/>
-          </picture>
-          <input type="file" name="photo" id="picture" accept=".png, .jpg, .jpeg"/>
+        <div class="m-5">
+
+            <div id="imgContainer" class="m-3 text-center">
+              <img src="img/img_perfil.png" alt="avatar" id="img"/>
+            </div >
+
+            <div>
+              <input type="file" class="form-control" name="photo" id="picture" accept=".png, .jpg, .jpeg"/>
+            </div>
+
         </div>
         <form id="form">
           <div class="row row-cols-1 row-cols-lg-2">

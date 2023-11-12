@@ -23,7 +23,7 @@ const img = document.getElementById("img");
 const file = document.getElementById("picture");
 
 // Carga la imagen guardada en el localStorage
-const savedImg = productsInTheCart[currentUserCart].img;
+const savedImg = productsInTheCart[currentUserCart].img || "img/img_perfil.png";
 img.src = savedImg;
 
 // Guarda el valor de una nueva imagen

@@ -89,7 +89,7 @@ p{
 }
 
 .formulario {
-  background-image: linear-gradient(rgba(128, 128, 128, 0.5), rgba(128, 128, 128, 0.5)), url(/img/compras-fondo-vertical_23-2150409471.avif);
+  background-image: linear-gradient(rgba(128, 128, 128, 0.5), rgba(128, 128, 128, 0.5)), url(../img/compras-fondo-vertical.png);
   background-size: cover;
   width: 70%;
   height: 94%;
