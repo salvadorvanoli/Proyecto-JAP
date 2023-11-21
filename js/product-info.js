@@ -234,7 +234,7 @@ function displayComments(comments){
   }
 }
 
-URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + ".json";
+URL = PRODUCT_INFO_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
 let URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + JSON.parse(localStorage.getItem("ItemID")) + EXT_TYPE;
 
 function irAlRelacionado(id){

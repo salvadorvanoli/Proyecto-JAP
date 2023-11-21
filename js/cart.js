@@ -204,7 +204,7 @@ function createListItem(product, num) {
 
 // Se agrega un producto pre cargado de la URL y permanece en todas las cuentas que se inicien :)
 
-const CART_URL_USER_PRODUCT = CART_INFO_URL + "25801.json";
+const CART_URL_USER_PRODUCT = CART_INFO_URL;
 
 function inTheCart(info, userNumber){
     for(let i = 0; i<productsInTheCart[userNumber].articles.length; i++){

@@ -53,7 +53,7 @@ function displayProduct(product){
 const categorySelected = localStorage.getItem("catID");
 
 // URL para obtener la lista de productos de la categoría 101 (Autos)
-const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${categorySelected}.json`;
+const productsUrl = PRODUCTS_URL + categorySelected + EXT_TYPE;
 
 // Calcula precios máximos y mínimos de los productos
 
