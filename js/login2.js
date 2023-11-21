@@ -25,10 +25,13 @@ document.addEventListener("DOMContentLoaded", function(){
         return false;
     }
 
-    loginForm.addEventListener("submit", function(){
+    loginForm.addEventListener("submit", async function(){
+        event.preventDefault();
         if(rightUser()){
+            const token = await getToken(email.value, password1.value);
             localStorage.setItem('username', JSON.stringify(email.value));
             localStorage.setItem('loggedIn', JSON.stringify(true));
+            window.location.replace('../index.html');
         } else {
             if(englishBool){
                 alert("The user does not exist or the credencials are wrong");

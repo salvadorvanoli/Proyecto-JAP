@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function(){
     logOut.addEventListener("click", function(){
         localStorage.setItem("loggedIn", JSON.stringify(false));
         localStorage.setItem("username", JSON.stringify(null));
+        localStorage.setItem("TOKEN", JSON.stringify(null));
         window.location.replace('login.html');
     });
 });

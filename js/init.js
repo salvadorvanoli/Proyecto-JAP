@@ -5,6 +5,7 @@ const PRODUCT_INFO_URL = "http://localhost:3000/products/";
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/products_comments/";
 const CART_INFO_URL = "http://localhost:3000/user_cart";
 const CART_BUY_URL = "http://localhost:3000/cart";
+const KEY_URL = "http://localhost:3000/login";
 const EXT_TYPE = ".json";
 
 let showSpinner = function(){
@@ -38,4 +39,32 @@ let getJSONData = function(url){
         hideSpinner();
         return result;
     });
+}
+
+// Función para obtener un token
+
+// Función para pedir token
+
+async function getToken(user, pass){
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+      "user": "${user)",
+      "pass": pass
+  });
+
+  var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+  };
+  
+  await fetch(KEY_URL, requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    localStorage.setItem("TOKEN", JSON.stringify(result));
+  })
+  .catch(error => console.log('error', error));
 }

@@ -25,9 +25,11 @@ document.addEventListener("DOMContentLoaded", function(){
     
     let productsInTheCart = JSON.parse(localStorage.getItem("productsInTheCart")) || [];
 
-    loginForm.addEventListener("submit", function(){
+    loginForm.addEventListener("submit", async function(){
+        event.preventDefault();
         if(password1.value===password2.value){
             if(!userExists()){
+                const token = await getToken(email.value, password1.value);
                 usernameArray.push(email.value);
                 passwordArray.push(password1.value);
                 localStorage.setItem('username', JSON.stringify(email.value));
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 ;
                 productsInTheCart.push(newCart);
                 localStorage.setItem('productsInTheCart', JSON.stringify(productsInTheCart));
+                window.location.replace('../index.html');
             } else {
                 alert("Usuario ya existente, inicie sesión");
                 event.preventDefault();
