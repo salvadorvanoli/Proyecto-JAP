@@ -215,7 +215,7 @@ function inTheCart(info, userNumber){
     return false;
 }
 
-fetch(CART_URL_USER_PRODUCT)
+fetch(CART_URL_USER_PRODUCT, requestOptions)
 .then(response => response.json())
 .then(data => {
     let PRODUCT_CART_USER = data.articles[0];
