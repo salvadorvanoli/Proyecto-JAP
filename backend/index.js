@@ -1,4 +1,5 @@
 // LIBRERÍAS
+
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // PUERTO DEL SERVIDOR
+
 const port = 3000;
 
 // ENDPOINT LOGIN
@@ -23,6 +25,38 @@ app.post("/login", (req, res) => {
       res.status(200).json({ token });
     } else {
       res.status(401).json({ message: "Usuario y/o contraseña incorrecto" });
+    }
+});
+
+// MIDDLEWARE PARA CADA ENDPOINT
+
+app.use("/cart", (req, res, next) => {
+    try {
+      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+      console.log(decoded);
+      next();
+    } catch (err) {
+      res.status(401).json({ message: "Usuario no autorizado" });
+    }
+});
+
+app.use("/cats", (req, res, next) => {
+    try {
+      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+      console.log(decoded);
+      next();
+    } catch (err) {
+      res.status(401).json({ message: "Usuario no autorizado" });
+    }
+});
+
+app.use("/cats_products", (req, res, next) => {
+    try {
+      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+      console.log(decoded);
+      next();
+    } catch (err) {
+      res.status(401).json({ message: "Usuario no autorizado" });
     }
 });
 

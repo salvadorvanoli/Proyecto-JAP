@@ -69,7 +69,7 @@ function calcPrices(products){
 }
 
 // Realizar la petición web
-fetch(productsUrl)
+fetch(productsUrl, requestOptions)
   .then(response => response.json())
   .then(data => {
     // Verifica que "products" sea un array dentro de la respuesta

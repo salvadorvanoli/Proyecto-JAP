@@ -43,22 +43,20 @@ let getJSONData = function(url){
 
 // Función para obtener un token
 
-// Función para pedir token
-
 async function getToken(user, pass){
-  var myHeaders = new Headers();
+  let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  var raw = JSON.stringify({
-      "user": "${user)",
+  let raw = JSON.stringify({
+      "user": user,
       "pass": pass
   });
 
-  var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
+  let requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
   };
   
   await fetch(KEY_URL, requestOptions)
@@ -68,3 +66,13 @@ async function getToken(user, pass){
   })
   .catch(error => console.log('error', error));
 }
+
+// Variable para hacer fetch GET con una key
+
+let requestOptions = {
+  method: 'GET',
+  headers: {
+    "Content-Type": "application/json",
+    "access-token": JSON.parse(localStorage.getItem("TOKEN")).token,
+  },
+};
