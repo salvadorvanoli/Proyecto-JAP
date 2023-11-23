@@ -33,19 +33,15 @@ app.post("/login", (req, res) => {
 app.use("/cart", (req, res, next) => {
     try {
       const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
-      console.log(decoded);
       next();
     } catch (err) {
       res.status(401).json({ message: "Usuario no autorizado" });
     }
 });
 
-
-
 app.use("/user_cart", (req, res, next) => {
     try {
       const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
-      console.log(decoded);
       next();
     } catch (err) {
       res.status(401).json({ message: "Usuario no autorizado" });
