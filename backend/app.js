@@ -45,17 +45,6 @@ app.post("/login", (req, res) => {
 
 // ENDPOINTS PARA CADA JSON
 
-// cartRouter.get('/cart/success', (req, res) => {
-//   const cart = require("./data/cart/buy.json")
-//   res.json(cart);
-// });
-
-// cartRouter.get('/cart/:filename', (req, res) => {
-// const filename = req.params.filename;
-// const user_cart = require("./data/user_cart/" + filename)
-// res.json(user_cart);
-// });
-
 app.get('/cats', (req, res) => {
     const cats = require("./data/cats/cat.json")
     res.json(cats);

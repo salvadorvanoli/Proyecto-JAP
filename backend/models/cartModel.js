@@ -8,22 +8,6 @@ const pool = mariadb.createPool({
   connectionLimit: 5,
 });
 
-// const getCarts = async () => {
-//     let conn;
-//     try {
-//       conn = await pool.getConnection();
-//       const rows = await conn.query(
-//         "SELECT * FROM usuarios_productos"
-//       );
-  
-//       return rows;
-//     } catch (error) {
-//     } finally {
-//       if (conn) conn.release(); //release to pool
-//     }
-//     return false;
-// };
-
 const getPurchasesByUser = async (username) => {
     let conn;
     try {
@@ -80,7 +64,7 @@ const addPurchase = async (username, envio, cardnum, cardname, carddate, cardcod
     try {
       conn = await pool.getConnection();
       const response = await conn.query(
-        `INSERT INTO compras(username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername) VALUE (?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO compras(username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername) VALUE(?, ?, ?, ?, ?, ?, ?, ?)`,
         [username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername]
       );
   
@@ -97,7 +81,7 @@ const addPurchaseDetails = async (compraid, productid, count, price, currency) =
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `INSERT INTO detallecompra(compraid, productid, count, price, currency) VALUE (?, ?, ?, ?, ?)`,
+      `INSERT INTO detallecompra(compraid, productid, count, price, currency) VALUE(?, ?, ?, ?, ?)`,
       [compraid, productid, count, price, currency]
     );
 
@@ -108,38 +92,6 @@ const addPurchaseDetails = async (compraid, productid, count, price, currency) =
   }
   return false;
 };
-
-// const addItem = async (username, productid) => {
-//     let conn;
-//     try {
-//       conn = await pool.getConnection();
-//       const response = await conn.query(
-//         `INSERT INTO usuarios_productos(username, productid) VALUE (?, ?)`,
-//         [username, productid]
-//       );
-  
-//       return { username, productid };
-//     } catch (error) {
-//     } finally {
-//       if (conn) conn.release(); //release to pool
-//     }
-//     return false;
-// };
-
-// const deleteItem = async (username, productid) => {
-//     let conn;
-//     try {
-//       conn = await pool.getConnection();
-//       await conn.query("DELETE FROM usuarios_productos WHERE username=? AND productid=?", [username, productid]);
-  
-//       return true;
-//     } catch (error) {
-//       console.log(error);
-//     } finally {
-//       if (conn) conn.release(); //release to pool
-//     }
-//     return false;
-// };
 
 module.exports = {
   getPurchasesByUser,
