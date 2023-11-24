@@ -3,8 +3,8 @@ const mariadb = require("mariadb");
 const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
-  password: "12560",
-  database: "bd-proyecto-v2",
+  password: "1234",
+  database: "bd-proyecto",
   connectionLimit: 5,
 });
 
