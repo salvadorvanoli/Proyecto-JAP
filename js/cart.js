@@ -483,6 +483,9 @@ purchaseBtn.addEventListener("click", function(){
 
     if(checkModalValidities() && checkOutOfModalValidities() && finalTotal.innerHTML > 0){
 
+        addPurchaseData();
+        addDetailsData();
+
         confirmationForm.classList.remove("was-validated");
 
         // Agrega el cartel de compra satisfactoria
