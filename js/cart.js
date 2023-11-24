@@ -506,7 +506,7 @@ purchaseBtn.addEventListener("click", function(){
     }
 });
 
-function addPurchaseData(){
+async function addPurchaseData(){
 
     let cardnumvalue;
     let cardnamevalue;
@@ -571,28 +571,33 @@ function addPurchaseData(){
         redirect: 'follow'
     };
 
-    fetch(ADD_PURCHASE_URL, fetchOptions)
+    await fetch(ADD_PURCHASE_URL, fetchOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 }
 
-function addDetailsData(){
+async function addDetailsData(){
 
     let lastpurchase
 
-    fetch(LAST_PURCHASE_URL + JSON.parse(localStorage.getItem("username")), requestOptions)
+    await fetch(LAST_PURCHASE_URL + JSON.parse(localStorage.getItem("username")), requestOptions)
     .then(response => response.json())
     .then(result => {
     console.log(result)
         lastpurchase = result[0].compraid;
-        console.log(lastpurchase);
     })
     .catch(error => console.log('error', error));
 
-    console.log(lastpurchase);
+    for(let i=0; i<productsInTheCart[currentUserCart].articles.length; i++){
 
-    for(let product of productsInTheCart[currentUserCart].articles){
+        let raw = JSON.stringify({
+            "compraid": lastpurchase,
+            "productid": productsInTheCart[currentUserCart].articles[i].id,
+            "count": productsInTheCart[currentUserCart].articles[i].count,
+            "price": productsInTheCart[currentUserCart].articles[i].unitCost,
+            "currency": productsInTheCart[currentUserCart].articles[i].currency
+        });
 
         let fetchOptions = {
             method: 'POST',
@@ -604,7 +609,7 @@ function addDetailsData(){
             redirect: 'follow'
         };
     
-        fetch(ADD_DETAILS_URL, fetchOptions)
+        await fetch(ADD_DETAILS_URL + lastpurchase, fetchOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
