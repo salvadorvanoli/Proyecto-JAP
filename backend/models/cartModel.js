@@ -9,22 +9,25 @@ const pool = mariadb.createPool({
 });
 
 const getPurchasesByUser = async (username) => {
-    let conn;
-    try {
-
-        conn = await pool.getConnection();
-        const rows = await conn.query(
-            "SELECT * FROM compras WHERE username=?", [username]
-        );
-        return rows;
-
-    } catch (error) {
-    } finally {
-        if (conn) conn.release();
-    }
-    return false;
+  let conn;
+  try {
+      conn = await pool.getConnection();
+      const rows = await conn.query(
+          "SELECT username, fullname, sendtype, " +
+          "CONVERT(cardnum, CHAR) AS cardnum, " +
+          "cardname, carddate, cardcode, " +
+          "CONVERT(transfernumb, CHAR) AS transfernumb, " +
+          "transfername, street, streetnumber, placereferences " +
+          "FROM compras WHERE username=?", [username]
+      );
+      return rows;
+  } catch (error) {
+      console.error(error);
+      return false;
+  } finally {
+      if (conn) conn.release();
+  }
 };
-
 const getPurchaseDetails = async (compraid) => {
   let conn;
   try {
