@@ -5,6 +5,10 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const SECRET_KEY = "EL MEJOR GRUPO";
 
+// Importamos el router del carrito
+
+const cartRouter = require("./routes/cartRoute");
+
 // INSTANCIA EXPRESS
 
 const app = express();
@@ -30,37 +34,34 @@ app.post("/login", (req, res) => {
 
 //MIDDLEWARE PARA EL CART
 
-app.use("/cart", (req, res, next) => {
-    try {
-      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
-      next();
-    } catch (err) {
-      res.status(401).json({ message: "Usuario no autorizado" });
-    }
-});
-
-app.use("/user_cart", (req, res, next) => {
-    try {
-      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
-      next();
-    } catch (err) {
-      res.status(401).json({ message: "Usuario no autorizado" });
-    }
-});
+// app.use("/cart", (req, res, next) => {
+//     try {
+//       const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+//       next();
+//     } catch (err) {
+//       res.status(401).json({ message: "Usuario no autorizado" });
+//     }
+// });
 
 // ENDPOINTS PARA CADA JSON
 
-app.get('/cart', (req, res) => {
-    const cart = require("./data/cart/buy.json")
-    res.json(cart);
-});
+// cartRouter.get('/cart/success', (req, res) => {
+//   const cart = require("./data/cart/buy.json")
+//   res.json(cart);
+// });
+
+// cartRouter.get('/cart/:filename', (req, res) => {
+// const filename = req.params.filename;
+// const user_cart = require("./data/user_cart/" + filename)
+// res.json(user_cart);
+// });
 
 app.get('/cats', (req, res) => {
     const cats = require("./data/cats/cat.json")
     res.json(cats);
 });
 
-app.get('/cats_products/:filename', (req, res) => {
+app.get('/cats/products/:filename', (req, res) => {
     const filename = req.params.filename;
     const cat_product = require("./data/cats_products/" + filename)
     res.json(cat_product);
@@ -72,7 +73,7 @@ app.get('/products/:filename', (req, res) => {
     res.json(product);
 });
 
-app.get('/products_comments/:filename', (req, res) => {
+app.get('/products/comments/:filename', (req, res) => {
     const filename = req.params.filename;
     const product_comment = require("./data/products_comments/" + filename)
     res.json(product_comment);
@@ -83,10 +84,11 @@ app.get('/sell', (req, res) => {
     res.json(sell);
 });
 
-app.get('/user_cart', (req, res) => {
-    const user_cart = require("./data/user_cart/25801.json")
-    res.json(user_cart);
-});
+// Asociamos los routers con las rutas
+
+app.use("/cart", cartRouter);
+
+// Mensaje de port satisfactorio
 
 app.listen(port,()=>{
     console.log("todo funcionando bien....");
