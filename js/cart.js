@@ -92,19 +92,24 @@ let Standard = document.getElementById("Standard");
 
 // Agregamos un eventlistener a cada radio button de envío para actualizar los precios en tiempo real
 
+let sendType = "standard";
+
 Premium.addEventListener("click", function(){
+    sendType = "premium";
     sendTax = 15;
     calculateSend();
     calculateTotal();
 });
 
 Express.addEventListener("click", function(){
+    sendType = "express";
     sendTax = 7;
     calculateSend();
     calculateTotal();
 });
 
 Standard.addEventListener("click", function(){
+    sendType = "standard";
     sendTax = 5;
     calculateSend();
     calculateTotal();
@@ -500,3 +505,108 @@ purchaseBtn.addEventListener("click", function(){
         event.stopPropagation();
     }
 });
+
+function addPurchaseData(){
+
+    let cardnumvalue;
+    let cardnamevalue;
+    let carddatevalue;
+    let cardcodevalue;
+    let date;
+
+    let transfernumbvalue;
+    let transfernamevalue;
+
+    if(getPaymentMethodSelected()){
+        date = '20' + cardYear.value + '/' + cardMonth.value + '/01';
+        cardnumvalue = cardNumber.value;
+        cardnamevalue = cardName.value;
+        carddatevalue = date;
+        cardcodevalue = cvc.value;
+
+        transfernumbvalue = null;
+        transfernamevalue = null;
+    } else {
+        cardnumvalue = null;
+        cardnamevalue = null;
+        carddatevalue = null;
+        cardcodevalue = null;
+
+        transfernumbvalue = accountNumber.value;
+        transfernamevalue = senderName.value;
+    }
+
+    let raw = JSON.stringify({
+        "username": JSON.parse(localStorage.getItem("username")),
+        "fullname": document.getElementById("nom_LastName").value,
+        "sendtype": sendType,
+        "cardnum": cardnumvalue,
+        "cardname": cardnamevalue,
+        "carddate": date,
+        "cardcode": cardcodevalue,
+        "transfernumb": transfernumbvalue,
+        "transfername": transfernamevalue,
+        "street": document.getElementById("address").value,
+        "streetnumber": document.getElementById("streetNumber").value,
+        "placereferences": document.getElementById("references").value
+    });
+
+    if(raw.transfername == ""){
+        raw.transfername = null;
+        raw.transfernumb = null;
+    } else {
+        raw.cardnum = null;
+        raw.cardname = null;
+        raw.carddate = null;
+        raw.cardcode  = null;
+    }
+
+    let fetchOptions = {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "access-token": JSON.parse(localStorage.getItem("TOKEN")).token,
+        },
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(ADD_PURCHASE_URL, fetchOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+function addDetailsData(){
+
+    let lastpurchase
+
+    fetch(LAST_PURCHASE_URL + JSON.parse(localStorage.getItem("username")), requestOptions)
+    .then(response => response.json())
+    .then(result => {
+    console.log(result)
+        lastpurchase = result[0].compraid;
+        console.log(lastpurchase);
+    })
+    .catch(error => console.log('error', error));
+
+    console.log(lastpurchase);
+
+    for(let product of productsInTheCart[currentUserCart].articles){
+
+        let fetchOptions = {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json",
+              "access-token": JSON.parse(localStorage.getItem("TOKEN")).token,
+            },
+            body: raw,
+            redirect: 'follow'
+        };
+    
+        fetch(ADD_DETAILS_URL, fetchOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+}

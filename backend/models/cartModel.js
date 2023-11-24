@@ -48,7 +48,7 @@ const getLastPurchase = async (username) => {
 
       conn = await pool.getConnection();
       const rows = await conn.query(
-          "SELECT MAX(compraid) FROM compras WHERE username=?", [username]
+          "SELECT MAX(compraid) AS compraid FROM compras WHERE username=?", [username]
       );
       return rows;
 
@@ -59,16 +59,16 @@ const getLastPurchase = async (username) => {
   return false;
 };
 
-const addPurchase = async (username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername) => {
+const addPurchase = async (username, fullname, sendtype, cardnum, cardname, carddate, cardcode, transfernumb, transfername, street, streetnumber, placereferences) => {
     let conn;
     try {
       conn = await pool.getConnection();
       const response = await conn.query(
-        `INSERT INTO compras(username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername) VALUE(?, ?, ?, ?, ?, ?, ?, ?)`,
-        [username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername]
+        `INSERT INTO compras(username, fullname, sendtype, cardnum, cardname, carddate, cardcode, transfernumb, transfername, street, streetnumber, placereferences) VALUE(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [username, fullname, sendtype, cardnum, cardname, carddate, cardcode, transfernumb, transfername, street, streetnumber, placereferences]
       );
   
-      return { username, envio, cardnum, cardname, carddate, cardcode, transfernumb, transfername };
+      return { username, fullname, sendtype, cardnum, cardname, carddate, cardcode, transfernumb, transfername, street, streetnumber, placereferences };
     } catch (error) {
     } finally {
       if (conn) conn.release();

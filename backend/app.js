@@ -34,14 +34,14 @@ app.post("/login", (req, res) => {
 
 //MIDDLEWARE PARA EL CART
 
-// app.use("/cart", (req, res, next) => {
-//     try {
-//       const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
-//       next();
-//     } catch (err) {
-//       res.status(401).json({ message: "Usuario no autorizado" });
-//     }
-// });
+app.use("/cart", (req, res, next) => {
+    try {
+      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+      next();
+    } catch (err) {
+      res.status(401).json({ message: "Usuario no autorizado" });
+    }
+});
 
 // ENDPOINTS PARA CADA JSON
 

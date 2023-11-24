@@ -40,7 +40,7 @@ const success = async (req, res) => {
 };
 
 const addPurchase = async (req, res) => {
-    const createdItem = await cartModel.addPurchase(req.body.username, req.body.envio, req.body.cardnum, req.body.cardname, req.body.carddate, req.body.cardcode, req.body.transfernumb, req.body.transfername);
+    const createdItem = await cartModel.addPurchase(req.body.username, req.body.fullname, req.body.sendtype, req.body.cardnum, req.body.cardname, req.body.carddate, req.body.cardcode, req.body.transfernumb, req.body.transfername, req.body.street, req.body.streetnumber, req.body.placereferences);
     if (createdItem) {
         res.json(createdItem);
     } else {
