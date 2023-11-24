@@ -56,9 +56,9 @@ const addItem = async (username, productid) => {
       if (conn) conn.release(); //release to pool
     }
     return false;
-  };
+};
 
-  const deleteItem = async (username, productid) => {
+const deleteItem = async (username, productid) => {
     let conn;
     try {
       conn = await pool.getConnection();
@@ -71,11 +71,11 @@ const addItem = async (username, productid) => {
       if (conn) conn.release(); //release to pool
     }
     return false;
-  };
+};
 
-  module.exports = {
+module.exports = {
     getCarts,
     getCartByUser,
     addItem,
     deleteItem,
-  }
+}
