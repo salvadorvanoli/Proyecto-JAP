@@ -7,7 +7,7 @@ const cartController = require("../controllers/cartController");
 
 cartRouter.get("/purchases/:username", cartController.getPurchasesByUser);
 
-cartRouter.get("/products/:username", cartController.getPurchaseDetails);
+cartRouter.get("/products/:compraid", cartController.getPurchaseDetails);
 
 cartRouter.get("/lastpurchase/:username", cartController.getLastPurchase);
 
