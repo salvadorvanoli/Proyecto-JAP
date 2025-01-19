@@ -11,3 +11,8 @@ Funcionalidades y páginas:
 -Perfil.
 -Manejador de sesiones.
 -Middleware para la protección de información sensible.
+
+Ramas:
+-Main: frontend (para la correcta visibilidad en github pages).
+-Entrega 8 backend: frontend + backend.
+-Entrega 8 sin backend: frontend con backend desactivado.
